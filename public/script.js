@@ -1,3 +1,18 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// HERO SLIDES — edit this array to add, remove, or reorder slides.
+//   image        : path from the public root
+//   featuredTitle: shown in the bottom-right property badge
+// Copy (headline, body, CTAs) is in the HTML — edit index.html hero-content.
+// ─────────────────────────────────────────────────────────────────────────────
+var HERO_SLIDES = [
+  { image: '/images/hero/1.jpg', featuredTitle: 'Malibu Modern Oceanfront' },
+  { image: '/images/hero/2.jpg', featuredTitle: 'Malibu Modern Oceanfront' },
+  { image: '/images/hero/3.jpg', featuredTitle: 'Malibu Modern Oceanfront' },
+  { image: '/images/hero/4.jpg', featuredTitle: 'Malibu Modern Oceanfront' },
+  { image: '/images/hero/5.jpg', featuredTitle: 'Malibu Modern Oceanfront' },
+  { image: '/images/hero/6.jpg', featuredTitle: 'Malibu Modern Oceanfront' },
+];
+
 // Mobile nav toggle
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.getElementById('site-nav');
@@ -17,12 +32,15 @@ siteNav.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// Shrink header on scroll
+// Header: transparent over hero, solid on scroll
 const header = document.querySelector('.site-header');
+const isHeroPage = document.body.classList.contains('has-hero');
 window.addEventListener('scroll', () => {
-  header.style.background = window.scrollY > 40
-    ? 'rgba(31, 28, 25, 1)'
-    : 'rgba(31, 28, 25, 0.96)';
+  if (isHeroPage) {
+    header.style.background = window.scrollY > 80
+      ? 'rgba(31, 28, 25, 0.96)'
+      : 'transparent';
+  }
 });
 
 // Contact form — POST to /api/contact serverless function
@@ -117,3 +135,59 @@ if (statEls.length) {
   }, { threshold: 0.5 });
   statEls.forEach(el => countObserver.observe(el));
 }
+
+// ─── Hero Carousel ────────────────────────────────────────────────────────────
+(function initHeroCarousel() {
+  var heroEl = document.getElementById('hero');
+  if (!heroEl || !HERO_SLIDES.length) return;
+
+  var slidesWrap = heroEl.querySelector('.hero-slides');
+  var slideNav   = heroEl.querySelector('.hero-slide-nav');
+  var propName   = heroEl.querySelector('.hero-property-name');
+
+  var current  = 0;
+  var timer    = null;
+  var INTERVAL = 6000;
+
+  // Build slide + nav elements from HERO_SLIDES array
+  HERO_SLIDES.forEach(function(slide, i) {
+    var slideEl = document.createElement('div');
+    slideEl.className = 'hero-slide' + (i === 0 ? ' is-active' : '');
+    var bgEl = document.createElement('div');
+    bgEl.className = 'hero-slide-bg';
+    bgEl.style.backgroundImage = "url('" + slide.image + "')";
+    slideEl.appendChild(bgEl);
+    slidesWrap.appendChild(slideEl);
+
+    var btn = document.createElement('button');
+    btn.className = 'hero-slide-nav-btn' + (i === 0 ? ' is-active' : '');
+    btn.textContent = String(i + 1).padStart(2, '0');
+    btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    btn.addEventListener('click', function() { goTo(i); resetTimer(); });
+    slideNav.appendChild(btn);
+  });
+
+  var slides  = heroEl.querySelectorAll('.hero-slide');
+  var navBtns = heroEl.querySelectorAll('.hero-slide-nav-btn');
+
+  function goTo(index) {
+    slides[current].classList.remove('is-active');
+    navBtns[current].classList.remove('is-active');
+    current = index;
+    slides[current].classList.add('is-active');
+    navBtns[current].classList.add('is-active');
+    if (propName) propName.textContent = HERO_SLIDES[current].featuredTitle;
+  }
+
+  function next()       { goTo((current + 1) % HERO_SLIDES.length); }
+  function startTimer() { timer = setInterval(next, INTERVAL); }
+  function stopTimer()  { clearInterval(timer); }
+  function resetTimer() { stopTimer(); startTimer(); }
+
+  heroEl.addEventListener('mouseenter', stopTimer);
+  heroEl.addEventListener('mouseleave', startTimer);
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    startTimer();
+  }
+}());
