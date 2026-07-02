@@ -145,9 +145,9 @@ a {
   transition: background 0.4s ease;
 }
 
-/* Transparent when floating over the hero image */
+/* Subtle gradient shadow when floating over the hero image */
 body.has-hero .site-header {
-  background: transparent;
+  background: linear-gradient(to bottom, rgba(20, 17, 14, 0.60) 0%, rgba(20, 17, 14, 0.00) 100%);
   backdrop-filter: none;
 }
 
@@ -170,6 +170,7 @@ body.has-hero .site-header {
   height: 48px;
   width: auto;
   object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(48%) sepia(35%) saturate(620%) hue-rotate(336deg) brightness(92%);
 }
 
 .site-nav {
@@ -261,27 +262,36 @@ body.has-hero .site-header {
 
 /* ===== HERO CAROUSEL ===== */
 .hero {
-  display: grid;
-  grid-template-columns: 38vw 1fr;
+  position: relative;
   height: 100vh;
   min-height: 580px;
-}
-
-/* ── Left panel (solid dark editorial) ── */
-.hero-panel {
-  background: #141210;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 100px 56px 100px 64px;
-  z-index: 2;
-}
-
-/* ── Right panel (image) ── */
-.hero-visual {
-  position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Left gradient shadow — darkens beneath editorial content ── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(15, 12, 10, 0.94) 0%,
+    rgba(15, 12, 10, 0.80) 28%,
+    rgba(15, 12, 10, 0.45) 52%,
+    rgba(15, 12, 10, 0.10) 68%,
+    rgba(15, 12, 10, 0.00) 80%
+  );
+}
+
+/* ── Editorial content panel (transparent — gradient does the darkening) ── */
+.hero-panel {
+  position: relative;
+  z-index: 3;
+  width: 52%;
+  max-width: 640px;
+  padding: 0 48px 0 80px;
 }
 
 /* ── Slide images ── */
@@ -416,15 +426,17 @@ body.has-hero .site-header {
   border-bottom-color: rgba(244, 240, 232, 0.6);
 }
 
-/* ── Slide number nav — bottom of left panel ── */
+/* ── Slide number nav — far-left edge of hero, below center ── */
 .hero-slide-nav {
   position: absolute;
-  bottom: 44px;
-  left: 64px;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 48px;
   z-index: 3;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .hero-slide-nav-btn {
@@ -466,72 +478,29 @@ body.has-hero .site-header {
   color: rgba(244, 240, 232, 0.6);
 }
 
-/* ── Featured property badge — bottom right of image panel ── */
-.hero-property {
-  position: absolute;
-  bottom: 44px;
-  right: 40px;
-  z-index: 3;
-  text-align: right;
-}
-
-.hero-property-label {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 8px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(244, 240, 232, 0.38);
-  margin-bottom: 5px;
-}
-
-.hero-property-name {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: rgba(244, 240, 232, 0.68);
-}
-
-/* ── Responsive: stack on mobile ── */
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .hero {
-    display: block;
-    position: relative;
-    height: 100vh;
-  }
-  .hero-visual {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
   .hero-panel {
-    position: relative;
-    z-index: 1;
-    height: 100vh;
-    background: rgba(20, 17, 14, 0.80);
-    padding: 100px 28px 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 28px;
   }
   .hero-title { font-size: clamp(2.2rem, 8vw, 3rem); }
   .hero-body  { max-width: 100%; }
   .hero-slide-nav {
-    left: 28px;
+    left: 16px;
+    top: auto;
     bottom: 28px;
+    transform: none;
+    margin-top: 0;
     flex-direction: row;
     gap: 14px;
   }
   .hero-slide-nav-btn::after { display: none; }
-  .hero-property { bottom: 28px; right: 24px; }
-  .hero-property-label { font-size: 7px; }
-  .hero-property-name  { font-size: 10px; }
 }
 
 @media (max-width: 480px) {
-  .hero-property { display: none; }
-  .hero-actions  { gap: 16px; }
+  .hero-actions { gap: 16px; }
 }
 
 

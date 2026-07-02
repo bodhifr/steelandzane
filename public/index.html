@@ -47,9 +47,14 @@
   -->
   <section class="hero" id="hero" aria-label="Featured property showcase">
 
-    <!-- LEFT: Solid dark editorial panel -->
-    <div class="hero-panel">
+    <!-- Full-bleed image carousel — JS injects .hero-slide elements here -->
+    <div class="hero-slides" aria-hidden="true"></div>
 
+    <!-- Dark gradient shadow — fades left-to-transparent for copy legibility -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Editorial content — floats over gradient -->
+    <div class="hero-panel">
       <div class="hero-content">
         <p class="hero-eyebrow">For Los Angeles Real Estate Agents</p>
         <h1 class="hero-title">Your Listings Should Look As Good As Your Reputation.</h1>
@@ -63,20 +68,10 @@
           <a href="/choose.html" class="btn-hero-secondary">Book Your Shoot <span aria-hidden="true">→</span></a>
         </div>
       </div>
-
-      <!-- Slide numbers — JS injects buttons here -->
-      <nav class="hero-slide-nav" aria-label="Slide navigation"></nav>
-
     </div>
 
-    <!-- RIGHT: Image carousel — JS injects .hero-slide elements into .hero-slides -->
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-slides"></div>
-      <div class="hero-property">
-        <span class="hero-property-label">FEATURED PROPERTY</span>
-        <span class="hero-property-name">Malibu Modern Oceanfront</span>
-      </div>
-    </div>
+    <!-- Slide numbers: far-left edge, direct child of hero -->
+    <nav class="hero-slide-nav" aria-label="Slide navigation"></nav>
 
   </section>
   <!-- /HERO ──────────────────────────────────────────────────────────────── -->
