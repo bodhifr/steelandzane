@@ -271,26 +271,32 @@ body.has-hero .site-header {
 }
 
 .hero-overlay {
-  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(14, 11, 9, 0.97) 0%,
+    rgba(14, 11, 9, 0.97) 20%,
+    rgba(14, 11, 9, 0.80) 30%,
+    rgba(14, 11, 9, 0.45) 42%,
+    rgba(14, 11, 9, 0.12) 52%,
+    rgba(14, 11, 9, 0.00) 60%
+  );
 }
 
 .hero-panel {
   position: relative;
   z-index: 3;
-  background: #141210;
   width: 34%;
   max-width: 480px;
   padding: 0 28px 0 56px;
-  box-shadow: 40px 0 80px rgba(14, 11, 9, 0.72);
 }
 
 /* ── Slide images ── */
 .hero-slides {
   position: absolute;
-  top: 72px;
-  left: 34vw;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 0;
 }
 
@@ -308,14 +314,14 @@ body.has-hero .site-header {
 .hero-slide-bg {
   position: absolute;
   inset: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right top;
+  background-size: cover;
+  background-position: center;
 }
 
 /* ── Hero content ── */
 .hero-content {
   animation: hero-content-enter 1s ease forwards;
+  text-shadow: 0 1px 12px rgba(14, 11, 9, 0.85);
 }
 
 @keyframes hero-content-enter {
@@ -424,17 +430,17 @@ body.has-hero .site-header {
 
 .hero-slide-nav-btn {
   font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  color: rgba(244, 240, 232, 0.28);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(244, 240, 232, 0.45);
   background: none;
   border: none;
-  padding: 2px 0;
+  padding: 4px 0;
   cursor: pointer;
   text-align: left;
   line-height: 1;
-  transition: color 0.3s;
+  transition: color 0.25s, transform 0.25s;
   position: relative;
 }
 
@@ -444,13 +450,13 @@ body.has-hero .site-header {
   left: 0;
   bottom: 0;
   width: 0;
-  height: 1px;
+  height: 1.5px;
   background: var(--bronze);
   transition: width 0.3s;
 }
 
 .hero-slide-nav-btn.is-active {
-  color: rgba(244, 240, 232, 0.9);
+  color: rgba(244, 240, 232, 1);
 }
 
 .hero-slide-nav-btn.is-active::after {
@@ -458,7 +464,8 @@ body.has-hero .site-header {
 }
 
 .hero-slide-nav-btn:hover {
-  color: rgba(244, 240, 232, 0.6);
+  color: rgba(244, 240, 232, 0.95);
+  transform: scale(1.15);
 }
 
 /* ── Responsive ── */
