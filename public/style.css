@@ -277,10 +277,11 @@ body.has-hero .site-header {
   background: linear-gradient(
     to right,
     rgba(14, 11, 9, 0.97) 0%,
-    rgba(14, 11, 9, 0.97) 32%,
-    rgba(14, 11, 9, 0.65) 36%,
-    rgba(14, 11, 9, 0.18) 39%,
-    rgba(14, 11, 9, 0.00) 41%
+    rgba(14, 11, 9, 0.97) 30%,
+    rgba(14, 11, 9, 0.82) 36%,
+    rgba(14, 11, 9, 0.55) 42%,
+    rgba(14, 11, 9, 0.22) 48%,
+    rgba(14, 11, 9, 0.00) 52%
   );
 }
 
@@ -311,9 +312,10 @@ body.has-hero .site-header {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(14, 11, 9, 0.88) 0%,
-    rgba(14, 11, 9, 0.35) 20%,
-    rgba(14, 11, 9, 0.00) 38%
+    rgba(14, 11, 9, 0.95) 0%,
+    rgba(14, 11, 9, 0.55) 25%,
+    rgba(14, 11, 9, 0.15) 40%,
+    rgba(14, 11, 9, 0.00) 52%
   );
 }
 
