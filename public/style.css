@@ -271,32 +271,24 @@ body.has-hero .site-header {
 }
 
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to right,
-    rgba(14, 11, 9, 0.97) 0%,
-    rgba(14, 11, 9, 0.97) 22%,
-    rgba(14, 11, 9, 0.65) 28%,
-    rgba(14, 11, 9, 0.18) 33%,
-    rgba(14, 11, 9, 0.00) 36%
-  );
+  display: none;
 }
 
 .hero-panel {
   position: relative;
   z-index: 3;
+  background: #141210;
   width: 34%;
   max-width: 480px;
   padding: 0 28px 0 56px;
+  box-shadow: 40px 0 80px rgba(14, 11, 9, 0.72);
 }
 
 /* ── Slide images ── */
 .hero-slides {
   position: absolute;
   top: 72px;
-  left: 28vw;
+  left: 34vw;
   right: 0;
   bottom: 0;
   z-index: 0;
@@ -318,7 +310,7 @@ body.has-hero .site-header {
   inset: 0;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: left top;
+  background-position: right top;
 }
 
 /* ── Hero content ── */
@@ -416,17 +408,18 @@ body.has-hero .site-header {
   border-bottom-color: rgba(244, 240, 232, 0.6);
 }
 
-/* ── Slide number nav — far-left edge of hero, below center ── */
 .hero-slide-nav {
   position: absolute;
-  left: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-top: 48px;
+  right: 32px;
+  bottom: 32px;
+  left: auto;
+  top: auto;
+  transform: none;
+  margin-top: 0;
   z-index: 3;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .hero-slide-nav-btn {
@@ -478,13 +471,9 @@ body.has-hero .site-header {
   .hero-title { font-size: clamp(2.2rem, 8vw, 3rem); }
   .hero-body  { max-width: 100%; }
   .hero-slide-nav {
-    left: 16px;
-    top: auto;
-    bottom: 28px;
-    transform: none;
-    margin-top: 0;
-    flex-direction: row;
-    gap: 14px;
+    right: 16px;
+    bottom: 24px;
+    left: auto;
   }
   .hero-slide-nav-btn::after { display: none; }
 }
