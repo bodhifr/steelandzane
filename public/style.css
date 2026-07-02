@@ -145,9 +145,8 @@ a {
   transition: background 0.4s ease;
 }
 
-/* Dark gradient shadow over hero — ensures nav/buttons stay legible on load */
 body.has-hero .site-header {
-  background: linear-gradient(to bottom, rgba(14, 11, 9, 0.88) 0%, rgba(14, 11, 9, 0.40) 60%, rgba(14, 11, 9, 0.00) 100%);
+  background: rgba(14, 11, 9, 0.80);
   backdrop-filter: none;
 }
 
@@ -270,29 +269,26 @@ body.has-hero .site-header {
   align-items: center;
 }
 
-/* ── Left gradient shadow — text panel stays dark, image clears by 60% ── */
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(
     to right,
-    rgba(14, 11, 9, 0.96) 0%,
-    rgba(14, 11, 9, 0.96) 30%,
-    rgba(14, 11, 9, 0.78) 42%,
-    rgba(14, 11, 9, 0.38) 52%,
-    rgba(14, 11, 9, 0.08) 60%,
-    rgba(14, 11, 9, 0.00) 68%
+    rgba(14, 11, 9, 0.97) 0%,
+    rgba(14, 11, 9, 0.97) 22%,
+    rgba(14, 11, 9, 0.65) 28%,
+    rgba(14, 11, 9, 0.18) 33%,
+    rgba(14, 11, 9, 0.00) 36%
   );
 }
 
-/* ── Editorial content panel — narrower so image has more room ── */
 .hero-panel {
   position: relative;
   z-index: 3;
-  width: 38%;
-  max-width: 520px;
-  padding: 0 32px 0 64px;
+  width: 34%;
+  max-width: 480px;
+  padding: 0 28px 0 56px;
 }
 
 /* ── Slide images ── */
@@ -349,7 +345,7 @@ body.has-hero .site-header {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 2.8vw, 3.2rem);
+  font-size: clamp(1.85rem, 2.5vw, 3rem);
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.01em;

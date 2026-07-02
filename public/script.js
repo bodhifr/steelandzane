@@ -35,7 +35,7 @@ siteNav.querySelectorAll('.nav-link').forEach(link => {
 // Header: gradient shadow over hero, solid on scroll
 const header = document.querySelector('.site-header');
 const isHeroPage = document.body.classList.contains('has-hero');
-const heroGradient = 'linear-gradient(to bottom, rgba(14,11,9,0.88) 0%, rgba(14,11,9,0.40) 60%, rgba(14,11,9,0.00) 100%)';
+const heroGradient = 'rgba(14, 11, 9, 0.80)';
 window.addEventListener('scroll', () => {
   if (isHeroPage) {
     header.style.background = window.scrollY > 80
