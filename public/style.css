@@ -277,10 +277,10 @@ body.has-hero .site-header {
   background: linear-gradient(
     to right,
     rgba(14, 11, 9, 0.97) 0%,
-    rgba(14, 11, 9, 0.97) 22%,
-    rgba(14, 11, 9, 0.62) 28%,
-    rgba(14, 11, 9, 0.18) 33%,
-    rgba(14, 11, 9, 0.00) 36%
+    rgba(14, 11, 9, 0.97) 32%,
+    rgba(14, 11, 9, 0.65) 36%,
+    rgba(14, 11, 9, 0.18) 39%,
+    rgba(14, 11, 9, 0.00) 41%
   );
 }
 
@@ -292,11 +292,29 @@ body.has-hero .site-header {
   padding: 0 28px 0 56px;
 }
 
-/* ── Slide images ── */
+/* ── Slide images — bottom-right corner, explicit 3:2 so full image shows ── */
 .hero-slides {
   position: absolute;
-  inset: 0;
+  right: 0;
+  bottom: 0;
+  width: 65vw;
+  height: calc(65vw * 2 / 3);
+  overflow: hidden;
   z-index: 0;
+}
+
+.hero-slides::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 11, 9, 0.88) 0%,
+    rgba(14, 11, 9, 0.35) 20%,
+    rgba(14, 11, 9, 0.00) 38%
+  );
 }
 
 .hero-slide {
@@ -482,6 +500,11 @@ body.has-hero .site-header {
     left: auto;
   }
   .hero-slide-nav-btn::after { display: none; }
+  .hero-slides {
+    width: 100%;
+    height: calc(100vw * 2 / 3);
+    max-height: 55vh;
+  }
 }
 
 @media (max-width: 480px) {
