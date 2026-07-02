@@ -47,34 +47,35 @@
   -->
   <section class="hero" id="hero" aria-label="Featured property showcase">
 
-    <!-- Background images: JS injects .hero-slide elements here -->
-    <div class="hero-slides" aria-hidden="true"></div>
+    <!-- LEFT: Solid dark editorial panel -->
+    <div class="hero-panel">
 
-    <!-- Cinematic gradient overlay -->
-    <div class="hero-overlay" aria-hidden="true"></div>
-
-    <!-- Left-aligned editorial content -->
-    <div class="hero-content">
-      <p class="hero-eyebrow">For Los Angeles Real Estate Agents</p>
-      <h1 class="hero-title">Your Listings Should Look As Good As Your Reputation.</h1>
-      <p class="hero-body">
-        When sellers Google you, what do they find? Steel &amp; Zane creates listing marketing that
-        makes you the obvious choice &mdash; elevated visuals and a marketing plan that positions you
-        above the competition before you walk in the door.
-      </p>
-      <div class="hero-actions">
-        <a href="#portfolio" class="btn-hero-primary">View Our Work</a>
-        <a href="/choose.html" class="btn-hero-secondary">Book Your Shoot <span aria-hidden="true">→</span></a>
+      <div class="hero-content">
+        <p class="hero-eyebrow">For Los Angeles Real Estate Agents</p>
+        <h1 class="hero-title">Your Listings Should Look As Good As Your Reputation.</h1>
+        <p class="hero-body">
+          When sellers Google you, what do they find? Steel &amp; Zane creates listing marketing that
+          makes you the obvious choice &mdash; elevated visuals and a marketing plan that positions you
+          above the competition before you walk in the door.
+        </p>
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn-hero-primary">View Our Work</a>
+          <a href="/choose.html" class="btn-hero-secondary">Book Your Shoot <span aria-hidden="true">→</span></a>
+        </div>
       </div>
+
+      <!-- Slide numbers — JS injects buttons here -->
+      <nav class="hero-slide-nav" aria-label="Slide navigation"></nav>
+
     </div>
 
-    <!-- Slide number navigation: bottom-left — JS injects buttons here -->
-    <nav class="hero-slide-nav" aria-label="Slide navigation"></nav>
-
-    <!-- Featured property badge: bottom-right — JS updates .hero-property-name per slide -->
-    <div class="hero-property" aria-hidden="true">
-      <span class="hero-property-label">FEATURED PROPERTY</span>
-      <span class="hero-property-name">Malibu Modern Oceanfront</span>
+    <!-- RIGHT: Image carousel — JS injects .hero-slide elements into .hero-slides -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-slides"></div>
+      <div class="hero-property">
+        <span class="hero-property-label">FEATURED PROPERTY</span>
+        <span class="hero-property-name">Malibu Modern Oceanfront</span>
+      </div>
     </div>
 
   </section>
