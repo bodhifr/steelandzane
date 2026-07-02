@@ -267,6 +267,7 @@ body.has-hero .site-header {
   overflow: hidden;
   display: flex;
   align-items: center;
+  background: #141210;
 }
 
 .hero-overlay {
@@ -294,7 +295,10 @@ body.has-hero .site-header {
 /* ── Slide images ── */
 .hero-slides {
   position: absolute;
-  inset: 0;
+  top: 72px;
+  left: 28vw;
+  right: 0;
+  bottom: 0;
   z-index: 0;
 }
 
@@ -312,8 +316,9 @@ body.has-hero .site-header {
 .hero-slide-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left top;
 }
 
 /* ── Hero content ── */
