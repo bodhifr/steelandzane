@@ -32,14 +32,15 @@ siteNav.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// Header: transparent over hero, solid on scroll
+// Header: gradient shadow over hero, solid on scroll
 const header = document.querySelector('.site-header');
 const isHeroPage = document.body.classList.contains('has-hero');
+const heroGradient = 'linear-gradient(to bottom, rgba(14,11,9,0.88) 0%, rgba(14,11,9,0.40) 60%, rgba(14,11,9,0.00) 100%)';
 window.addEventListener('scroll', () => {
   if (isHeroPage) {
     header.style.background = window.scrollY > 80
       ? 'rgba(31, 28, 25, 0.96)'
-      : 'transparent';
+      : heroGradient;
   }
 });
 
