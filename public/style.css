@@ -277,11 +277,10 @@ body.has-hero .site-header {
   background: linear-gradient(
     to right,
     rgba(14, 11, 9, 0.97) 0%,
-    rgba(14, 11, 9, 0.97) 20%,
-    rgba(14, 11, 9, 0.80) 30%,
-    rgba(14, 11, 9, 0.45) 42%,
-    rgba(14, 11, 9, 0.12) 52%,
-    rgba(14, 11, 9, 0.00) 60%
+    rgba(14, 11, 9, 0.97) 22%,
+    rgba(14, 11, 9, 0.62) 28%,
+    rgba(14, 11, 9, 0.18) 33%,
+    rgba(14, 11, 9, 0.00) 36%
   );
 }
 
@@ -321,6 +320,7 @@ body.has-hero .site-header {
 /* ── Hero content ── */
 .hero-content {
   animation: hero-content-enter 1s ease forwards;
+  text-shadow: 0 1px 12px rgba(14, 11, 9, 0.85);
 }
 
 @keyframes hero-content-enter {
