@@ -276,12 +276,12 @@ body.has-hero .site-header {
   z-index: 1;
   background: linear-gradient(
     to right,
-    rgba(14, 11, 9, 0.97) 0%,
-    rgba(14, 11, 9, 0.97) 20%,
-    rgba(14, 11, 9, 0.80) 30%,
-    rgba(14, 11, 9, 0.45) 42%,
-    rgba(14, 11, 9, 0.12) 52%,
-    rgba(14, 11, 9, 0.00) 60%
+    rgba(14, 11, 9, 0.96) 0%,
+    rgba(14, 11, 9, 0.96) 18%,
+    rgba(14, 11, 9, 0.72) 28%,
+    rgba(14, 11, 9, 0.30) 40%,
+    rgba(14, 11, 9, 0.08) 50%,
+    rgba(14, 11, 9, 0.00) 58%
   );
 }
 
@@ -315,7 +315,7 @@ body.has-hero .site-header {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center 35%;
 }
 
 /* ── Hero content ── */
