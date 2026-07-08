@@ -1879,9 +1879,11 @@ body.has-hero .site-header {
 .why-img--atmosphere {
   top: 18%;
   right: 16px;
-  width: 34%;
+  width: 42%;
   height: auto;
-  z-index: 1;
+  z-index: 2;
+  outline: 4px solid var(--background);
+  outline-offset: -4px;
 }
 
 .why-img--detail {
