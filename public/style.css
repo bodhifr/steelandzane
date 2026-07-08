@@ -305,6 +305,7 @@ body.has-hero .site-header {
   inset: 0;
   opacity: 0;
   transition: opacity 1.4s ease;
+  will-change: opacity;
 }
 
 .hero-slide.is-active {
