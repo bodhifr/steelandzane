@@ -340,18 +340,15 @@ body.has-hero .site-header {
 }
 
 .hero-eyebrow::before {
-  content: '→';
-  display: inline-block;
-  margin-right: 10px;
-  opacity: 0.55;
+  content: none;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.85rem, 2.5vw, 3rem);
+  font-size: clamp(2.8rem, 4.5vw, 5.5rem);
   font-weight: 300;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--plaster);
   margin-bottom: 28px;
 }
@@ -480,7 +477,7 @@ body.has-hero .site-header {
     max-width: 100%;
     padding: 0 28px;
   }
-  .hero-title { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .hero-title { font-size: clamp(2.4rem, 9vw, 3.5rem); }
   .hero-body  { max-width: 100%; }
   .hero-slide-nav {
     right: 16px;
