@@ -277,19 +277,19 @@ body.has-hero .site-header {
   background: linear-gradient(
     to right,
     rgba(14, 11, 9, 0.96) 0%,
-    rgba(14, 11, 9, 0.96) 24%,
-    rgba(14, 11, 9, 0.72) 36%,
-    rgba(14, 11, 9, 0.30) 50%,
-    rgba(14, 11, 9, 0.08) 62%,
-    rgba(14, 11, 9, 0.00) 70%
+    rgba(14, 11, 9, 0.96) 22%,
+    rgba(14, 11, 9, 0.72) 32%,
+    rgba(14, 11, 9, 0.30) 45%,
+    rgba(14, 11, 9, 0.08) 57%,
+    rgba(14, 11, 9, 0.00) 65%
   );
 }
 
 .hero-panel {
   position: relative;
   z-index: 3;
-  width: 46%;
-  max-width: 620px;
+  width: 41%;
+  max-width: 558px;
   padding: 0 28px 0 56px;
 }
 
@@ -345,7 +345,7 @@ body.has-hero .site-header {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 4.5vw, 5.5rem);
+  font-size: clamp(2.52rem, 4.05vw, 4.95rem);
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.02em;
