@@ -426,14 +426,19 @@ body.has-hero .site-header {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  background: rgba(14, 11, 9, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border-radius: 2px;
 }
 
 .hero-slide-nav-btn {
   font-family: var(--font-ui);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.14em;
-  color: rgba(244, 240, 232, 0.45);
+  color: rgba(244, 240, 232, 0.65);
   background: none;
   border: none;
   padding: 4px 0;
@@ -456,7 +461,7 @@ body.has-hero .site-header {
 }
 
 .hero-slide-nav-btn.is-active {
-  color: rgba(244, 240, 232, 1);
+  color: var(--bronze);
 }
 
 .hero-slide-nav-btn.is-active::after {
