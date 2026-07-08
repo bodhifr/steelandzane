@@ -277,19 +277,19 @@ body.has-hero .site-header {
   background: linear-gradient(
     to right,
     rgba(14, 11, 9, 0.96) 0%,
-    rgba(14, 11, 9, 0.96) 18%,
-    rgba(14, 11, 9, 0.72) 28%,
-    rgba(14, 11, 9, 0.30) 40%,
-    rgba(14, 11, 9, 0.08) 50%,
-    rgba(14, 11, 9, 0.00) 58%
+    rgba(14, 11, 9, 0.96) 24%,
+    rgba(14, 11, 9, 0.72) 36%,
+    rgba(14, 11, 9, 0.30) 50%,
+    rgba(14, 11, 9, 0.08) 62%,
+    rgba(14, 11, 9, 0.00) 70%
   );
 }
 
 .hero-panel {
   position: relative;
   z-index: 3;
-  width: 34%;
-  max-width: 480px;
+  width: 46%;
+  max-width: 620px;
   padding: 0 28px 0 56px;
 }
 
