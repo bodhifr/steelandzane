@@ -1478,11 +1478,17 @@ body.has-hero .site-header {
   max-width: 360px;
 }
 
+.problem-images {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 40px;
+}
+
 .problem-frames {
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  padding-top: 40px;
 }
 
 .sameness-frame {
@@ -1501,6 +1507,7 @@ body.has-hero .site-header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .sameness-img--muted {
@@ -1517,16 +1524,36 @@ body.has-hero .site-header {
   padding-top: 10px;
 }
 
-.sameness-frame--break {
-  transform: translateY(-20px);
+.sameness-break {
+  display: flex;
+  flex-direction: column;
 }
 
-.sameness-frame--break .sameness-img-wrap {
-  border-top: 2px solid var(--terracotta);
+.sameness-break-wrap {
+  width: 100%;
+  border: 2px solid var(--terracotta);
+  overflow: hidden;
+}
+
+.sameness-break-wrap .sameness-img {
+  height: auto;
 }
 
 .sameness-label--break {
   color: var(--terracotta);
+}
+
+.problem-tagline {
+  grid-column: 1 / -1;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(244, 240, 232, 0.45);
+  text-align: center;
+  padding-top: 56px;
+  border-top: 1px solid rgba(244, 240, 232, 0.1);
+  margin-top: 48px;
 }
 
 /* ===== TRANSFORMATION SECTION ===== */
@@ -1932,6 +1959,8 @@ body.has-hero .site-header {
     gap: 48px;
   }
   .problem-body { max-width: 100%; }
+  .problem-images { padding-top: 0; }
+  .problem-tagline { margin-top: 32px; padding-top: 32px; }
 }
 
 @media (max-width: 640px) {
@@ -1983,8 +2012,7 @@ body.has-hero .site-header {
     scrollbar-width: none;
   }
   .problem-frames::-webkit-scrollbar { display: none; }
-  .sameness-frame { min-width: 120px; flex-shrink: 0; }
-  .sameness-frame--break { transform: translateY(-12px); }
+  .sameness-frame { min-width: 100px; flex-shrink: 0; }
 }
 
 /* ===== PHOTOGRAPHY DIFFERENCE ===== */
