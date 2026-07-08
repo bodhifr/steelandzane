@@ -185,12 +185,5 @@ if (statEls.length) {
   function stopTimer()  { clearInterval(timer); timer = null; }
   function resetTimer() { stopTimer(); startTimer(); }
 
-  // Only pause on hover after the mouse has actually moved — prevents
-  // mouseenter from firing on page load and immediately killing the timer.
-  var hasMouseMoved = false;
-  document.addEventListener('mousemove', function() { hasMouseMoved = true; }, { once: true });
-  heroEl.addEventListener('mouseenter', function() { if (hasMouseMoved) stopTimer(); });
-  heroEl.addEventListener('mouseleave', function() { if (hasMouseMoved) startTimer(); });
-
   startTimer();
 }());
