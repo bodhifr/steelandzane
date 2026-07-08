@@ -1527,11 +1527,13 @@ body.has-hero .site-header {
 .sameness-break {
   display: flex;
   flex-direction: column;
-  width: 33%;
+  width: calc((100% - 20px) * 0.625);
+  align-self: flex-start;
 }
 
 .sameness-break-wrap {
   width: 100%;
+  aspect-ratio: 3 / 2;
   border: 2px solid var(--terracotta);
   overflow: hidden;
 }
