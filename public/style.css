@@ -1563,11 +1563,9 @@ body.has-hero .site-header {
   font-size: clamp(1rem, 1.4vw, 1.25rem);
   font-style: italic;
   font-weight: 300;
-  color: rgba(244, 240, 232, 0.45);
+  color: var(--terracotta);
   text-align: center;
-  padding-top: 56px;
-  border-top: 1px solid rgba(244, 240, 232, 0.1);
-  margin-top: 48px;
+  margin-top: 20px;
 }
 
 /* ===== TRANSFORMATION SECTION ===== */
@@ -1976,7 +1974,6 @@ body.has-hero .site-header {
   }
   .problem-body { max-width: 100%; }
   .problem-images { padding-top: 0; }
-  .problem-tagline { margin-top: 32px; padding-top: 32px; }
 }
 
 @media (max-width: 640px) {
