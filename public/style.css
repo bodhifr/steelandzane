@@ -1864,14 +1864,13 @@ body.has-hero .site-header {
 
 .why-img {
   position: absolute;
-  object-fit: cover;
 }
 
 .why-img--primary {
   top: 0;
   left: 0;
   width: 68%;
-  height: 74%;
+  height: auto;
   z-index: 1;
 }
 
@@ -1879,7 +1878,7 @@ body.has-hero .site-header {
   top: 18%;
   right: 0;
   width: 34%;
-  height: 50%;
+  height: auto;
   z-index: 1;
 }
 
@@ -1887,22 +1886,10 @@ body.has-hero .site-header {
   bottom: 0;
   left: 10%;
   width: 38%;
-  height: 36%;
+  height: auto;
   z-index: 2;
   outline: 4px solid var(--background);
   outline-offset: -4px;
-}
-
-.why-caption {
-  position: absolute;
-  bottom: -28px;
-  right: 0;
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 
