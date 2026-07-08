@@ -181,8 +181,8 @@ if (statEls.length) {
   }
 
   function next()       { goTo((current + 1) % HERO_SLIDES.length); }
-  function startTimer() { timer = setInterval(next, INTERVAL); }
-  function stopTimer()  { clearInterval(timer); }
+  function startTimer() { clearInterval(timer); timer = setInterval(next, INTERVAL); }
+  function stopTimer()  { clearInterval(timer); timer = null; }
   function resetTimer() { stopTimer(); startTimer(); }
 
   heroEl.addEventListener('mouseenter', stopTimer);
