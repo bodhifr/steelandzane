@@ -1527,6 +1527,7 @@ body.has-hero .site-header {
 .sameness-break {
   display: flex;
   flex-direction: column;
+  width: 33%;
 }
 
 .sameness-break-wrap {
