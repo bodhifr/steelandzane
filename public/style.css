@@ -1843,7 +1843,9 @@ body.has-hero .site-header {
 
 .why-title-accent {
   color: var(--terracotta);
-  text-shadow: 0 2px 16px rgba(184, 106, 71, 0.22);
+  text-shadow:
+    0 0 24px rgba(184, 106, 71, 0.55),
+    0 4px 32px rgba(184, 106, 71, 0.35);
 }
 
 .why-title {
