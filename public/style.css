@@ -171,6 +171,7 @@ body.has-hero .site-header {
   font-size: 1.35rem;
   font-weight: 300;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--bronze);
   line-height: 1;
 }
