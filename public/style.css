@@ -1557,15 +1557,31 @@ body.has-hero .site-header {
   color: var(--terracotta);
 }
 
-.problem-tagline {
-  grid-column: 1 / -1;
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--terracotta);
-  text-align: center;
-  margin-top: 20px;
+.problem-consequences {
+  list-style: none;
+  margin-top: 28px;
+  border-top: 1px solid rgba(244,240,232,0.12);
+}
+
+.problem-consequence {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(244,240,232,0.12);
+}
+
+.problem-consequence-title {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--background);
+  margin-bottom: 4px;
+}
+
+.problem-consequence-body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(244,240,232,0.48);
 }
 
 /* ===== TRANSFORMATION SECTION ===== */
@@ -1868,9 +1884,51 @@ body.has-hero .site-header {
   flex-shrink: 0;
 }
 
+.why-outcomes {
+  list-style: none;
+  border-top: 1px solid rgba(212,203,195,0.5);
+  max-width: 380px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.why-outcome {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(212,203,195,0.5);
+}
+
+.why-outcome-num {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--bronze);
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
+.why-outcome-title {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 7px;
+}
+
+.why-outcome-body {
+  font-size: 14px;
+  line-height: 1.72;
+  color: var(--muted);
+}
+
 .why-images {
   position: relative;
-  height: 560px;
+  height: 620px;
 }
 
 .why-img {
@@ -1965,7 +2023,7 @@ body.has-hero .site-header {
     grid-template-columns: 1fr;
     gap: 56px;
   }
-  .why-images { height: 420px; }
+  .why-images { height: 460px; }
   .why-body { max-width: 100%; }
   /* Problem */
   .problem-inner {
