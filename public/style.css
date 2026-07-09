@@ -1441,7 +1441,7 @@ body.has-hero .site-header {
 }
 
 .problem-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 34%;
@@ -1827,7 +1827,7 @@ body.has-hero .site-header {
 }
 
 .why-snz-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 42% 1fr;
