@@ -1247,7 +1247,7 @@ body.has-hero .site-header {
 /* ===== CREDIBILITY STRIP ===== */
 .credibility {
   background: var(--background);
-  padding: 64px 24px 56px;
+  padding: 44px 24px 40px;
   border-bottom: 1px solid var(--border);
   text-align: center;
 }
@@ -1822,6 +1822,8 @@ body.has-hero .site-header {
   gap: 32px;
   max-width: 980px;
   margin: 0 auto;
+  border-top: 1px solid rgba(244, 240, 232, 0.08);
+  padding-top: 48px;
 }
 
 .process-step {
@@ -2016,23 +2018,23 @@ body.has-hero .site-header {
 /* ===== FINAL CTA ===== */
 .cta-close {
   background: var(--dark);
-  padding: 96px 24px;
+  padding: 160px 24px;
   text-align: center;
 }
 
 .cta-close-inner {
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .cta-close-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 5.5rem);
+  font-weight: 300;
   color: var(--white);
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-  margin-bottom: 20px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
 }
 
 .cta-close-body {
@@ -2249,6 +2251,222 @@ body.has-hero .site-header {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scroll-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(to right, var(--bronze), var(--terracotta));
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
+
+
+/* ===== PROBLEM CTA #1 ===== */
+.problem-cta {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(140, 90, 60, 0.4);
+  padding-bottom: 2px;
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.problem-cta:hover {
+  color: var(--terracotta);
+  border-color: rgba(184, 106, 71, 0.5);
+}
+
+.problem-break-row.is-revealed ~ .problem-cta {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ===== OUTCOME DASH MARKER ===== */
+.why-outcome-dash {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--bronze);
+  flex-shrink: 0;
+  line-height: 1.4;
+  padding-top: 0;
+}
+
+
+/* ===== SECTION DIRECTIONAL PROMPT ===== */
+.section-next-prompt {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  text-decoration: none;
+  margin-top: 32px;
+  transition: color 0.2s;
+}
+
+.section-next-prompt:hover {
+  color: var(--terracotta);
+}
+
+
+/* ===== PROOF MOMENT ===== */
+.proof-moment {
+  background: var(--background);
+}
+
+.proof-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.proof-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.proof-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(14, 11, 9, 0.68) 100%);
+  z-index: 1;
+}
+
+.proof-caption {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  color: var(--plaster);
+  text-shadow: 0 2px 24px rgba(14, 11, 9, 0.7);
+  text-align: center;
+  white-space: nowrap;
+  z-index: 2;
+  letter-spacing: -0.01em;
+}
+
+.proof-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 48px 24px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .proof-caption { white-space: normal; width: 90%; text-align: center; }
+  .proof-ctas { flex-direction: column; align-items: center; }
+  .proof-ctas .btn { width: 100%; max-width: 320px; text-align: center; }
+}
+
+
+/* ===== TESTIMONIALS — PULL QUOTE ===== */
+.testimonial-feature {
+  text-align: center;
+  padding: 120px 24px 72px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonial-pull-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.9rem, 4vw, 4.6rem);
+  color: var(--plaster);
+  line-height: 1.15;
+  margin: 0 0 40px 0;
+  quotes: none;
+}
+
+.testimonial-pull-attr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-pull-rule {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--bronze);
+}
+
+.testimonial-pull-name {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  font-style: normal;
+}
+
+.testimonials-cta {
+  text-align: center;
+  padding: 24px 24px 56px;
+}
+
+.testimonials-cta-link {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 232, 0.55);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.18);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.testimonials-cta-link:hover {
+  color: var(--bronze);
+  border-color: rgba(140, 90, 60, 0.5);
+}
+
 
 /* ===== KINETIC SAMENESS (desktop, no reduced-motion) ===== */
 @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {

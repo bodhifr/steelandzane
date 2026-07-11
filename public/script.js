@@ -137,6 +137,21 @@ if (statEls.length) {
   statEls.forEach(el => countObserver.observe(el));
 }
 
+// ─── Scroll progress bar ──────────────────────────────────────────────────────
+(function() {
+  var fill = document.querySelector('.scroll-progress-fill');
+  if (!fill) return;
+  function updateProgress() {
+    var scrolled = window.scrollY;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = total > 0 ? Math.max(0, Math.min(1, scrolled / total)) : 0;
+    fill.style.transform = 'scaleX(' + progress + ')';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+}());
+
+
 // ─── Kinetic Sameness — problem section scroll effect ─────────────────────────
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
