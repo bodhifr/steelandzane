@@ -91,7 +91,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 // Scroll reveal — fires once per element when it enters the viewport
-const revealEls = document.querySelectorAll('.reveal, .reveal-pop, .reveal-fade');
+const revealEls = document.querySelectorAll('.reveal, .reveal-pop, .reveal-fade, .reveal-right');
 if (revealEls.length) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -137,88 +137,6 @@ if (statEls.length) {
   statEls.forEach(el => countObserver.observe(el));
 }
 
-// ─── Kinetic Sameness — problem section scroll effect ─────────────────────────
-(function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.innerWidth < 900) return;
-
-  var problemSection = document.querySelector('.problem');
-  var framesEl       = document.querySelector('.problem-frames');
-  var breakRow       = document.querySelector('.problem-break-row');
-  if (!problemSection || !framesEl || !breakRow) return;
-
-  function onScroll() {
-    var rect      = problemSection.getBoundingClientRect();
-    var sectionH  = problemSection.offsetHeight;
-    var scrollable = sectionH - window.innerHeight;
-    if (scrollable <= 0) return;
-    var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
-
-    // Dwell 0→0.40 (stationary — read the labels), slide 0.40→0.68
-    var SLIDE_START = 0.40;
-    var SLIDE_END   = 0.68;
-    var frameProgress = progress < SLIDE_START ? 0
-      : Math.max(0, Math.min(1, (progress - SLIDE_START) / (SLIDE_END - SLIDE_START)));
-    framesEl.style.transform = 'translateX(' + (frameProgress * -108) + '%)';
-
-    // "Different." images slide in just after frames clear
-    if (progress >= 0.72) {
-      breakRow.classList.add('is-revealed');
-    } else {
-      breakRow.classList.remove('is-revealed');
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-}());
-
-
-// ─── Scroll Reel Driver ───────────────────────────────────────────────────────
-function initScrollReel(reelSel, panelSel) {
-  var reel   = document.querySelector(reelSel);
-  var panels = document.querySelectorAll(panelSel);
-  if (!reel || !panels.length) return;
-
-  var FADE = 0.12;
-
-  function onScroll() {
-    var rect       = reel.getBoundingClientRect();
-    var scrollable = reel.offsetHeight - window.innerHeight;
-    if (scrollable <= 0) return;
-    var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
-
-    var step = 1 / panels.length;
-    panels.forEach(function(panel, i) {
-      var start   = step * i;
-      var end     = step * (i + 1);
-      var fadeIn  = start + FADE;
-      var fadeOut = end - FADE;
-
-      var opacity;
-      if (progress <= start || progress >= end) {
-        opacity = 0;
-      } else if (progress < fadeIn) {
-        opacity = (progress - start) / FADE;
-      } else if (progress > fadeOut) {
-        opacity = 1 - (progress - fadeOut) / FADE;
-      } else {
-        opacity = 1;
-      }
-
-      // Subtle 14px settle — panels revolve in place, not across the screen
-      var nudge = (1 - Math.max(0, Math.min(1, opacity))) * 14;
-      panel.style.opacity   = Math.max(0, Math.min(1, opacity));
-      panel.style.transform = 'translateY(' + nudge + 'px)';
-    });
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-}
-
-initScrollReel('.consequences-reel', '.consequences-panel');
-initScrollReel('.outcomes-reel',     '.outcomes-panel');
 
 
 // ─── Hero Carousel ────────────────────────────────────────────────────────────
