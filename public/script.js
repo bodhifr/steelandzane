@@ -154,15 +154,15 @@ if (statEls.length) {
     if (scrollable <= 0) return;
     var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
 
-    // Dwell 0→0.25 (stationary — read the labels), slide 0.25→0.55
-    var SLIDE_START = 0.25;
-    var SLIDE_END   = 0.55;
+    // Dwell 0→0.40 (stationary — read the labels), slide 0.40→0.68
+    var SLIDE_START = 0.40;
+    var SLIDE_END   = 0.68;
     var frameProgress = progress < SLIDE_START ? 0
       : Math.max(0, Math.min(1, (progress - SLIDE_START) / (SLIDE_END - SLIDE_START)));
     framesEl.style.transform = 'translateX(' + (frameProgress * -108) + '%)';
 
-    // "Different." images reveal just after frames clear
-    if (progress >= 0.58) {
+    // "Different." images slide in just after frames clear
+    if (progress >= 0.72) {
       breakRow.classList.add('is-revealed');
     } else {
       breakRow.classList.remove('is-revealed');

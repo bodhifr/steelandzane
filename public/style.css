@@ -1449,7 +1449,8 @@ body.has-hero .site-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 56px;
+  gap: 72px;
+  padding: 0 48px;
 }
 
 .problem-copy {
@@ -1484,11 +1485,11 @@ body.has-hero .site-header {
 
 .problem-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6.5vw, 7rem);
+  font-size: clamp(2rem, 3.2vw, 3.8rem);
   font-weight: 300;
   color: var(--background);
-  line-height: 1.06;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   margin-bottom: 32px;
 }
 
@@ -2283,7 +2284,7 @@ body.has-hero .site-header {
 /* ===== KINETIC SAMENESS (desktop, no reduced-motion) ===== */
 @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
   .problem {
-    min-height: 190vh;
+    min-height: 260vh;
   }
   .problem-inner {
     position: sticky;
@@ -2297,8 +2298,8 @@ body.has-hero .site-header {
   }
   .problem-break-row {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
+    transform: translateX(80px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0, 0.2, 1);
   }
   .problem-break-row.is-revealed {
     opacity: 1;
