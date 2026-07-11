@@ -1605,29 +1605,50 @@ body.has-hero .site-header {
   padding-top: 12px;
 }
 
-/* ─── Consequences ───────────────────────────────────────────────────────────── */
+/* ─── Consequences — Sameness Cycle ──────────────────────────────────────────── */
+/* Triangle: 01 top, 02 bottom-right, 03 bottom-left. Static, arrows CW.        */
+/* Container: 560×440. Center (280,250). Orbit r=155. Cards 180×auto.           */
 .consequences-reel {
   background: var(--dark);
-  padding: 96px 24px;
+  padding: 96px 24px 120px;
   border-top: 2px solid var(--bronze);
 }
+.consequences-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 3.2vw, 3.8rem);
+  color: var(--background);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 64px;
+}
 .consequences-sticky {
-  max-width: 1200px;
+  position: relative;
+  width: 560px;
+  height: 440px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0;
+  overflow: visible;
+}
+.consequences-arrows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
 }
 .consequences-panel {
-  flex: 1;
+  position: absolute;
+  width: 180px;
+  padding: 24px 20px;
+  background: rgba(244,240,232,0.04);
+  border: 1px solid rgba(244,240,232,0.12);
   text-align: center;
-  padding: 0 48px;
-  border-left: 1px solid rgba(244,240,232,0.1);
 }
-.consequences-panel:first-child {
-  border-left: none;
-}
+.consequences-panel--1 { left: 190px; top: 15px; }
+.consequences-panel--2 { left: 324px; top: 248px; }
+.consequences-panel--3 { left:  56px; top: 248px; }
 .consequences-panel-num {
   display: block;
   font-family: var(--font-ui);
@@ -1636,38 +1657,28 @@ body.has-hero .site-header {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--bronze);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .consequences-panel-title {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.6rem, 2.2vw, 2.6rem);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
   color: var(--background);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 10px;
 }
 .consequences-panel-body {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.65;
   color: rgba(244,240,232,0.45);
 }
 @media (max-width: 700px) {
-  .consequences-sticky {
-    flex-direction: column;
-    gap: 48px;
-  }
-  .consequences-panel {
-    padding: 0;
-    border-left: none;
-    border-top: 1px solid rgba(244,240,232,0.1);
-    padding-top: 48px;
-  }
-  .consequences-panel:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
+  .consequences-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
+  .consequences-arrows { display: none; }
+  .consequences-panel { position: static; width: 100%; padding: 32px 0; border: none; border-top: 1px solid rgba(244,240,232,0.1); }
+  .consequences-panel--1 { border-top: none; }
 }
 
 /* ===== TRANSFORMATION SECTION ===== */
@@ -1988,38 +1999,49 @@ body.has-hero .site-header {
   flex-shrink: 0;
 }
 
-/* ─── Outcomes Reel — Revolver ───────────────────────────────────────────────── */
-/* Three tiles equally spaced (120°) on a circle, spinning clockwise.            */
-/* Container: 620×620. Orbit radius: 180px. Tile: 220×200px.                    */
+/* ─── Outcomes Reel — S&Z Cycle ──────────────────────────────────────────────── */
+/* Mirrors Sameness Cycle geometry; dark tiles on cream. Static, arrows CW.      */
 .outcomes-reel {
   background: var(--background);
   padding: 96px 24px 120px;
   border-top: 2px solid var(--bronze);
 }
+.outcomes-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 3.2vw, 3.8rem);
+  color: var(--dark);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 64px;
+}
 .outcomes-sticky {
   position: relative;
-  width: 620px;
-  height: 620px;
+  width: 560px;
+  height: 440px;
   margin: 0 auto;
+  overflow: visible;
 }
-.outcomes-orbit-ring {
+.outcomes-arrows {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
 }
 .outcomes-panel {
   position: absolute;
-  width: 220px;
-  padding: 28px 24px;
+  width: 180px;
+  padding: 24px 20px;
   background: var(--dark);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.14);
   text-align: center;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
 }
-/* 0° top  — center at (310, 130), tile top-left at (200, 30) */
-.outcomes-panel--1 { left: 200px; top:  30px; }
-/* 120° CW — center at (466, 400), tile top-left at (356, 300) */
-.outcomes-panel--2 { left: 356px; top: 300px; }
-/* 240° CW — center at (154, 400), tile top-left at (44,  300) */
-.outcomes-panel--3 { left:  44px; top: 300px; }
+.outcomes-panel--1 { left: 190px; top: 15px; }
+.outcomes-panel--2 { left: 324px; top: 248px; }
+.outcomes-panel--3 { left:  56px; top: 248px; }
 .outcomes-panel-num {
   display: block;
   font-family: var(--font-ui);
@@ -2033,11 +2055,11 @@ body.has-hero .site-header {
 .outcomes-panel-title {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
   letter-spacing: -0.01em;
   color: var(--background);
-  line-height: 1.15;
-  margin-bottom: 12px;
+  line-height: 1.2;
+  margin-bottom: 10px;
 }
 .outcomes-panel-body {
   font-size: 12px;
@@ -2045,13 +2067,10 @@ body.has-hero .site-header {
   color: rgba(244,240,232,0.55);
 }
 @media (max-width: 700px) {
-  .outcomes-sticky { width: 340px; height: 340px; }
-  .outcomes-panel  { width: 120px; padding: 16px 14px; }
-  .outcomes-panel--1 { left: 110px; top:  16px; }
-  .outcomes-panel--2 { left: 196px; top: 165px; }
-  .outcomes-panel--3 { left:  24px; top: 165px; }
-  .outcomes-panel-title { font-size: 0.8rem; }
-  .outcomes-panel-body  { display: none; }
+  .outcomes-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
+  .outcomes-arrows { display: none; }
+  .outcomes-panel { position: static; width: 100%; padding: 32px 0; }
+  .outcomes-panel + .outcomes-panel { border-top: 1px solid rgba(31,28,25,0.1); }
 }
 
 .why-images {
@@ -2362,21 +2381,6 @@ body.has-hero .site-header {
   .cursor-dot.is-visible  { opacity: 1; }
   .cursor-ring.is-visible { opacity: 0.55; }
   .cursor-ring.is-hovered { width: 48px; height: 48px; opacity: 0.85; }
-}
-
-/* ─── Revolver orbit keyframes ───────────────────────────────────────────────── */
-@keyframes spin-cw  { to { transform: rotate(360deg);  } }
-@keyframes spin-ccw { to { transform: rotate(-360deg); } }
-
-@media (prefers-reduced-motion: no-preference) {
-  .outcomes-orbit-ring {
-    animation: spin-cw 22s linear infinite;
-    will-change: transform;
-  }
-  .outcomes-orbit-ring .outcomes-panel {
-    animation: spin-ccw 22s linear infinite;
-    will-change: transform;
-  }
 }
 
 /* ─── Scroll progress bar ──────────────────────────────────────────────────── */
