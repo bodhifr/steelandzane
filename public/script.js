@@ -174,6 +174,48 @@ if (statEls.length) {
 }());
 
 
+// ─── Scroll Reel Driver ───────────────────────────────────────────────────────
+function initScrollReel(reelSel, panelSel) {
+  var reel   = document.querySelector(reelSel);
+  var panels = document.querySelectorAll(panelSel);
+  if (!reel || !panels.length) return;
+
+  var FADE = 0.12;
+
+  function onScroll() {
+    var rect      = reel.getBoundingClientRect();
+    var scrollable = reel.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+
+    var step = 1 / panels.length;
+    panels.forEach(function(panel, i) {
+      var start   = step * i;
+      var end     = step * (i + 1);
+      var fadeIn  = start + FADE;
+      var fadeOut = end - FADE;
+      var opacity;
+      if (progress <= start || progress >= end) {
+        opacity = 0;
+      } else if (progress < fadeIn) {
+        opacity = (progress - start) / FADE;
+      } else if (progress > fadeOut) {
+        opacity = 1 - (progress - fadeOut) / FADE;
+      } else {
+        opacity = 1;
+      }
+      panel.style.opacity = Math.max(0, Math.min(1, opacity));
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+initScrollReel('.consequences-reel', '.consequences-panel');
+initScrollReel('.outcomes-reel',     '.outcomes-panel');
+
+
 // ─── Hero Carousel ────────────────────────────────────────────────────────────
 (function initHeroCarousel() {
   var heroEl = document.getElementById('hero');
