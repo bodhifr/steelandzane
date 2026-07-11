@@ -2253,7 +2253,7 @@ body.has-hero .site-header {
 /* ===== KINETIC SAMENESS (desktop, no reduced-motion) ===== */
 @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
   .problem {
-    min-height: 170vh;
+    min-height: 190vh;
   }
   .problem-inner {
     position: sticky;
