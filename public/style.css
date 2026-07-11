@@ -1670,23 +1670,6 @@ body.has-hero .site-header {
   }
 }
 
-@media (max-width: 700px) {
-  .outcomes-sticky {
-    flex-direction: column;
-    gap: 48px;
-  }
-  .outcomes-panel {
-    padding: 0;
-    border-left: none;
-    border-top: 1px solid rgba(31,28,25,0.12);
-    padding-top: 48px;
-  }
-  .outcomes-panel:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-}
-
 /* ===== TRANSFORMATION SECTION ===== */
 .transformation {
   background: var(--background);
@@ -2005,29 +1988,38 @@ body.has-hero .site-header {
   flex-shrink: 0;
 }
 
-/* ─── Outcomes Reel ──────────────────────────────────────────────────────────── */
+/* ─── Outcomes Reel — Revolver ───────────────────────────────────────────────── */
+/* Three tiles equally spaced (120°) on a circle, spinning clockwise.            */
+/* Container: 620×620. Orbit radius: 180px. Tile: 220×200px.                    */
 .outcomes-reel {
   background: var(--background);
-  padding: 96px 24px;
+  padding: 96px 24px 120px;
   border-top: 2px solid var(--bronze);
 }
 .outcomes-sticky {
-  max-width: 1200px;
+  position: relative;
+  width: 620px;
+  height: 620px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0;
+}
+.outcomes-orbit-ring {
+  position: absolute;
+  inset: 0;
 }
 .outcomes-panel {
-  flex: 1;
+  position: absolute;
+  width: 220px;
+  padding: 28px 24px;
+  background: var(--dark);
   text-align: center;
-  padding: 0 48px;
-  border-left: 1px solid rgba(31,28,25,0.12);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
 }
-.outcomes-panel:first-child {
-  border-left: none;
-}
+/* 0° top  — center at (310, 130), tile top-left at (200, 30) */
+.outcomes-panel--1 { left: 200px; top:  30px; }
+/* 120° CW — center at (466, 400), tile top-left at (356, 300) */
+.outcomes-panel--2 { left: 356px; top: 300px; }
+/* 240° CW — center at (154, 400), tile top-left at (44,  300) */
+.outcomes-panel--3 { left:  44px; top: 300px; }
 .outcomes-panel-num {
   display: block;
   font-family: var(--font-ui);
@@ -2036,23 +2028,30 @@ body.has-hero .site-header {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--bronze);
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 .outcomes-panel-title {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1.6rem, 2.2vw, 2.6rem);
-  letter-spacing: -0.02em;
-  color: var(--dark);
-  line-height: 1.1;
-  margin-bottom: 16px;
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  letter-spacing: -0.01em;
+  color: var(--background);
+  line-height: 1.15;
+  margin-bottom: 12px;
 }
 .outcomes-panel-body {
-  font-size: 15px;
-  line-height: 1.72;
-  color: var(--muted);
-  max-width: 480px;
-  margin: 0 auto;
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(244,240,232,0.55);
+}
+@media (max-width: 700px) {
+  .outcomes-sticky { width: 340px; height: 340px; }
+  .outcomes-panel  { width: 120px; padding: 16px 14px; }
+  .outcomes-panel--1 { left: 110px; top:  16px; }
+  .outcomes-panel--2 { left: 196px; top: 165px; }
+  .outcomes-panel--3 { left:  24px; top: 165px; }
+  .outcomes-panel-title { font-size: 0.8rem; }
+  .outcomes-panel-body  { display: none; }
 }
 
 .why-images {
@@ -2062,6 +2061,7 @@ body.has-hero .site-header {
 
 .why-img {
   position: absolute;
+  box-shadow: 0 12px 32px -4px rgba(0,0,0,0.28);
 }
 
 .why-img--primary {
@@ -2362,6 +2362,21 @@ body.has-hero .site-header {
   .cursor-dot.is-visible  { opacity: 1; }
   .cursor-ring.is-visible { opacity: 0.55; }
   .cursor-ring.is-hovered { width: 48px; height: 48px; opacity: 0.85; }
+}
+
+/* ─── Revolver orbit keyframes ───────────────────────────────────────────────── */
+@keyframes spin-cw  { to { transform: rotate(360deg);  } }
+@keyframes spin-ccw { to { transform: rotate(-360deg); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .outcomes-orbit-ring {
+    animation: spin-cw 22s linear infinite;
+    will-change: transform;
+  }
+  .outcomes-orbit-ring .outcomes-panel {
+    animation: spin-ccw 22s linear infinite;
+    will-change: transform;
+  }
 }
 
 /* ─── Scroll progress bar ──────────────────────────────────────────────────── */
