@@ -2388,22 +2388,17 @@ body.has-hero .site-header {
 }
 /* ─── Float animation ────────────────────────────────────────────────────────── */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  50% {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Difference images: float the image wrapper independently from the label */
-  .sameness-break.is-visible .sameness-break-wrap {
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 0.9s;
-    will-change: transform;
-  }
-  .sameness-break:last-child.is-visible .sameness-break-wrap {
-    animation-duration: 5.2s;
-    animation-delay: 1.3s;
-  }
-
   /* Why SNZ composition: three different rates so they never sync */
   .why-img--primary.is-visible {
     animation: float 6s ease-in-out infinite;
