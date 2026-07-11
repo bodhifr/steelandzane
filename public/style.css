@@ -1607,7 +1607,7 @@ body.has-hero .site-header {
 
 /* ─── Consequences — Sameness Cycle ──────────────────────────────────────────── */
 /* Triangle: 01 top, 02 bottom-right, 03 bottom-left. Static, arrows CW.        */
-/* Container: 560×440. Center (280,250). Orbit r=155. Cards 180×auto.           */
+/* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .consequences-reel {
   background: var(--dark);
   padding: 96px 24px 120px;
@@ -1625,8 +1625,8 @@ body.has-hero .site-header {
 }
 .consequences-sticky {
   position: relative;
-  width: 560px;
-  height: 440px;
+  width: 720px;
+  height: 550px;
   margin: 0 auto;
   overflow: visible;
 }
@@ -1640,15 +1640,15 @@ body.has-hero .site-header {
 }
 .consequences-panel {
   position: absolute;
-  width: 180px;
+  width: 185px;
   padding: 24px 20px;
-  background: rgba(244,240,232,0.04);
-  border: 1px solid rgba(244,240,232,0.12);
+  background: rgba(244,240,232,0.05);
+  border: 1px solid rgba(140,90,60,0.35);
   text-align: center;
 }
-.consequences-panel--1 { left: 190px; top: 15px; }
-.consequences-panel--2 { left: 324px; top: 248px; }
-.consequences-panel--3 { left:  56px; top: 248px; }
+.consequences-panel--1 { left: 267px; top: 10px; }
+.consequences-panel--2 { left: 450px; top: 325px; }
+.consequences-panel--3 { left:  85px; top: 325px; }
 .consequences-panel-num {
   display: block;
   font-family: var(--font-ui);
@@ -1663,7 +1663,7 @@ body.has-hero .site-header {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
   color: var(--background);
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -2001,6 +2001,7 @@ body.has-hero .site-header {
 
 /* ─── Outcomes Reel — S&Z Cycle ──────────────────────────────────────────────── */
 /* Mirrors Sameness Cycle geometry; dark tiles on cream. Static, arrows CW.      */
+/* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .outcomes-reel {
   background: var(--background);
   padding: 96px 24px 120px;
@@ -2018,8 +2019,8 @@ body.has-hero .site-header {
 }
 .outcomes-sticky {
   position: relative;
-  width: 560px;
-  height: 440px;
+  width: 720px;
+  height: 550px;
   margin: 0 auto;
   overflow: visible;
 }
@@ -2033,15 +2034,16 @@ body.has-hero .site-header {
 }
 .outcomes-panel {
   position: absolute;
-  width: 180px;
+  width: 185px;
   padding: 24px 20px;
   background: var(--dark);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.20);
+  border-top: 2px solid var(--bronze);
   text-align: center;
 }
-.outcomes-panel--1 { left: 190px; top: 15px; }
-.outcomes-panel--2 { left: 324px; top: 248px; }
-.outcomes-panel--3 { left:  56px; top: 248px; }
+.outcomes-panel--1 { left: 267px; top: 10px; }
+.outcomes-panel--2 { left: 450px; top: 325px; }
+.outcomes-panel--3 { left:  85px; top: 325px; }
 .outcomes-panel-num {
   display: block;
   font-family: var(--font-ui);
@@ -2055,7 +2057,7 @@ body.has-hero .site-header {
 .outcomes-panel-title {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
   letter-spacing: -0.01em;
   color: var(--background);
   line-height: 1.2;
@@ -2069,8 +2071,8 @@ body.has-hero .site-header {
 @media (max-width: 700px) {
   .outcomes-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
   .outcomes-arrows { display: none; }
-  .outcomes-panel { position: static; width: 100%; padding: 32px 0; }
-  .outcomes-panel + .outcomes-panel { border-top: 1px solid rgba(31,28,25,0.1); }
+  .outcomes-panel { position: static; width: 100%; padding: 32px 0; border-top: none; border-bottom: 1px solid rgba(31,28,25,0.1); }
+  .outcomes-panel:last-child { border-bottom: none; }
 }
 
 .why-images {
