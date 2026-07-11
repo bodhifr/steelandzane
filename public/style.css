@@ -1609,6 +1609,7 @@ body.has-hero .site-header {
 .consequences-reel {
   background: var(--dark);
   padding: 96px 24px;
+  border-top: 2px solid var(--bronze);
 }
 .consequences-sticky {
   max-width: 1200px;
@@ -1626,6 +1627,16 @@ body.has-hero .site-header {
 }
 .consequences-panel:first-child {
   border-left: none;
+}
+.consequences-panel-num {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 20px;
 }
 .consequences-panel-title {
   font-family: var(--font-display);
@@ -1654,6 +1665,23 @@ body.has-hero .site-header {
     padding-top: 48px;
   }
   .consequences-panel:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .outcomes-sticky {
+    flex-direction: column;
+    gap: 48px;
+  }
+  .outcomes-panel {
+    padding: 0;
+    border-left: none;
+    border-top: 1px solid rgba(31,28,25,0.12);
+    padding-top: 48px;
+  }
+  .outcomes-panel:first-child {
     border-top: none;
     padding-top: 0;
   }
@@ -1903,7 +1931,7 @@ body.has-hero .site-header {
 .why-snz {
   background: var(--background);
   border-top: none;
-  padding: 180px 24px 140px;
+  padding: 96px 24px 140px;
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -1932,7 +1960,7 @@ body.has-hero .site-header {
 
 .why-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 3.4vw, 4rem);
+  font-size: clamp(2rem, 3.2vw, 3.8rem);
   font-weight: 300;
   color: var(--text);
   line-height: 1.1;
@@ -1981,16 +2009,24 @@ body.has-hero .site-header {
 .outcomes-reel {
   background: var(--background);
   padding: 96px 24px;
+  border-top: 2px solid var(--bronze);
 }
 .outcomes-sticky {
-  max-width: 720px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 72px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
 }
 .outcomes-panel {
+  flex: 1;
   text-align: center;
+  padding: 0 48px;
+  border-left: 1px solid rgba(31,28,25,0.12);
+}
+.outcomes-panel:first-child {
+  border-left: none;
 }
 .outcomes-panel-num {
   display: block;
@@ -2005,11 +2041,11 @@ body.has-hero .site-header {
 .outcomes-panel-title {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-size: clamp(1.6rem, 2.2vw, 2.6rem);
   letter-spacing: -0.02em;
   color: var(--dark);
-  line-height: 1.05;
-  margin-bottom: 24px;
+  line-height: 1.1;
+  margin-bottom: 16px;
 }
 .outcomes-panel-body {
   font-size: 15px;
