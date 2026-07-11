@@ -189,21 +189,25 @@
     <p class="problem-marker" style="justify-content:center; margin-bottom:20px;">The Cost of Sameness</p>
     <h2 class="consequences-headline">The Sameness Cycle</h2>
     <div class="consequences-sticky">
-      <!-- Clockwise arrows: top → right → left → top -->
+      <!-- CW arrows travel around the OUTSIDE of the triangle — never enter card interiors  -->
+      <!-- Cards: 230px wide, centered on nodes (360,100),(542,415),(178,415). r=210        -->
+      <!-- Arrow 1: right edge of 01 (x=475) → top of 02 (y=325), curving right            -->
+      <!-- Arrow 2: below 02 bottom → below 03 bottom, curving down                        -->
+      <!-- Arrow 3: top of 03 (y=325) → left edge of 01 (x=245), curving left              -->
       <svg class="consequences-arrows" aria-hidden="true" viewBox="0 0 720 550">
         <defs>
           <marker id="arr-s" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#8C5A3C" fill-opacity="0.75"/>
+            <polygon points="0 0, 8 3, 0 6" fill="#8C5A3C" fill-opacity="0.85"/>
           </marker>
         </defs>
         <!-- Faint orbit track -->
         <circle cx="360" cy="310" r="210" stroke="#8C5A3C" stroke-width="1" fill="none" stroke-opacity="0.06"/>
-        <!-- 01 top → 02 bottom-right -->
-        <path d="M 450,160 Q 560,215 500,328" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.65" fill="none" marker-end="url(#arr-s)"/>
-        <!-- 02 bottom-right → 03 bottom-left -->
-        <path d="M 500,497 Q 360,540 220,497" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.65" fill="none" marker-end="url(#arr-s)"/>
-        <!-- 03 bottom-left → 01 top -->
-        <path d="M 220,328 Q 155,230 300,185" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.65" fill="none" marker-end="url(#arr-s)"/>
+        <!-- 01 right edge → 02 top -->
+        <path d="M 476,100 Q 555,200 542,323" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.72" fill="none" marker-end="url(#arr-s)"/>
+        <!-- 02 bottom → 03 bottom -->
+        <path d="M 542,502 Q 360,542 178,502" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.72" fill="none" marker-end="url(#arr-s)"/>
+        <!-- 03 top → 01 left edge -->
+        <path d="M 178,323 Q 165,200 244,100" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.72" fill="none" marker-end="url(#arr-s)"/>
       </svg>
       <!-- 01: top -->
       <div class="consequences-panel consequences-panel--1">
@@ -262,21 +266,21 @@
     <p class="problem-marker" style="justify-content:center; margin-bottom:20px;">The Steel &amp; Zane Effect</p>
     <h2 class="outcomes-headline">The S&amp;Z Cycle</h2>
     <div class="outcomes-sticky">
-      <!-- Clockwise arrows: top → right → left → top -->
+      <!-- CW arrows travel around the OUTSIDE of the triangle — never enter card interiors  -->
       <svg class="outcomes-arrows" aria-hidden="true" viewBox="0 0 720 550">
         <defs>
           <marker id="arr-z" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#8C5A3C" fill-opacity="0.75"/>
+            <polygon points="0 0, 8 3, 0 6" fill="#8C5A3C" fill-opacity="0.85"/>
           </marker>
         </defs>
         <!-- Faint orbit track -->
         <circle cx="360" cy="310" r="210" stroke="#8C5A3C" stroke-width="1" fill="none" stroke-opacity="0.08"/>
-        <!-- 01 top → 02 bottom-right -->
-        <path d="M 450,160 Q 560,215 500,328" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.65" fill="none" marker-end="url(#arr-z)"/>
-        <!-- 02 bottom-right → 03 bottom-left -->
-        <path d="M 500,497 Q 360,540 220,497" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.65" fill="none" marker-end="url(#arr-z)"/>
-        <!-- 03 bottom-left → 01 top -->
-        <path d="M 220,328 Q 155,230 300,185" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.65" fill="none" marker-end="url(#arr-z)"/>
+        <!-- 01 right edge → 02 top -->
+        <path d="M 476,100 Q 555,200 542,323" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.72" fill="none" marker-end="url(#arr-z)"/>
+        <!-- 02 bottom → 03 bottom -->
+        <path d="M 542,502 Q 360,542 178,502" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.72" fill="none" marker-end="url(#arr-z)"/>
+        <!-- 03 top → 01 left edge -->
+        <path d="M 178,323 Q 165,200 244,100" stroke="#8C5A3C" stroke-width="2" stroke-opacity="0.72" fill="none" marker-end="url(#arr-z)"/>
       </svg>
       <!-- 01: top -->
       <div class="outcomes-panel outcomes-panel--1">
