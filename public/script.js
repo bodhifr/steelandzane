@@ -180,10 +180,11 @@ function initScrollReel(reelSel, panelSel) {
   var panels = document.querySelectorAll(panelSel);
   if (!reel || !panels.length) return;
 
-  var FADE = 0.12;
+  var FADE   = 0.12;
+  var TRAVEL = 55; // vh
 
   function onScroll() {
-    var rect      = reel.getBoundingClientRect();
+    var rect       = reel.getBoundingClientRect();
     var scrollable = reel.offsetHeight - window.innerHeight;
     if (scrollable <= 0) return;
     var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
@@ -192,8 +193,10 @@ function initScrollReel(reelSel, panelSel) {
     panels.forEach(function(panel, i) {
       var start   = step * i;
       var end     = step * (i + 1);
+      var center  = (start + end) / 2;
       var fadeIn  = start + FADE;
       var fadeOut = end - FADE;
+
       var opacity;
       if (progress <= start || progress >= end) {
         opacity = 0;
@@ -204,7 +207,14 @@ function initScrollReel(reelSel, panelSel) {
       } else {
         opacity = 1;
       }
-      panel.style.opacity = Math.max(0, Math.min(1, opacity));
+
+      // Panel enters from below, centers at 0, exits above
+      var normalizedOffset = (progress - center) / (step * 0.5);
+      normalizedOffset = Math.max(-1, Math.min(1, normalizedOffset));
+      var translateY = normalizedOffset * TRAVEL;
+
+      panel.style.opacity   = Math.max(0, Math.min(1, opacity));
+      panel.style.transform = 'translateY(' + translateY + 'vh)';
     });
   }
 

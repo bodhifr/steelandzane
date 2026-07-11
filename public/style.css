@@ -1607,7 +1607,7 @@ body.has-hero .site-header {
   padding: 0 24px;
   max-width: 680px;
   opacity: 0;
-  will-change: opacity;
+  will-change: opacity, transform;
 }
 .consequences-panel-title {
   font-family: var(--font-display);
@@ -1964,7 +1964,7 @@ body.has-hero .site-header {
   padding: 0 24px;
   max-width: 720px;
   opacity: 0;
-  will-change: opacity;
+  will-change: opacity, transform;
 }
 .outcomes-panel-num {
   display: block;
