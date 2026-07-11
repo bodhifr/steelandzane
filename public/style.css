@@ -1488,12 +1488,13 @@ body.has-hero .site-header {
 .problem-images {
   grid-column: 1;
   grid-row: 1;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   padding-top: 40px;
 }
 
 .problem-frames {
-  grid-area: 1 / 1;
   display: flex;
   gap: 10px;
   align-items: flex-start;
@@ -1533,9 +1534,7 @@ body.has-hero .site-header {
 }
 
 .problem-break-row {
-  grid-area: 1 / 1;
   display: flex;
-  flex-direction: column;
   gap: 10px;
   position: relative;
 }
@@ -1560,7 +1559,7 @@ body.has-hero .site-header {
 }
 
 .sameness-break {
-  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1575,7 +1574,7 @@ body.has-hero .site-header {
 }
 
 .sameness-break-wrap .sameness-img {
-  height: 100%;
+  height: auto;
 }
 
 .sameness-label--break {
