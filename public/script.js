@@ -137,6 +137,40 @@ if (statEls.length) {
   statEls.forEach(el => countObserver.observe(el));
 }
 
+// ─── Kinetic Sameness — problem section scroll effect ─────────────────────────
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.innerWidth < 900) return;
+
+  var problemSection = document.querySelector('.problem');
+  var framesEl       = document.querySelector('.problem-frames');
+  var breakRow       = document.querySelector('.problem-break-row');
+  if (!problemSection || !framesEl || !breakRow) return;
+
+  function onScroll() {
+    var rect      = problemSection.getBoundingClientRect();
+    var sectionH  = problemSection.offsetHeight;
+    var scrollable = sectionH - window.innerHeight;
+    if (scrollable <= 0) return;
+    var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+
+    // Frames slide left as progress goes 0 → 0.5
+    var frameProgress = Math.max(0, Math.min(1, progress / 0.5));
+    framesEl.style.transform = 'translateX(' + (frameProgress * -108) + '%)';
+
+    // "Different." images reveal at progress 0.55
+    if (progress >= 0.55) {
+      breakRow.classList.add('is-revealed');
+    } else {
+      breakRow.classList.remove('is-revealed');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}());
+
+
 // ─── Hero Carousel ────────────────────────────────────────────────────────────
 (function initHeroCarousel() {
   var heroEl = document.getElementById('hero');

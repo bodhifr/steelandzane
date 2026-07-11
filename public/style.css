@@ -1269,12 +1269,12 @@ body.has-hero .site-header {
 }
 
 .stat-number {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 300;
   color: var(--text);
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   transition: color 0.4s ease;
 }
 
@@ -1288,13 +1288,12 @@ body.has-hero .site-header {
 }
 
 .stat-suffix {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 4vw, 4rem);
   line-height: 1;
+  letter-spacing: -0.02em;
   color: var(--text);
-  transform: scaleY(0.88);
-  transform-origin: center bottom;
   transition: color 0.4s ease;
 }
 
@@ -1423,7 +1422,7 @@ body.has-hero .site-header {
 
 /* Section eyebrow — shared across new sections */
 .section-eyebrow {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -1472,11 +1471,11 @@ body.has-hero .site-header {
 
 .problem-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 2.8vw, 3.2rem);
+  font-size: clamp(2.2rem, 3.6vw, 4.6rem);
   font-weight: 300;
   color: var(--white);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   margin-bottom: 28px;
 }
 
@@ -1484,7 +1483,6 @@ body.has-hero .site-header {
   font-size: 16px;
   line-height: 1.85;
   color: rgba(244, 240, 232, 0.65);
-  max-width: 360px;
 }
 
 .problem-images {
@@ -1538,12 +1536,34 @@ body.has-hero .site-header {
 .problem-break-row {
   display: flex;
   gap: 10px;
+  position: relative;
+}
+
+.problem-break-row::before {
+  content: 'Different.';
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(5rem, 14vw, 18rem);
+  color: var(--terracotta);
+  opacity: 0.07;
+  position: absolute;
+  left: -3%;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  z-index: 0;
 }
 
 .sameness-break {
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .sameness-break-wrap {
@@ -1558,7 +1578,14 @@ body.has-hero .site-header {
 }
 
 .sameness-label--break {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--terracotta);
+  padding-top: 12px;
 }
 
 .problem-consequences {
@@ -1604,51 +1631,57 @@ body.has-hero .site-header {
 }
 
 .pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  max-width: 860px;
   margin: 0 auto;
+  border-top: 1px solid var(--border);
 }
 
 .pillar-card {
-  padding: 48px 36px;
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.pillar-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 60px rgba(43, 41, 37, 0.12);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: auto auto;
+  gap: 0 48px;
+  align-items: start;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .pillar-number {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 300;
   color: var(--bronze);
-  text-transform: uppercase;
+  opacity: 0.22;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .pillar-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 600;
+  grid-column: 2;
+  grid-row: 1;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: 300;
   color: var(--text);
-  line-height: 1.2;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
 }
 
 .pillar-body {
+  grid-column: 2;
+  grid-row: 2;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--muted);
+  max-width: 520px;
 }
 
 
@@ -1825,9 +1858,12 @@ body.has-hero .site-header {
 /* ===== WHY STEEL & ZANE ===== */
 .why-snz {
   background: var(--background);
-  border-top: 1px solid var(--border);
-  padding: 120px 24px 140px;
+  border-top: none;
+  padding: 180px 24px 140px;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
+  margin-top: -60px;
 }
 
 .why-snz-inner {
@@ -1843,6 +1879,8 @@ body.has-hero .site-header {
 
 .why-title-accent {
   color: var(--terracotta);
+  display: inline-block;
+  padding-left: 0.5ch;
   text-shadow:
     0 0 24px rgba(184, 106, 71, 0.35),
     0 4px 32px rgba(184, 106, 71, 0.2);
@@ -1850,7 +1888,7 @@ body.has-hero .site-header {
 
 .why-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3vw, 3.4rem);
+  font-size: clamp(2.2rem, 3.4vw, 4rem);
   font-weight: 300;
   color: var(--text);
   line-height: 1.1;
@@ -1960,8 +1998,8 @@ body.has-hero .site-header {
   width: 42%;
   height: auto;
   z-index: 2;
-  outline: 4px solid var(--background);
-  outline-offset: -4px;
+  outline: 8px solid var(--background);
+  outline-offset: -8px;
 }
 
 .why-img--detail {
@@ -1970,8 +2008,8 @@ body.has-hero .site-header {
   width: 38%;
   height: auto;
   z-index: 2;
-  outline: 4px solid var(--background);
-  outline-offset: -4px;
+  outline: 8px solid var(--background);
+  outline-offset: -8px;
 }
 
 
@@ -2030,6 +2068,11 @@ body.has-hero .site-header {
   }
 
   /* Why SNZ */
+  .why-snz {
+    margin-top: 0;
+    padding-top: 80px;
+    border-top: 1px solid var(--border);
+  }
   .why-snz-inner {
     grid-template-columns: 1fr;
     gap: 56px;
@@ -2043,6 +2086,9 @@ body.has-hero .site-header {
   }
   .problem-body { max-width: 100%; }
   .problem-images { padding-top: 0; }
+  /* Pillars ledger */
+  .pillars-grid { max-width: 560px; }
+  .pillar-card { grid-template-columns: 72px 1fr; gap: 0 28px; padding: 36px 0; }
 }
 
 @media (max-width: 640px) {
@@ -2128,8 +2174,8 @@ body.has-hero .site-header {
 }
 
 .photo-diff-pillar {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 48px;
 }
 
 .photo-diff-title {
@@ -2203,6 +2249,33 @@ body.has-hero .site-header {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* ===== KINETIC SAMENESS (desktop, no reduced-motion) ===== */
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .problem {
+    min-height: 220vh;
+  }
+  .problem-inner {
+    position: sticky;
+    top: 96px;
+  }
+  .problem-images {
+    overflow: hidden;
+  }
+  .problem-frames {
+    will-change: transform;
+  }
+  .problem-break-row {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .problem-break-row.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 
 /* ── Cursor follower (desktop only) ── */
 @media (pointer: fine) {
