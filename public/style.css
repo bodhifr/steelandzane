@@ -2386,40 +2386,6 @@ body.has-hero .site-header {
   background: linear-gradient(to right, var(--bronze), var(--terracotta));
   will-change: transform;
 }
-/* ─── Float animation ────────────────────────────────────────────────────────── */
-/* ─── Clockwise orbit animation ──────────────────────────────────────────────── */
-/* 8-point circular path, r=12px, clockwise. Shadow deepens as image rises.      */
-@keyframes orbit {
-  0%    { transform: translate(0,    0px);   box-shadow: 0 6px  16px rgba(0,0,0,0.18); }
-  12.5% { transform: translate(-9px, -4px);  box-shadow: 0 10px 22px rgba(0,0,0,0.20); }
-  25%   { transform: translate(-12px,-12px); box-shadow: 0 17px 34px rgba(0,0,0,0.25); }
-  37.5% { transform: translate(-9px, -21px); box-shadow: 0 25px 47px rgba(0,0,0,0.30); }
-  50%   { transform: translate(0,   -24px);  box-shadow: 0 28px 52px rgba(0,0,0,0.32); }
-  62.5% { transform: translate(9px, -21px);  box-shadow: 0 25px 47px rgba(0,0,0,0.30); }
-  75%   { transform: translate(12px, -12px); box-shadow: 0 17px 34px rgba(0,0,0,0.25); }
-  87.5% { transform: translate(9px,  -4px);  box-shadow: 0 10px 22px rgba(0,0,0,0.20); }
-  100%  { transform: translate(0,    0px);   box-shadow: 0 6px  16px rgba(0,0,0,0.18); }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* All three images share the same orbit, staggered 120° apart (4s = period/3).
-     Negative delays place atmosphere and detail already mid-orbit when revealed. */
-  .why-img--primary.is-visible {
-    animation: orbit 12s linear infinite;
-    animation-delay: 0.9s;
-    will-change: transform;
-  }
-  .why-img--atmosphere.is-visible {
-    animation: orbit 12s linear infinite;
-    animation-delay: -3.1s;
-    will-change: transform;
-  }
-  .why-img--detail.is-visible {
-    animation: orbit 12s linear infinite;
-    animation-delay: -7.1s;
-    will-change: transform;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-progress { display: none; }
