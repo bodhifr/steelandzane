@@ -180,8 +180,7 @@ function initScrollReel(reelSel, panelSel) {
   var panels = document.querySelectorAll(panelSel);
   if (!reel || !panels.length) return;
 
-  var FADE   = 0.12;
-  var TRAVEL = 55; // vh
+  var FADE = 0.12;
 
   function onScroll() {
     var rect       = reel.getBoundingClientRect();
@@ -193,7 +192,6 @@ function initScrollReel(reelSel, panelSel) {
     panels.forEach(function(panel, i) {
       var start   = step * i;
       var end     = step * (i + 1);
-      var center  = (start + end) / 2;
       var fadeIn  = start + FADE;
       var fadeOut = end - FADE;
 
@@ -208,13 +206,10 @@ function initScrollReel(reelSel, panelSel) {
         opacity = 1;
       }
 
-      // Panel enters from below, centers at 0, exits above
-      var normalizedOffset = (progress - center) / (step * 0.5);
-      normalizedOffset = Math.max(-1, Math.min(1, normalizedOffset));
-      var translateY = normalizedOffset * TRAVEL;
-
+      // Subtle 14px settle — panels revolve in place, not across the screen
+      var nudge = (1 - Math.max(0, Math.min(1, opacity))) * 14;
       panel.style.opacity   = Math.max(0, Math.min(1, opacity));
-      panel.style.transform = 'translateY(' + translateY + 'vh)';
+      panel.style.transform = 'translateY(' + nudge + 'px)';
     });
   }
 
