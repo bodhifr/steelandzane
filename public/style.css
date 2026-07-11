@@ -2311,3 +2311,29 @@ body.has-hero .site-header {
   .cursor-ring.is-visible { opacity: 0.55; }
   .cursor-ring.is-hovered { width: 48px; height: 48px; opacity: 0.85; }
 }
+
+/* ─── Scroll progress bar ──────────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scroll-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(to right, var(--bronze), var(--terracotta));
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
