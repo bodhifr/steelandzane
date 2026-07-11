@@ -154,12 +154,12 @@ if (statEls.length) {
     if (scrollable <= 0) return;
     var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
 
-    // Frames slide left as progress goes 0 → 0.5
-    var frameProgress = Math.max(0, Math.min(1, progress / 0.5));
+    // Frames slide left as progress goes 0 → 0.35
+    var frameProgress = Math.max(0, Math.min(1, progress / 0.35));
     framesEl.style.transform = 'translateX(' + (frameProgress * -108) + '%)';
 
-    // "Different." images reveal at progress 0.55
-    if (progress >= 0.55) {
+    // "Different." images reveal at progress 0.4
+    if (progress >= 0.4) {
       breakRow.classList.add('is-revealed');
     } else {
       breakRow.classList.remove('is-revealed');
