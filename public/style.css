@@ -2109,13 +2109,13 @@ body.has-hero .site-header {
   stroke-dashoffset: 280;
   opacity: 0;
 }
-.reveal-draw.is-visible path:nth-child(1) {
+.reveal-draw.is-visible path:nth-of-type(1) {
   animation: draw-arrow 0.5s ease-out forwards;
 }
-.reveal-draw.is-visible path:nth-child(2) {
+.reveal-draw.is-visible path:nth-of-type(2) {
   animation: draw-arrow 0.5s ease-out forwards 0.4s;
 }
-.reveal-draw.is-visible path:nth-child(3) {
+.reveal-draw.is-visible path:nth-of-type(3) {
   animation: draw-arrow 0.5s ease-out forwards 0.8s;
 }
 
