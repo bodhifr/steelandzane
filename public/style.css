@@ -1610,7 +1610,7 @@ body.has-hero .site-header {
 /* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .consequences-reel {
   background: var(--dark);
-  padding: 48px 24px 120px;
+  padding: 48px 24px 160px;
 }
 .consequences-headline {
   font-family: var(--font-display);
@@ -1625,7 +1625,7 @@ body.has-hero .site-header {
 .consequences-sticky {
   position: relative;
   width: 720px;
-  height: 550px;
+  height: 700px;
   margin: 0 auto;
   overflow: visible;
 }
@@ -2019,7 +2019,7 @@ body.has-hero .site-header {
 /* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .outcomes-reel {
   background: var(--background);
-  padding: 48px 24px 120px;
+  padding: 48px 24px 160px;
 }
 .outcomes-headline {
   font-family: var(--font-display);
@@ -2034,7 +2034,7 @@ body.has-hero .site-header {
 .outcomes-sticky {
   position: relative;
   width: 720px;
-  height: 550px;
+  height: 700px;
   margin: 0 auto;
   overflow: visible;
 }
@@ -2100,6 +2100,24 @@ body.has-hero .site-header {
     background: rgba(140,90,60,0.45);
     margin: 12px auto 0;
   }
+}
+
+/* ─── Cycle arrow draw-in animation ─────────────────────────────────────────── */
+@keyframes draw-arrow {
+  to { stroke-dashoffset: 0; }
+}
+.reveal-draw path {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+}
+.reveal-draw.is-visible path:nth-child(1) {
+  animation: draw-arrow 0.9s ease forwards;
+}
+.reveal-draw.is-visible path:nth-child(2) {
+  animation: draw-arrow 0.9s ease forwards 0.3s;
+}
+.reveal-draw.is-visible path:nth-child(3) {
+  animation: draw-arrow 0.9s ease forwards 0.6s;
 }
 
 .why-images {

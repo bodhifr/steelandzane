@@ -91,7 +91,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 // Scroll reveal — fires once per element when it enters the viewport
-const revealEls = document.querySelectorAll('.reveal, .reveal-pop, .reveal-fade, .reveal-right');
+const revealEls = document.querySelectorAll('.reveal, .reveal-pop, .reveal-fade, .reveal-right, .reveal-draw');
 if (revealEls.length) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
