@@ -1939,7 +1939,7 @@ body.has-hero .site-header {
 .why-snz {
   background: var(--background);
   border-top: none;
-  padding: 96px 24px 24px;
+  padding: 96px 24px 64px;
   overflow: hidden;
   position: relative;
   z-index: 1;
