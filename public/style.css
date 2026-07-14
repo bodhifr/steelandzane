@@ -1610,7 +1610,7 @@ body.has-hero .site-header {
 /* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .consequences-reel {
   background: var(--dark);
-  padding: 48px 24px 160px;
+  padding: 24px 24px 48px;
 }
 .consequences-headline {
   font-family: var(--font-display);
@@ -1620,12 +1620,12 @@ body.has-hero .site-header {
   line-height: 1.08;
   letter-spacing: -0.02em;
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 .consequences-sticky {
   position: relative;
   width: 720px;
-  height: 700px;
+  height: 460px;
   margin: 0 auto;
   overflow: visible;
 }
@@ -1640,9 +1640,10 @@ body.has-hero .site-header {
 }
 .consequences-panel {
   position: absolute;
-  width: 240px;
-  min-height: 172px;
-  padding: 24px 24px;
+  width: 200px;
+  height: 160px;
+  overflow: hidden;
+  padding: 18px;
   background: rgba(244,240,232,0.05);
   border-top: 2px solid rgba(140,90,60,0.65);
   border-right: 1px solid rgba(140,90,60,0.20);
@@ -1651,10 +1652,9 @@ body.has-hero .site-header {
   text-align: center;
   z-index: 1;
 }
-/* Center (360,310), r=210. Half-width=135 → left = node_x - 135 */
-.consequences-panel--1 { left: 240px; top: 10px; }
-.consequences-panel--2 { left: 422px; top: 325px; }
-.consequences-panel--3 { left:  58px; top: 325px; }
+.consequences-panel--1 { left: 260px; top: 5px; }
+.consequences-panel--2 { left: 420px; top: 280px; }
+.consequences-panel--3 { left: 100px; top: 280px; }
 .consequences-panel-num {
   display: block;
   font-family: var(--font-ui);
@@ -1684,7 +1684,7 @@ body.has-hero .site-header {
 @media (max-width: 700px) {
   .consequences-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
   .consequences-arrows { display: none; }
-  .consequences-panel { position: static; width: 100%; min-height: 0; padding: 28px 0; border: none; border-top: 1px solid rgba(244,240,232,0.1); }
+  .consequences-panel { position: static; width: 100%; height: auto; overflow: visible; padding: 28px 0; border: none; border-top: 1px solid rgba(244,240,232,0.1); }
   .consequences-panel--1 { border-top: none; }
   .consequences-panel:not(:last-child)::after {
     content: '';
@@ -2019,7 +2019,7 @@ body.has-hero .site-header {
 /* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .outcomes-reel {
   background: var(--background);
-  padding: 48px 24px 160px;
+  padding: 24px 24px 48px;
 }
 .outcomes-headline {
   font-family: var(--font-display);
@@ -2029,12 +2029,12 @@ body.has-hero .site-header {
   line-height: 1.08;
   letter-spacing: -0.02em;
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 .outcomes-sticky {
   position: relative;
   width: 720px;
-  height: 700px;
+  height: 460px;
   margin: 0 auto;
   overflow: visible;
 }
@@ -2049,19 +2049,19 @@ body.has-hero .site-header {
 }
 .outcomes-panel {
   position: absolute;
-  width: 240px;
-  min-height: 172px;
-  padding: 24px 24px;
+  width: 200px;
+  height: 160px;
+  overflow: hidden;
+  padding: 18px;
   background: var(--dark);
   box-shadow: 0 12px 36px rgba(0,0,0,0.20);
   border-top: 2px solid var(--bronze);
   text-align: center;
   z-index: 1;
 }
-/* Center (360,310), r=210. Half-width=135 → left = node_x - 135 */
-.outcomes-panel--1 { left: 240px; top: 10px; }
-.outcomes-panel--2 { left: 422px; top: 325px; }
-.outcomes-panel--3 { left:  58px; top: 325px; }
+.outcomes-panel--1 { left: 260px; top: 5px; }
+.outcomes-panel--2 { left: 420px; top: 280px; }
+.outcomes-panel--3 { left: 100px; top: 280px; }
 .outcomes-panel-num {
   display: block;
   font-family: var(--font-ui);
@@ -2090,7 +2090,7 @@ body.has-hero .site-header {
 @media (max-width: 700px) {
   .outcomes-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
   .outcomes-arrows { display: none; }
-  .outcomes-panel { position: static; width: 100%; min-height: 0; padding: 28px 0; border-top: none; border-bottom: 1px solid rgba(31,28,25,0.1); }
+  .outcomes-panel { position: static; width: 100%; height: auto; overflow: visible; padding: 28px 0; border-top: none; border-bottom: 1px solid rgba(31,28,25,0.1); }
   .outcomes-panel:last-child { border-bottom: none; }
   .outcomes-panel:not(:last-child)::after {
     content: '';
@@ -2107,17 +2107,17 @@ body.has-hero .site-header {
   to { stroke-dashoffset: 0; }
 }
 .reveal-draw path {
-  stroke-dasharray: 700;
-  stroke-dashoffset: 700;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
 }
 .reveal-draw.is-visible path:nth-child(1) {
-  animation: draw-arrow 0.9s ease forwards;
+  animation: draw-arrow 0.5s ease-out forwards;
 }
 .reveal-draw.is-visible path:nth-child(2) {
-  animation: draw-arrow 0.9s ease forwards 0.3s;
+  animation: draw-arrow 0.5s ease-out forwards 0.4s;
 }
 .reveal-draw.is-visible path:nth-child(3) {
-  animation: draw-arrow 0.9s ease forwards 0.6s;
+  animation: draw-arrow 0.5s ease-out forwards 0.8s;
 }
 
 .why-images {
