@@ -1698,6 +1698,7 @@ body.has-hero .site-header {
 .transformation {
   background: var(--background);
   padding: 96px 24px;
+  margin-top: -60px;
 }
 
 .transformation-header {
@@ -1938,7 +1939,7 @@ body.has-hero .site-header {
 .why-snz {
   background: var(--background);
   border-top: none;
-  padding: 96px 24px 140px;
+  padding: 96px 24px 24px;
   overflow: hidden;
   position: relative;
   z-index: 1;
