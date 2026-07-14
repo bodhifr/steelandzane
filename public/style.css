@@ -1610,7 +1610,7 @@ body.has-hero .site-header {
 /* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .consequences-reel {
   background: var(--dark);
-  padding: 24px 24px 180px;
+  padding: 24px 24px 96px;
 }
 .consequences-headline {
   font-family: var(--font-display);
@@ -2017,7 +2017,7 @@ body.has-hero .site-header {
 /* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
 .outcomes-reel {
   background: var(--background);
-  padding: 24px 24px 180px;
+  padding: 24px 24px 96px;
 }
 .outcomes-headline {
   font-family: var(--font-display);
@@ -2105,9 +2105,16 @@ body.has-hero .site-header {
   to { stroke-dashoffset: 0; opacity: 1; }
 }
 .reveal-draw path {
-  stroke-dasharray: 280;
-  stroke-dashoffset: 280;
   opacity: 0;
+}
+.reveal-draw path:nth-of-type(1),
+.reveal-draw path:nth-of-type(3) {
+  stroke-dasharray: 210;
+  stroke-dashoffset: 210;
+}
+.reveal-draw path:nth-of-type(2) {
+  stroke-dasharray: 165;
+  stroke-dashoffset: 165;
 }
 .reveal-draw.is-visible path:nth-of-type(1) {
   animation: draw-arrow 0.5s ease-out forwards;
