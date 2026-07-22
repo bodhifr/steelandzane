@@ -46,49 +46,51 @@ window.addEventListener('scroll', () => {
 
 // Contact form — POST to /api/contact serverless function
 const form = document.getElementById('contact-form');
-const successMsg = document.getElementById('form-success');
-const submitBtn = form.querySelector('button[type="submit"]');
+if (form) {
+  const successMsg = document.getElementById('form-success');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const email = form.querySelector('input[name="email"]').value.trim();
-  if (!email) {
-    form.querySelector('input[name="email"]').focus();
-    return;
-  }
+    const email = form.querySelector('input[name="email"]').value.trim();
+    if (!email) {
+      form.querySelector('input[name="email"]').focus();
+      return;
+    }
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
 
-  const body = {
-    name: form.querySelector('input[name="name"]').value.trim(),
-    email,
-    phone: form.querySelector('input[name="phone"]').value.trim(),
-    message: form.querySelector('textarea[name="message"]').value.trim(),
-  };
+    const body = {
+      name: form.querySelector('input[name="name"]').value.trim(),
+      email,
+      phone: form.querySelector('input[name="phone"]').value.trim(),
+      message: form.querySelector('textarea[name="message"]').value.trim(),
+    };
 
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
 
-    if (res.ok) {
-      submitBtn.style.display = 'none';
-      successMsg.classList.add('visible');
-    } else {
+      if (res.ok) {
+        submitBtn.style.display = 'none';
+        successMsg.classList.add('visible');
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        alert('Something went wrong. Please email us directly at book@steelandzane.com');
+      }
+    } catch {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';
       alert('Something went wrong. Please email us directly at book@steelandzane.com');
     }
-  } catch {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Send Message';
-    alert('Something went wrong. Please email us directly at book@steelandzane.com');
-  }
-});
+  });
+}
 
 // Scroll reveal — fires once per element when it enters the viewport
 const revealEls = document.querySelectorAll('.reveal, .reveal-pop, .reveal-fade, .reveal-right, .reveal-draw');
