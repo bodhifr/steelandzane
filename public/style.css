@@ -2389,6 +2389,8 @@ body.has-hero .site-header {
   background: var(--white);
   border: 1px solid rgba(139, 90, 60, 0.12);
   padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
 }
 .strip-stars {
   color: var(--bronze);
@@ -2415,6 +2417,7 @@ body.has-hero .site-header {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: auto;
 }
 
 .strip-avatar {
