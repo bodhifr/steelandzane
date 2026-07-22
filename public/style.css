@@ -670,6 +670,21 @@ body.has-hero .site-header {
   margin-top: 4px;
 }
 
+.testimonial-author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(140, 90, 60, 0.20);
+}
+
 
 /* ===== CONTACT ===== */
 .contact {
@@ -2394,6 +2409,21 @@ body.has-hero .site-header {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.strip-author-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.strip-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(140, 90, 60, 0.20);
 }
 @keyframes testimonials-scroll {
   from { transform: translateX(0); }
