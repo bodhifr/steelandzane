@@ -1404,6 +1404,7 @@ body.has-hero .site-header {
 .logo-berkshire { height: 90px; }
 .logo-remax     { height: 46px; max-width: 110px; }
 .logo-kw        { height: 80px; }
+.logo-serhant   { height: 28px; }
 
 @media (max-width: 640px) {
   .credibility-stats {
