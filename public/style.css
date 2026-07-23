@@ -1268,23 +1268,10 @@ body.has-hero .site-header {
 
 /* ===== CREDIBILITY STRIP ===== */
 .credibility {
-  background: var(--dark);
+  background: var(--background);
   padding: 64px 24px 24px;
   text-align: center;
 }
-
-.credibility .stat-number    { color: var(--background); }
-.credibility .stat-suffix    { color: var(--background); }
-.credibility .stat-label     { color: rgba(244, 240, 232, 0.55); }
-.credibility .stat-divider   { background: rgba(255, 255, 255, 0.12); }
-.credibility .credibility-label { color: rgba(244, 240, 232, 0.55); }
-
-.credibility .brokerage-logo {
-  filter: brightness(0) invert(1);
-  opacity: 0.5;
-  mix-blend-mode: normal;
-}
-.credibility .brokerage-logo:hover { opacity: 0.85; }
 
 .credibility-stats {
   display: flex;
