@@ -39,7 +39,7 @@ const heroGradient = 'rgba(14, 11, 9, 0.80)';
 window.addEventListener('scroll', () => {
   if (isHeroPage) {
     header.style.background = window.scrollY > 80
-      ? 'rgba(61, 43, 31, 0.96)'
+      ? 'rgba(31, 28, 25, 0.96)'
       : heroGradient;
   }
 });
