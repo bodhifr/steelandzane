@@ -603,7 +603,7 @@ body.has-hero .site-header {
 
 /* ===== TESTIMONIALS ===== */
 .testimonials {
-  background: #fff;
+  background: var(--cream);
   padding: 8px 24px 80px;
 }
 
