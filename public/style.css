@@ -345,13 +345,7 @@ body.has-hero .site-header {
 }
 
 .hero-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 1px;
-  background: currentColor;
-  vertical-align: middle;
-  margin-right: 10px;
+  content: none;
 }
 
 .hero-title {
