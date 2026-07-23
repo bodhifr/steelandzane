@@ -73,12 +73,12 @@
   --bronze:      #8C5A3C;   /* Walnut         — accent, use sparingly  */
   --bronze-dark: #6E4530;   /* Walnut dark    — hover treatment         */
   --border:      #D8D1C5;   /* Travertine     — borders / dividers      */
-  --dark:        #1F1C19;   /* Walnut Black   — footer / dark sections  */
+  --dark:        #3d2b1f;   /* Walnut Black   — footer / dark sections  */
   --terracotta:  #B86A47;   /* Terracotta     — rare detail only        */
 
   /* ── ALIASES (keep existing rules working) ──────────────────────── */
-  --navy:        #1F1C19;
-  --navy-dark:   rgba(31, 28, 25, 0.96);
+  --navy:        #3d2b1f;
+  --navy-dark:   rgba(61, 43, 31, 0.96);
   --gold:        #8C5A3C;
   --gold-dark:   #6E4530;
   --white:       #F4F0E8;
@@ -90,7 +90,7 @@
 
   /* ── SEMANTIC ALIASES (planned components) ──────────────────────── */
   --plaster:        #F4F0E8;   /* = --white / --background              */
-  --charcoal-black: #1F1C19;   /* = --dark / --navy                     */
+  --charcoal-black: #3d2b1f;   /* = --dark / --navy                     */
   --warm-stone:     #6C665E;   /* = --muted / --gray                    */
   --travertine:     #D8D1C5;   /* = --border                            */
   --olive:          #717A64;   /* = --sage                              */
@@ -697,7 +697,7 @@ body.has-hero .site-header {
 .contact-bg {
   position: absolute;
   inset: 0;
-  background: rgba(31, 28, 25, 0.86);
+  background: rgba(61, 43, 31, 0.86);
 }
 
 .contact-inner {
