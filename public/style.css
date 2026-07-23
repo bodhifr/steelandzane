@@ -603,17 +603,8 @@ body.has-hero .site-header {
 
 /* ===== TESTIMONIALS ===== */
 .testimonials {
-  background: var(--terracotta);
+  background: #fff;
   padding: 8px 24px 80px;
-}
-
-.testimonials .why-title {
-  color: var(--background);
-}
-
-.testimonials .why-title-accent {
-  color: var(--dark);
-  text-shadow: none;
 }
 
 .section-title {
