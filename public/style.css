@@ -1375,7 +1375,7 @@ body.has-hero .site-header {
 }
 
 .brokerage-logo {
-  height: 36px;
+  height: 52px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
@@ -1390,15 +1390,15 @@ body.has-hero .site-header {
 }
 
 /* Per-logo size overrides */
-.logo-compass   { height: 28px; max-width: 130px; }
-.logo-elliman   { height: 28px; max-width: 160px; }
-.logo-akg       { height: 38px; max-width: 80px;  }
-.logo-agency    { height: 48px; }
-.logo-sothebys  { height: 36px; max-width: 170px; }
-.logo-coldwell  { height: 56px; }
-.logo-berkshire { height: 64px; }
-.logo-remax     { height: 32px; max-width: 110px; }
-.logo-kw        { height: 56px; }
+.logo-compass   { height: 40px; max-width: 130px; }
+.logo-elliman   { height: 40px; max-width: 160px; }
+.logo-akg       { height: 54px; max-width: 80px;  }
+.logo-agency    { height: 68px; }
+.logo-sothebys  { height: 52px; max-width: 170px; }
+.logo-coldwell  { height: 80px; }
+.logo-berkshire { height: 90px; }
+.logo-remax     { height: 46px; max-width: 110px; }
+.logo-kw        { height: 80px; }
 
 @media (max-width: 640px) {
   .credibility-stats {
