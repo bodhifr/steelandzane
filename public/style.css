@@ -629,10 +629,10 @@ body.has-hero .site-header {
   background: var(--cream);
   border-radius: 2px;
   border: 1px solid var(--border);
-  padding: 36px 28px 28px;
+  padding: 24px 28px 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   box-shadow: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -642,9 +642,13 @@ body.has-hero .site-header {
   box-shadow: 0 24px 60px rgba(43, 41, 37, 0.12);
 }
 
+.testimonial-card .strip-stars {
+  margin-bottom: 0;
+}
+
 .quote-mark {
   font-family: var(--font-heading);
-  font-size: 72px;
+  font-size: 48px;
   font-weight: 300;
   line-height: 0.6;
   color: var(--bronze);
