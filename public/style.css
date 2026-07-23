@@ -603,8 +603,9 @@ body.has-hero .site-header {
 
 /* ===== TESTIMONIALS ===== */
 .testimonials {
-  background: var(--cream);
-  padding: 8px 24px 80px;
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 80px;
 }
 
 .section-title {
