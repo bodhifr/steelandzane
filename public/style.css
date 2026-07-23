@@ -604,7 +604,7 @@ body.has-hero .site-header {
 /* ===== TESTIMONIALS ===== */
 .testimonials {
   background: var(--cream);
-  padding: 32px 24px 80px;
+  padding: 8px 24px 80px;
 }
 
 .section-title {
@@ -1300,7 +1300,7 @@ body.has-hero .site-header {
 }
 
 .stat-landed {
-  color: var(--bronze);
+  color: var(--terracotta);
 }
 
 .stat-number-wrap {
@@ -1320,7 +1320,7 @@ body.has-hero .site-header {
 
 .stat-landed + .stat-suffix,
 .stat-number-wrap:has(.stat-landed) .stat-suffix {
-  color: var(--bronze);
+  color: var(--terracotta);
 }
 
 .stat-label {
