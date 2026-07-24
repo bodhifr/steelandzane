@@ -1404,8 +1404,9 @@ body.has-hero .site-header {
   object-fit: contain;
   object-position: bottom center;
   pointer-events: none;
-  filter: grayscale(1) brightness(0);
-  opacity: 0.09;
+  filter: grayscale(1) contrast(1.6) brightness(0.5);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
   z-index: 0;
 }
 .credibility-photographer--left  { left: 0; }
