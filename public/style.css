@@ -1652,7 +1652,7 @@ body.has-hero .site-header {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: none;
   color: var(--terracotta);
