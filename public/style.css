@@ -2239,6 +2239,27 @@ body.has-hero .site-header {
   }
 }
 
+/* ─── Side-by-side cycle layout ─────────────────────────────────────────── */
+.cycles-combined { display: block; }
+
+@media (min-width: 1200px) {
+  .cycles-combined {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cycles-combined .consequences-reel,
+  .cycles-combined .outcomes-reel {
+    overflow: hidden;
+    padding-bottom: 48px;
+  }
+  .cycles-combined .consequences-sticky,
+  .cycles-combined .outcomes-sticky {
+    transform: scale(0.80);
+    transform-origin: top center;
+    margin-bottom: -108px;
+  }
+}
+
 /* ─── Cycle arrow draw-in animation ─────────────────────────────────────────── */
 .reveal-draw { opacity: 0; }
 .reveal-draw.is-visible { opacity: 1; }
