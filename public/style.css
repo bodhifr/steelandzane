@@ -1597,11 +1597,11 @@ body.has-hero .site-header {
 
 .sameness-label {
   font-family: var(--font-ui);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(244, 240, 232, 0.35);
+  color: rgba(244, 240, 232, 0.7);
   padding-top: 10px;
 }
 
