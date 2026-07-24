@@ -1723,7 +1723,7 @@ body.has-hero .site-header {
   font-size: 12px;
   line-height: 1.4;
   color: rgba(244,240,232,0.58);
-  text-align: left;
+  text-align: center;
 }
 @media (max-width: 700px) {
   .consequences-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
@@ -2214,7 +2214,7 @@ body.has-hero .site-header {
   font-size: 12px;
   line-height: 1.4;
   color: rgba(244,240,232,0.55);
-  text-align: left;
+  text-align: center;
 }
 @media (max-width: 700px) {
   .outcomes-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
