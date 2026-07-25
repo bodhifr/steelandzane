@@ -1539,13 +1539,20 @@ body.has-hero .site-header {
 }
 
 .comparison-row-heading {
-  font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3.8rem);
   font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 32px;
+}
+
+.comparison-row--sameness .comparison-row-heading {
   color: var(--background);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  margin: 0 0 28px;
+}
+
+.comparison-row--snz .comparison-row-heading {
+  color: var(--dark);
 }
 
 .comparison-row--sameness {
