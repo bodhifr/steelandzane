@@ -1422,13 +1422,13 @@ body.has-hero .site-header {
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
-  filter: grayscale(1) sepia(1) hue-rotate(-16deg) saturate(2) brightness(0.85);
-  opacity: 0.7;
+  filter: brightness(0) invert(41%) sepia(1) hue-rotate(341deg) saturate(2.5) brightness(1.06);
+  opacity: 0.8;
   transition: opacity 0.2s;
 }
 
 .brokerage-logo:hover {
-  opacity: 0.85;
+  opacity: 1;
 }
 
 /* Per-logo size overrides */
