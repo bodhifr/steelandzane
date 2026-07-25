@@ -198,14 +198,14 @@ body.has-hero .site-header {
 
 .nav-cta {
   padding: 10px 22px;
-  border: 1px solid var(--terracotta);
+  border: 1px solid var(--bronze);
   border-radius: 2px;
-  color: var(--terracotta);
+  color: var(--bronze);
   transition: background 0.25s, color 0.25s;
 }
 
 .nav-cta:hover {
-  background: var(--terracotta);
+  background: var(--bronze);
   color: var(--white);
 }
 
@@ -383,9 +383,9 @@ body.has-hero .site-header {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 18px 44px;
-  background: var(--terracotta);
+  background: var(--bronze);
   color: var(--plaster);
-  border: 1px solid var(--terracotta);
+  border: 1px solid var(--bronze);
   transition: background 0.3s, border-color 0.3s, color 0.3s;
   position: relative;
   overflow: hidden;
