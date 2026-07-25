@@ -1396,7 +1396,7 @@ body.has-hero .site-header {
 .brokerage-carousel {
   overflow: hidden;
   width: 100%;
-  max-width: 828px;
+  max-width: 805px;
   margin-left: auto;
   margin-right: auto;
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
