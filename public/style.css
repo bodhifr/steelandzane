@@ -1422,7 +1422,7 @@ body.has-hero .site-header {
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
-  filter: grayscale(1);
+  filter: grayscale(1) sepia(1) hue-rotate(-16deg) saturate(0.6) brightness(0.9);
   opacity: 0.5;
   mix-blend-mode: multiply;
   transition: opacity 0.2s;
