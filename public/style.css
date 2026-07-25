@@ -2570,3 +2570,65 @@ body.has-hero .site-header {
   .process { padding: 64px 24px; }
   .process-cta-section { padding: 64px 24px; }
 }
+
+/* ===== MOBILE OVERRIDES — ROUND 2 ===== */
+
+/* Fix 1: flat dark veil replaces gradient on hero (overrides the to-top gradient above) */
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: rgba(14, 11, 9, 0.65);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Fix 2: problem headline — remove terracotta accent, all-white on mobile */
+  .problem-headline span[style] {
+    color: var(--background) !important;
+  }
+
+  /* Fix 3: comparison frames — show 2 side-by-side, hide 3rd */
+  .problem-frames {
+    overflow-x: visible;
+    flex-wrap: nowrap;
+  }
+  .sameness-frame {
+    min-width: 0;
+    flex-shrink: 1;
+    flex: 1;
+  }
+  .sameness-frame:last-child {
+    display: none;
+  }
+
+  /* Fix 4: why-snz images — exit absolute composition, reflow as grid */
+  .why-images {
+    position: static;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 8px;
+  }
+  .why-img {
+    position: static;
+    width: 100%;
+    height: auto;
+    outline: none;
+  }
+  .why-img--primary {
+    grid-column: 1 / -1;
+  }
+  .why-img--atmosphere {
+    display: block;
+    grid-column: 1;
+  }
+  .why-img--detail {
+    grid-column: 2;
+    left: auto;
+    bottom: auto;
+  }
+
+  /* Fix 5: comparison row bottom padding — reduce dead space on mobile */
+  .comparison-row--sameness { padding-bottom: 56px; }
+  .comparison-row--snz      { padding-bottom: 48px; }
+}
