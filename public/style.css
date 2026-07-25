@@ -1545,6 +1545,7 @@ body.has-hero .site-header {
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin: 0 0 32px;
+  text-align: center;
 }
 
 .comparison-row--sameness .comparison-row-heading {
