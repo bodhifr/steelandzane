@@ -2047,91 +2047,46 @@ body.has-hero .site-header {
   color: rgba(244, 240, 232, 0.65);
 }
 
-/* ===== PROCESS CTA CLOSING ===== */
-.process-cta {
-  margin-top: 80px;
+/* ===== CLOSING CTA SECTION ===== */
+.process-cta-section {
+  background: var(--background);
+  padding: 96px 24px;
   text-align: center;
-  padding-top: 64px;
-  border-top: 1px solid rgba(255,255,255,0.10);
 }
+
+.process-cta {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
 .process-cta-title {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.6vw, 2.6rem);
   font-weight: 300;
-  color: var(--background);
+  color: var(--dark);
   line-height: 1.2;
   margin-bottom: 16px;
 }
+
 .process-cta-body {
   font-size: 1rem;
-  color: var(--warm-stone);
+  color: rgba(31, 28, 25, 0.65);
   margin-bottom: 36px;
 }
+
 .process-cta-contact {
   margin-top: 24px;
   font-size: 0.9rem;
 }
+
 .process-cta-detail {
-  color: var(--warm-stone);
+  color: rgba(31, 28, 25, 0.55);
   text-decoration: none;
   transition: color 0.2s;
 }
-.process-cta-detail:hover { color: var(--background); }
-.process-cta-sep { color: var(--warm-stone); }
 
-/* ===== DELIVERABLES ===== */
-.deliverables {
-  background: var(--dark);
-  padding: 96px 24px;
-}
-.deliverables-header {
-  text-align: center;
-  max-width: 680px;
-  margin: 0 auto 64px;
-}
-.deliverables-intro {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--warm-stone);
-  margin-top: 16px;
-}
-.deliverables-grid {
-  max-width: 980px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-.deliverable-card {
-  background: var(--dark);
-  padding: 36px 32px;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-.deliverable-num {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  color: var(--bronze);
-  letter-spacing: 0.12em;
-  margin-bottom: 10px;
-}
-.deliverable-name {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--background);
-  margin-bottom: 10px;
-}
-.deliverable-desc {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: var(--warm-stone);
-}
-@media (max-width: 600px) {
-  .deliverables-grid { grid-template-columns: 1fr; }
-}
+.process-cta-detail:hover { color: var(--dark); }
+.process-cta-sep { color: rgba(31, 28, 25, 0.35); }
 
 
 /* ===== WHY STEEL & ZANE ===== */
