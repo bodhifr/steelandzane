@@ -1310,8 +1310,6 @@ body.has-hero .site-header {
   background: var(--background);
   padding: 64px 24px 24px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 
 .credibility-stats {
@@ -1321,8 +1319,6 @@ body.has-hero .site-header {
   gap: 0;
   margin-bottom: 48px;
   flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
 }
 
 .stat-item {
@@ -1390,37 +1386,12 @@ body.has-hero .site-header {
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 28px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Photographer silhouette overlays */
-.credibility-photographer {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-  width: auto;
-  max-width: clamp(140px, 20vw, 300px);
-  object-fit: contain;
-  object-position: bottom center;
-  pointer-events: none;
-  filter: grayscale(1) contrast(1.6) brightness(0.5);
-  mix-blend-mode: multiply;
-  opacity: 0.85;
-  z-index: 0;
-}
-.credibility-photographer--left  { left: 0; }
-.credibility-photographer--right { right: 0; }
-@media (max-width: 900px) {
-  .credibility-photographer { display: none; }
 }
 
 /* Carousel */
 .brokerage-carousel {
   overflow: hidden;
   width: 100%;
-  position: relative;
-  z-index: 1;
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
