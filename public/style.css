@@ -1511,6 +1511,114 @@ body.has-hero .site-header {
   border-top: 2px solid var(--bronze);
 }
 
+/* ─── COMPARISON SPLIT ─────────────────────────────────────────── */
+.comparison-split {
+  background: var(--dark);
+  padding: 80px 24px 120px;
+}
+
+.comparison-split-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.comparison-col--sameness {
+  border-right: 1px solid rgba(244, 240, 232, 0.1);
+  padding-right: 64px;
+}
+
+.comparison-col--snz {
+  padding-left: 64px;
+}
+
+.comparison-col-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.comparison-col--sameness .comparison-col-eyebrow {
+  color: rgba(244, 240, 232, 0.3);
+}
+
+.comparison-col--snz .comparison-col-eyebrow {
+  color: var(--terracotta);
+}
+
+.comparison-item {
+  margin-bottom: 40px;
+}
+
+.comparison-item:last-child { margin-bottom: 0; }
+
+.comparison-item-num {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+
+.comparison-col--sameness .comparison-item-num {
+  color: rgba(244, 240, 232, 0.18);
+}
+
+.comparison-col--snz .comparison-item-num {
+  color: var(--terracotta);
+}
+
+.comparison-item-title {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.comparison-col--sameness .comparison-item-title {
+  color: rgba(244, 240, 232, 0.32);
+}
+
+.comparison-col--snz .comparison-item-title {
+  color: var(--background);
+}
+
+.comparison-item-body {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.comparison-col--sameness .comparison-item-body {
+  color: rgba(244, 240, 232, 0.18);
+}
+
+.comparison-col--snz .comparison-item-body {
+  color: rgba(244, 240, 232, 0.62);
+}
+
+@media (max-width: 768px) {
+  .comparison-split-inner {
+    grid-template-columns: 1fr;
+  }
+  .comparison-col--sameness {
+    border-right: none;
+    border-bottom: 1px solid rgba(244, 240, 232, 0.1);
+    padding-right: 0;
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+  }
+  .comparison-col--snz {
+    padding-left: 0;
+  }
+}
+
 .problem-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -1666,94 +1774,6 @@ body.has-hero .site-header {
   padding-top: 12px;
 }
 
-/* ─── Consequences — Sameness Cycle ──────────────────────────────────────────── */
-/* Triangle: 01 top, 02 bottom-right, 03 bottom-left. Static, arrows CW.        */
-/* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
-.consequences-reel {
-  background: var(--dark);
-  padding: 24px 24px 96px;
-}
-.consequences-headline {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(2rem, 3.2vw, 3.8rem);
-  color: var(--background);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  text-align: center;
-  margin-bottom: 24px;
-}
-.consequences-sticky {
-  position: relative;
-  width: 720px;
-  height: 540px;
-  margin: 0 auto;
-  overflow: visible;
-}
-.consequences-arrows {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: visible;
-  z-index: 2;
-}
-.consequences-panel {
-  position: absolute;
-  width: 250px;
-  padding: 14px;
-  background: rgba(244,240,232,0.05);
-  border-top: 2px solid rgba(140,90,60,0.65);
-  border-right: 1px solid rgba(140,90,60,0.20);
-  border-bottom: 1px solid rgba(140,90,60,0.20);
-  border-left: 1px solid rgba(140,90,60,0.20);
-  text-align: center;
-  z-index: 1;
-}
-.consequences-panel--1 { left: 235px; top: 5px; }
-.consequences-panel--2 { left: 445px; top: 315px; }
-.consequences-panel--3 { left:  25px; top: 315px; }
-.consequences-panel-num {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--bronze);
-  margin-bottom: 8px;
-}
-.consequences-panel-title {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-  color: var(--background);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-.consequences-panel-body {
-  font-size: 12px;
-  line-height: 1.4;
-  color: rgba(244,240,232,0.58);
-  text-align: center;
-}
-@media (max-width: 700px) {
-  .consequences-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
-  .consequences-arrows { display: none; }
-  .consequences-panel { position: static; width: 100%; height: auto; overflow: visible; padding: 28px 0; border: none; border-top: 1px solid rgba(244,240,232,0.1); }
-  .consequences-panel--1 { border-top: none; }
-  .consequences-panel:not(:last-child)::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 24px;
-    background: rgba(140,90,60,0.45);
-    margin: 12px auto 0;
-  }
-}
 
 /* ===== TRANSFORMATION SECTION ===== */
 .transformation {
@@ -2160,140 +2180,6 @@ body.has-hero .site-header {
   flex-shrink: 0;
 }
 
-/* ─── Outcomes Reel — S&Z Cycle ──────────────────────────────────────────────── */
-/* Mirrors Sameness Cycle geometry; dark tiles on cream. Static, arrows CW.      */
-/* Container: 720×550. Center (360,310). Orbit r=210. Cards 185×auto.           */
-.outcomes-reel {
-  background: var(--background);
-  padding: 24px 24px 96px;
-}
-.outcomes-headline {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(2rem, 3.2vw, 3.8rem);
-  color: var(--dark);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  text-align: center;
-  margin-bottom: 24px;
-}
-.outcomes-sticky {
-  position: relative;
-  width: 720px;
-  height: 540px;
-  margin: 0 auto;
-  overflow: visible;
-}
-.outcomes-arrows {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: visible;
-  z-index: 2;
-}
-.outcomes-panel {
-  position: absolute;
-  width: 250px;
-  padding: 14px;
-  background: var(--dark);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.20);
-  border-top: 2px solid var(--bronze);
-  text-align: center;
-  z-index: 1;
-}
-.outcomes-panel--1 { left: 235px; top: 5px; }
-.outcomes-panel--2 { left: 445px; top: 315px; }
-.outcomes-panel--3 { left:  25px; top: 315px; }
-.outcomes-panel-num {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--bronze);
-  margin-bottom: 8px;
-}
-.outcomes-panel-title {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-  letter-spacing: -0.01em;
-  color: var(--background);
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-.outcomes-panel-body {
-  font-size: 12px;
-  line-height: 1.4;
-  color: rgba(244,240,232,0.55);
-  text-align: center;
-}
-@media (max-width: 700px) {
-  .outcomes-sticky { width: 100%; height: auto; display: flex; flex-direction: column; gap: 0; }
-  .outcomes-arrows { display: none; }
-  .outcomes-panel { position: static; width: 100%; height: auto; overflow: visible; padding: 28px 0; border-top: none; border-bottom: 1px solid rgba(31,28,25,0.1); }
-  .outcomes-panel:last-child { border-bottom: none; }
-  .outcomes-panel:not(:last-child)::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 24px;
-    background: rgba(140,90,60,0.45);
-    margin: 12px auto 0;
-  }
-}
-
-/* ─── Side-by-side cycle layout ─────────────────────────────────────────── */
-.cycles-combined { display: block; }
-
-@media (min-width: 1200px) {
-  .cycles-combined {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .cycles-combined .consequences-reel,
-  .cycles-combined .outcomes-reel {
-    overflow: hidden;
-    padding-bottom: 48px;
-  }
-  .cycles-combined .consequences-sticky,
-  .cycles-combined .outcomes-sticky {
-    transform: scale(0.80);
-    transform-origin: top center;
-    margin-bottom: -108px;
-  }
-}
-
-/* ─── Cycle arrow draw-in animation ─────────────────────────────────────────── */
-.reveal-draw { opacity: 0; }
-.reveal-draw.is-visible { opacity: 1; }
-@keyframes draw-arrow {
-  to { stroke-dashoffset: 0; opacity: 1; }
-}
-.reveal-draw path {
-  opacity: 0;
-}
-.reveal-draw path:nth-of-type(1),
-.reveal-draw path:nth-of-type(3) {
-  stroke-dasharray: 210;
-  stroke-dashoffset: 210;
-}
-.reveal-draw path:nth-of-type(2) {
-  stroke-dasharray: 165;
-  stroke-dashoffset: 165;
-}
-.reveal-draw.is-visible path:nth-of-type(1) {
-  animation: draw-arrow 0.5s ease-out forwards;
-}
-.reveal-draw.is-visible path:nth-of-type(2) {
-  animation: draw-arrow 0.5s ease-out forwards 0.4s;
-}
-.reveal-draw.is-visible path:nth-of-type(3) {
-  animation: draw-arrow 0.5s ease-out forwards 0.8s;
-}
 
 .why-images {
   position: relative;
