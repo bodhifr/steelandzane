@@ -2535,3 +2535,38 @@ body.has-hero .site-header {
 @media (prefers-reduced-motion: reduce) {
   .scroll-progress { display: none; }
 }
+
+/* ===== MOBILE OVERRIDES ===== */
+
+@media (max-width: 900px) {
+  .comparison-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(14, 11, 9, 0.88) 0%,
+      rgba(14, 11, 9, 0.55) 50%,
+      rgba(14, 11, 9, 0.20) 100%
+    );
+  }
+}
+
+@media (max-width: 640px) {
+  .problem-inner { padding: 0 20px; }
+
+  .comparison-row--sameness { padding-bottom: 80px; }
+
+  .stat-divider { display: none; }
+  .credibility-stats { flex-direction: column; align-items: center; gap: 24px 0; }
+
+  .hero-content { padding: 100px 0 64px; }
+
+  .testimonials-cta { padding: 40px 24px 56px; }
+
+  .process { padding: 64px 24px; }
+  .process-cta-section { padding: 64px 24px; }
+}
