@@ -1396,6 +1396,9 @@ body.has-hero .site-header {
 .brokerage-carousel {
   overflow: hidden;
   width: 100%;
+  max-width: 828px;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
@@ -1422,13 +1425,14 @@ body.has-hero .site-header {
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
-  filter: brightness(0) invert(41%) sepia(1) hue-rotate(341deg) saturate(2.5) brightness(1.06);
-  opacity: 0.8;
+  filter: grayscale(1);
+  opacity: 0.5;
+  mix-blend-mode: multiply;
   transition: opacity 0.2s;
 }
 
 .brokerage-logo:hover {
-  opacity: 1;
+  opacity: 0.85;
 }
 
 /* Per-logo size overrides */
