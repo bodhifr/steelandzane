@@ -1307,7 +1307,11 @@ body.has-hero .site-header {
 
 /* ===== CREDIBILITY STRIP ===== */
 .credibility {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: url('images/credibility strip photographers/credibility strip background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 64px 24px 24px;
   text-align: center;
 }
