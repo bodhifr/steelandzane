@@ -1538,6 +1538,20 @@ body.has-hero .site-header {
   color: var(--terracotta);
 }
 
+.comparison-row-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  font-weight: 300;
+  color: var(--background);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+
+.comparison-row--sameness {
+  padding-bottom: 140px;
+}
+
 .comparison-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
