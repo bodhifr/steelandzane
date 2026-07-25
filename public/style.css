@@ -1999,14 +1999,20 @@ body.has-hero .site-header {
 
 .process-step {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: left;
+  gap: 20px;
   background: rgba(244, 240, 232, 0.04);
   border: 1px solid rgba(244, 240, 232, 0.1);
   border-top: 2px solid var(--terracotta);
-  padding: 32px 24px 36px;
+  padding: 24px 24px 28px;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .step-badge {
@@ -2028,7 +2034,7 @@ body.has-hero .site-header {
 .step-arrow {
   display: flex;
   align-items: flex-start;
-  padding-top: 55px;
+  padding-top: 47px;
   color: rgba(184, 106, 71, 0.4);
   font-size: 18px;
 }
@@ -2398,6 +2404,8 @@ body.has-hero .site-header {
 /* ===== TESTIMONIAL STRIP ===== */
 .testimonials-strip {
   margin-top: 56px;
+  margin-left: -24px;
+  margin-right: -24px;
   overflow: hidden;
   border-top: 1px solid rgba(139, 90, 60, 0.12);
   padding-top: 40px;
