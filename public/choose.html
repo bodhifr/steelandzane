@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Choose the right marketing package for your listing with Steel &amp; Zane.">
-  <title>Choose Your Marketing | Steel &amp; Zane</title>
+  <title>Book Now | Steel &amp; Zane</title>
   <link rel="icon" href="https://static.wixstatic.com/media/d9ba30_f950dca06267434e9fa4e5bf8b019f83~mv2.png" type="image/png">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-fill"></div></div>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
 
@@ -16,75 +20,49 @@
   <header class="site-header" id="top">
     <div class="header-inner">
       <a href="/" class="logo-link">
-        <img
-          src="https://static.wixstatic.com/media/d9ba30_f950dca06267434e9fa4e5bf8b019f83~mv2.png"
-          alt="Steel &amp; Zane logo"
-          class="logo"
-        >
+        <span class="logo-text">Steel &amp; Zane</span>
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
-        <a href="/#getting-ready" class="nav-link">Getting Ready</a>
+        <a href="/portfolio.html" class="nav-link">Our Work</a>
         <a href="/choose.html" class="nav-link nav-cta">Book Now</a>
-        <a href="/#contact" class="nav-link">Contact Us</a>
+        <a href="mailto:book@steelandzane.com" class="nav-link">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="book-hero">
-    <p class="book-hero-eyebrow">Select Your Package</p>
-    <h1 class="book-hero-title">What type of marketing sounds best<br>for your listing?</h1>
-  </section>
+  <!-- MAIN -->
+  <main class="choose-main">
 
-  <!-- MARKETING SELECTOR CARDS -->
-  <section class="choose-section">
-    <div class="choose-grid">
+    <!-- Question bar -->
+    <div class="choose-question-bar">
+      <p class="choose-eyebrow">Book Your Shoot</p>
+      <h1 class="choose-question">Which of the following best describes<br>your preferences today?</h1>
+    </div>
 
-      <!-- ── CARD 1: Standard Marketing ── -->
-      <!-- To update this card's redirect: change URL_STANDARD in the <script> below -->
-      <a class="choose-card" id="card-standard" href="#">
+    <!-- Split screen -->
+    <div class="choose-split">
 
-        <!-- IMAGE AREA: Replace this div with an <img> tag when you have your photo ready -->
-        <div class="choose-card-image">
-          <span class="choose-card-image-label">[ Standard Marketing Photo ]</span>
-        </div>
-
-        <div class="choose-card-body">
-          <h2 class="choose-card-title">Standard Marketing</h2>
-          <p class="choose-card-desc">
-            <!-- UPDATE THIS COPY: Describe what standard marketing includes -->
-            [Insert Standard Marketing description here]
-          </p>
-          <span class="btn btn-gold choose-card-btn">Choose Standard Marketing</span>
-        </div>
-
+      <!-- LEFT — Signature Marketing -->
+      <a class="choose-panel choose-panel--signature" id="panel-signature" href="#">
+        <p class="choose-panel-eyebrow">Signature Marketing</p>
+        <h2 class="choose-panel-tagline">I want to win<br>more listings.</h2>
+        <p class="choose-panel-body">Invest in media that makes sellers remember you — and refer you. The agent who markets listings this way doesn't compete on commission.</p>
+        <span class="btn-hero-primary choose-panel-btn">Signature Marketing</span>
       </a>
 
-      <!-- ── CARD 2: Signature Editorial Marketing ── -->
-      <!-- To update this card's redirect: change URL_SIGNATURE in the <script> below -->
-      <a class="choose-card" id="card-signature" href="#">
-
-        <!-- IMAGE AREA: Replace this div with an <img> tag when you have your photo ready -->
-        <div class="choose-card-image">
-          <span class="choose-card-image-label">[ Signature Editorial Marketing Photo ]</span>
-        </div>
-
-        <div class="choose-card-body">
-          <h2 class="choose-card-title">Signature Editorial Marketing</h2>
-          <p class="choose-card-desc">
-            <!-- UPDATE THIS COPY: Describe what signature editorial marketing includes -->
-            [Insert Signature Editorial Marketing description here]
-          </p>
-          <span class="btn btn-gold choose-card-btn">Choose Signature Editorial Marketing</span>
-        </div>
-
+      <!-- RIGHT — Standard Marketing -->
+      <a class="choose-panel choose-panel--standard" id="panel-standard" href="#">
+        <p class="choose-panel-eyebrow">Standard Marketing</p>
+        <h2 class="choose-panel-tagline">I want the<br>lowest price.</h2>
+        <p class="choose-panel-body">Professional real estate photography at a straightforward rate. Clean, competent, and to the point.</p>
+        <span class="btn-standard choose-panel-btn">Standard Marketing</span>
       </a>
 
     </div>
-  </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -112,19 +90,18 @@
     // Replace the two values below with the real booking page URLs.
     // These are the ONLY lines you need to change to go live.
     // ─────────────────────────────────────────────────────────────────────────
-    const URL_STANDARD  = '[INSERT STANDARD ORDER PAGE URL]';
     const URL_SIGNATURE = '[INSERT SIGNATURE EDITORIAL ORDER PAGE URL]';
+    const URL_STANDARD  = '[INSERT STANDARD ORDER PAGE URL]';
     // ─────────────────────────────────────────────────────────────────────────
 
-    // Clicking anywhere on a card (including the button inside) redirects the user.
-    document.getElementById('card-standard').addEventListener('click', function(e) {
-      e.preventDefault();
-      window.location.href = URL_STANDARD;
-    });
-
-    document.getElementById('card-signature').addEventListener('click', function(e) {
+    document.getElementById('panel-signature').addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = URL_SIGNATURE;
+    });
+
+    document.getElementById('panel-standard').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = URL_STANDARD;
     });
 
     // Mobile nav toggle
@@ -145,7 +122,7 @@
       });
     });
 
-    // Header darkens slightly on scroll
+    // Header darkens on scroll
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', function() {
       header.style.background = window.scrollY > 40
