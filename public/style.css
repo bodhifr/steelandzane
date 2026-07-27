@@ -2001,7 +2001,7 @@ body.has-hero .site-header {
 
 .process-steps {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
   align-items: stretch;
   gap: 0 16px;
   max-width: 1300px;
