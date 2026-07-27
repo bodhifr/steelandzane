@@ -2570,20 +2570,23 @@ body.has-hero .site-header {
   .credibility-stats { flex-direction: column; align-items: center; gap: 24px 0; }
   .credibility { background-image: none; }
   .cred-stats-row {
+    position: relative;
+    overflow: visible;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 100%;
-    gap: 0;
+    align-items: center;
+    min-height: 220px;
   }
   .cred-photo {
     display: block;
-    width: 72px;
-    flex-shrink: 0;
+    position: absolute;
+    width: 150px;
+    height: 100%;
     object-fit: contain;
     object-position: center bottom;
-    align-self: stretch;
   }
+  .cred-photo:first-child { left: 0; }
+  .cred-photo:last-child { right: 0; }
 
   .hero-content { padding: 100px 0 64px; }
 
