@@ -2645,7 +2645,7 @@ body.has-hero .site-header {
   .why-img--atmosphere {
     display: block;
     position: absolute;
-    top: 0;
+    top: -20px;
     left: 0;
     width: 40%;
     height: auto;
@@ -2655,7 +2655,7 @@ body.has-hero .site-header {
   .why-img--detail {
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: -20px;
     right: 0;
     left: auto;
     width: 40%;
