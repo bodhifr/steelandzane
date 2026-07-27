@@ -2816,9 +2816,8 @@ body.has-hero .site-header {
   color: var(--terracotta);
 }
 
-/* Visual break between exclusive and shared groups */
+/* Visual break between exclusive and shared groups — single terracotta border-bottom on last sig-only is the divider */
 .choose-panel-bullets li.sig-only + li:not(.sig-only) {
-  border-top: 1px solid var(--border);
   margin-top: 4px;
 }
 
