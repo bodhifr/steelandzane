@@ -2648,12 +2648,13 @@ body.has-hero .site-header {
   transform: translateX(-50%);
   z-index: 10;
   width: 90%;
-  max-width: 540px;
-  background: #ffffff;
-  border: 1px solid var(--terracotta);
+  max-width: 400px;
+  background: rgba(244, 240, 232, 0.82);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border);
   border-radius: 2px;
-  box-shadow: 0 2px 16px rgba(31, 28, 25, 0.10);
-  padding: 28px 36px 30px;
+  padding: 24px 28px 26px;
   text-align: center;
 }
 
@@ -2781,11 +2782,12 @@ body.has-hero .site-header {
     width: 100%;
     max-width: none;
     border-radius: 0;
-    box-shadow: none;
     border: none;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     background: var(--background);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     padding: 24px 20px 20px;
   }
   .choose-panel--standard {
