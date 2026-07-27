@@ -198,15 +198,17 @@ body.has-hero .site-header {
 
 .nav-cta {
   padding: 10px 22px;
+  background: var(--bronze);
   border: 1px solid var(--bronze);
   border-radius: 2px;
-  color: var(--bronze);
-  transition: background 0.25s, color 0.25s;
+  color: var(--plaster);
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
 }
 
 .nav-cta:hover {
-  background: var(--bronze);
-  color: var(--white);
+  background: var(--cream);
+  color: var(--terracotta);
+  border-color: transparent;
 }
 
 .nav-toggle {
@@ -2727,6 +2729,12 @@ body.has-hero .site-header {
 
 .choose-panel--signature .choose-panel-tagline { color: var(--dark); }
 .choose-panel--standard  .choose-panel-tagline { color: var(--background); }
+
+.choose-panel--signature .btn-hero-primary:hover {
+  background: #ffffff;
+  color: var(--terracotta);
+  border-color: transparent;
+}
 
 .choose-panel-body {
   font-family: var(--font-body);
