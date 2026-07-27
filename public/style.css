@@ -2648,7 +2648,7 @@ body.has-hero .site-header {
     position: absolute;
     top: -70px;
     left: 0;
-    width: 40%;
+    width: 60%;
     height: auto;
     outline: 6px solid var(--background);
     outline-offset: -6px;
