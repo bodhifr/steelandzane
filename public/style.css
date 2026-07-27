@@ -2648,7 +2648,7 @@ body.has-hero .site-header {
   transform: translateX(-50%);
   z-index: 10;
   width: 90%;
-  max-width: 400px;
+  max-width: 460px;
   background: rgba(244, 240, 232, 0.82);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
@@ -2693,11 +2693,7 @@ body.has-hero .site-header {
   padding: 220px 48px 80px;
   gap: 20px;
   text-decoration: none;
-  cursor: pointer;
-  transition: opacity 0.2s;
 }
-
-.choose-panel:hover { opacity: 0.92; }
 
 .choose-panel--signature {
   background: var(--background);
@@ -2743,7 +2739,7 @@ body.has-hero .site-header {
 .choose-panel--signature .choose-panel-body { color: var(--muted); }
 .choose-panel--standard  .choose-panel-body { color: rgba(244, 240, 232, 0.55); }
 
-.choose-panel-btn { pointer-events: none; }
+.choose-panel-btn { pointer-events: auto; cursor: pointer; }
 
 /* Standard Marketing button — deliberately understated on dark panel */
 .btn-standard {
@@ -2760,10 +2756,6 @@ body.has-hero .site-header {
   transition: background 0.2s, color 0.2s;
 }
 
-.btn-standard:hover {
-  background: rgba(244, 240, 232, 0.14);
-  color: var(--background);
-}
 
 /* Mobile: stack vertically, Signature on top */
 @media (max-width: 768px) {

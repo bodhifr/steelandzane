@@ -46,18 +46,18 @@
       </div>
 
       <!-- LEFT — Signature Marketing -->
-      <a class="choose-panel choose-panel--signature" id="panel-signature" href="#">
+      <div class="choose-panel choose-panel--signature">
         <h2 class="choose-panel-tagline">I want to win<br>more listings.</h2>
         <p class="choose-panel-body">Earn your sellers' trust with a reputation that compounds. The agent who markets listings this way competes on value, not on commission.</p>
-        <span class="btn-hero-primary choose-panel-btn">Signature Marketing</span>
-      </a>
+        <a class="btn-hero-primary choose-panel-btn" id="btn-signature" href="#">Signature Marketing</a>
+      </div>
 
       <!-- RIGHT — Standard Marketing -->
-      <a class="choose-panel choose-panel--standard" id="panel-standard" href="#">
+      <div class="choose-panel choose-panel--standard">
         <h2 class="choose-panel-tagline">I want the<br>lowest price.</h2>
         <p class="choose-panel-body">Professional real estate photography at a straightforward rate.</p>
-        <span class="btn-standard choose-panel-btn">Standard Marketing</span>
-      </a>
+        <a class="btn-standard choose-panel-btn" id="btn-standard" href="#">Standard Marketing</a>
+      </div>
 
     </div>
   </main>
@@ -92,12 +92,12 @@
     const URL_STANDARD  = '[INSERT STANDARD ORDER PAGE URL]';
     // ─────────────────────────────────────────────────────────────────────────
 
-    document.getElementById('panel-signature').addEventListener('click', function(e) {
+    document.getElementById('btn-signature').addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = URL_SIGNATURE;
     });
 
-    document.getElementById('panel-standard').addEventListener('click', function(e) {
+    document.getElementById('btn-standard').addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = URL_STANDARD;
     });
