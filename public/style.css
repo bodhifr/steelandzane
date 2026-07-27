@@ -2765,7 +2765,7 @@ body.has-hero .site-header {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.55;
-  max-width: 500px;
+  max-width: 100%;
   margin-bottom: 0;
 }
 
