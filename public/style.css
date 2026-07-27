@@ -2642,10 +2642,14 @@ body.has-hero .site-header {
 }
 
 .choose-question-card {
-  grid-column: 1 / -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   background: var(--background);
-  border-top: 1px solid var(--border);
-  padding: 28px 24px 24px;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px 18px;
   text-align: center;
 }
 
@@ -2669,9 +2673,9 @@ body.has-hero .site-header {
 }
 
 .choose-split {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
   height: 100%;
 }
 
@@ -2681,7 +2685,7 @@ body.has-hero .site-header {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 72px 48px 80px;
+  padding: 120px 48px 80px;
   gap: 20px;
   text-decoration: none;
   cursor: pointer;
@@ -2764,10 +2768,12 @@ body.has-hero .site-header {
   }
   .choose-split {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
     height: auto;
   }
   .choose-question-card {
+    position: static;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     padding: 24px 20px 20px;
   }
   .choose-panel--standard {
