@@ -2631,6 +2631,7 @@ body.has-hero .site-header {
     position: relative;
     display: block;
     height: auto;
+    margin-bottom: 80px;
   }
   .why-img {
     position: static;
