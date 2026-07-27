@@ -2409,10 +2409,8 @@ body.has-hero .site-header {
 /* ===== TESTIMONIAL STRIP ===== */
 .testimonials-strip {
   margin-top: 56px;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: -24px;
+  margin-right: -24px;
   overflow: hidden;
   border-top: 1px solid rgba(139, 90, 60, 0.12);
   padding-top: 40px;
