@@ -2680,7 +2680,7 @@ body.has-hero .site-header {
   backdrop-filter: blur(4px);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 24px 28px 26px;
+  padding: 12px 28px 12px;
   text-align: center;
 }
 
@@ -2691,7 +2691,7 @@ body.has-hero .site-header {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--bronze);
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .choose-question {
@@ -2717,7 +2717,7 @@ body.has-hero .site-header {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 165px 32px 80px;
+  padding: 128px 32px 80px;
   gap: 20px;
   text-decoration: none;
 }
@@ -2758,7 +2758,7 @@ body.has-hero .site-header {
 .choose-panel--signature .btn-hero-primary:hover {
   background: #ffffff;
   color: var(--terracotta);
-  border-color: transparent;
+  border-color: var(--terracotta);
 }
 
 .choose-panel-body {
