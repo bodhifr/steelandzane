@@ -2587,7 +2587,7 @@ body.has-hero .site-header {
     object-position: center bottom;
   }
   .cred-photo:first-child { left: -36px; }
-  .cred-photo:last-child { right: -46px; }
+  .cred-photo:last-child { right: -41px; }
 
   .hero-content { padding: 100px 0 64px; }
 
