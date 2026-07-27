@@ -1323,7 +1323,7 @@ body.has-hero .site-header {
   text-align: center;
 }
 
-.cred-photographers {
+.cred-photo {
   display: none;
 }
 
@@ -2568,27 +2568,21 @@ body.has-hero .site-header {
 
   .stat-divider { display: none; }
   .credibility-stats { flex-direction: column; align-items: center; gap: 24px 0; }
-  .credibility { background-image: none; position: relative; padding-left: 82px; padding-right: 82px; }
-  .cred-photographers { display: block; pointer-events: none; }
-  .cred-photo:first-child {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 78px;
-    height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
+  .credibility { background-image: none; }
+  .cred-stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0;
   }
-  .cred-photo:last-child {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 78px;
-    height: 100%;
+  .cred-photo {
+    display: block;
+    width: 72px;
+    flex-shrink: 0;
     object-fit: contain;
     object-position: center bottom;
+    align-self: stretch;
   }
 
   .hero-content { padding: 100px 0 64px; }
