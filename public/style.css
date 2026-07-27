@@ -208,7 +208,7 @@ body.has-hero .site-header {
 .nav-cta:hover {
   background: var(--cream);
   color: var(--terracotta);
-  border-color: transparent;
+  border-color: var(--terracotta);
 }
 
 .nav-toggle {
@@ -409,7 +409,7 @@ body.has-hero .site-header {
 .btn-hero-primary:hover {
   background: var(--cream);
   color: var(--terracotta);
-  border-color: transparent;
+  border-color: var(--terracotta);
 }
 
 .btn-hero-primary:hover::after {
