@@ -12,26 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-fill"></div></div>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
-
-  <!-- HEADER -->
-  <header class="site-header" id="top">
-    <div class="header-inner">
-      <a href="/" class="logo-link">
-        <span class="logo-text">Steel &amp; Zane</span>
-      </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="site-nav" id="site-nav">
-        <a href="/portfolio.html" class="nav-link">Our Work</a>
-        <a href="/choose.html" class="nav-link nav-cta">Book Now</a>
-        <a href="mailto:book@steelandzane.com" class="nav-link">Contact</a>
-      </nav>
-    </div>
-  </header>
 
   <!-- MAIN -->
   <main class="choose-main">
@@ -39,7 +21,7 @@
     <!-- Split screen -->
     <div class="choose-split">
 
-      <!-- Question card — spans both columns -->
+      <!-- Question card — floats centered over both panels -->
       <div class="choose-question-card">
         <p class="choose-eyebrow">Book Your Shoot</p>
         <h1 class="choose-question">Which option best describes<br>your preferences today?</h1>
@@ -49,6 +31,24 @@
       <div class="choose-panel choose-panel--signature">
         <h2 class="choose-panel-tagline">I want to win<br>more listings.</h2>
         <p class="choose-panel-body">Earn your sellers' trust with a reputation that compounds. The agent who markets listings this way competes on value, not on commission.</p>
+        <ul class="choose-panel-bullets">
+          <li>Next day turn-around</li>
+          <li>No cancellation or rescheduling fees</li>
+          <li>No house prep fees</li>
+          <li>FAA Part 107B certified drone pilot</li>
+          <li>Priority scheduling</li>
+          <li>Complimentary retouching</li>
+          <li>Level 3 master photographer</li>
+          <li>Signature natural light photography designed to emotionally attach buyers to your listing</li>
+          <li>Signature elevated editing &amp; color correction</li>
+          <li>Complimentary object removal</li>
+          <li>On-site creative direction</li>
+          <li>Complimentary sky replacement</li>
+          <li>Optional seller or lockbox entry</li>
+          <li>Complimentary photo arrangement for easy MLS posting</li>
+          <li>Print and web file sizes</li>
+          <li>Complimentary property websites and marketing materials</li>
+        </ul>
         <a class="btn-hero-primary choose-panel-btn" id="btn-signature" href="#">Signature Marketing</a>
       </div>
 
@@ -61,26 +61,6 @@
 
     </div>
   </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <img
-        src="https://static.wixstatic.com/media/d9ba30_f950dca06267434e9fa4e5bf8b019f83~mv2.png"
-        alt="Steel &amp; Zane"
-        class="footer-logo"
-      >
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/steelandzane" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <img src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="Facebook" width="23" height="23">
-        </a>
-        <a href="https://www.instagram.com/steelandzane" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <img src="https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png" alt="Instagram" width="23" height="23">
-        </a>
-      </div>
-      <p class="footer-copy">&copy; 2025 Steel &amp; Zane</p>
-    </div>
-  </footer>
 
   <script>
     // ─────────────────────────────────────────────────────────────────────────
@@ -100,32 +80,6 @@
     document.getElementById('btn-standard').addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = URL_STANDARD;
-    });
-
-    // Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const siteNav   = document.getElementById('site-nav');
-
-    navToggle.addEventListener('click', function() {
-      const isOpen = siteNav.classList.toggle('open');
-      navToggle.classList.toggle('open', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen);
-    });
-
-    siteNav.querySelectorAll('.nav-link').forEach(function(link) {
-      link.addEventListener('click', function() {
-        siteNav.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Header darkens on scroll
-    const header = document.querySelector('.site-header');
-    window.addEventListener('scroll', function() {
-      header.style.background = window.scrollY > 40
-        ? 'rgba(31, 28, 25, 1)'
-        : 'rgba(31, 28, 25, 0.96)';
     });
   </script>
   <script src="cursor.js"></script>

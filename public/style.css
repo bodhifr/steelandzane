@@ -2409,8 +2409,10 @@ body.has-hero .site-header {
 /* ===== TESTIMONIAL STRIP ===== */
 .testimonials-strip {
   margin-top: 56px;
-  margin-left: -24px;
-  margin-right: -24px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
   border-top: 1px solid rgba(139, 90, 60, 0.12);
   padding-top: 40px;
@@ -2638,9 +2640,9 @@ body.has-hero .site-header {
 /* ===== CHOOSE PAGE — SPLIT SCREEN ===== */
 
 .choose-main {
-  margin-top: 72px;
-  height: calc(100vh - 72px);
-  overflow: hidden;
+  margin-top: 0;
+  min-height: 100vh;
+  overflow: visible;
 }
 
 .choose-question-card {
@@ -2683,16 +2685,16 @@ body.has-hero .site-header {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .choose-panel {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: 220px 48px 80px;
+  padding: 180px 48px 80px;
   gap: 20px;
   text-decoration: none;
 }
@@ -2749,6 +2751,38 @@ body.has-hero .site-header {
 
 .choose-panel-btn { pointer-events: auto; cursor: pointer; }
 
+.choose-panel-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 320px;
+  text-align: left;
+}
+
+.choose-panel-bullets li {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  padding: 7px 0 7px 22px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.choose-panel-bullets li:last-child {
+  border-bottom: none;
+}
+
+.choose-panel-bullets li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--bronze);
+  font-size: 11px;
+  top: 8px;
+}
+
 /* Standard Marketing button — deliberately understated on dark panel */
 .btn-standard {
   display: inline-block;
@@ -2796,6 +2830,9 @@ body.has-hero .site-header {
   }
   .choose-panel {
     padding: 56px 32px 64px;
+  }
+  .choose-panel-bullets {
+    max-width: 100%;
   }
 }
 
