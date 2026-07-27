@@ -2718,7 +2718,7 @@ body.has-hero .site-header {
   justify-content: flex-start;
   text-align: center;
   padding: 128px 32px 80px;
-  gap: 20px;
+  gap: 16px;
   text-decoration: none;
 }
 
