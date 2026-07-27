@@ -2626,14 +2626,11 @@ body.has-hero .site-header {
     display: none;
   }
 
-  /* Fix 4: why-snz images — exit absolute composition, reflow as grid */
+  /* Fix 4: why-snz images — overlay collage on mobile */
   .why-images {
-    position: static;
+    position: relative;
+    display: block;
     height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 8px;
   }
   .why-img {
     position: static;
@@ -2642,16 +2639,29 @@ body.has-hero .site-header {
     outline: none;
   }
   .why-img--primary {
-    grid-column: 1 / -1;
+    display: block;
+    width: 100%;
   }
   .why-img--atmosphere {
     display: block;
-    grid-column: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: auto;
+    outline: 6px solid var(--background);
+    outline-offset: -6px;
   }
   .why-img--detail {
-    grid-column: 2;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     left: auto;
-    bottom: auto;
+    width: 40%;
+    height: auto;
+    outline: 6px solid var(--background);
+    outline-offset: -6px;
   }
 
   /* Fix 5: comparison row bottom padding — reduce dead space on mobile */
