@@ -2901,6 +2901,10 @@ body.has-hero .site-header {
   .choose-panel-tagline {
     white-space: normal;
   }
+  .choose-question {
+    white-space: normal;
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
 }
 
 @media (max-width: 480px) {
