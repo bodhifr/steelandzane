@@ -2580,7 +2580,7 @@ body.has-hero .site-header {
   .cred-photo {
     display: block;
     position: absolute;
-    width: 150px;
+    width: 135px;
     height: 100%;
     top: -50px;
     object-fit: contain;
