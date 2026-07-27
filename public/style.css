@@ -2694,7 +2694,7 @@ body.has-hero .site-header {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 180px 48px 80px;
+  padding: 180px 32px 80px;
   gap: 20px;
   text-decoration: none;
 }
@@ -2722,11 +2722,11 @@ body.has-hero .site-header {
 
 .choose-panel-tagline {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3vw, 3.4rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.8rem);
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  max-width: 420px;
+  white-space: nowrap;
 }
 
 .choose-panel--signature .choose-panel-tagline { color: var(--dark); }
@@ -2740,10 +2740,10 @@ body.has-hero .site-header {
 
 .choose-panel-body {
   font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.75;
-  max-width: 360px;
-  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  max-width: 380px;
+  margin-bottom: 0;
 }
 
 .choose-panel--signature .choose-panel-body { color: var(--muted); }
@@ -2756,7 +2756,7 @@ body.has-hero .site-header {
   padding: 0;
   margin: 0;
   width: 100%;
-  max-width: 320px;
+  max-width: 420px;
   text-align: left;
 }
 
@@ -2781,6 +2781,32 @@ body.has-hero .site-header {
   color: var(--bronze);
   font-size: 11px;
   top: 8px;
+}
+
+/* Signature-exclusive items — terracotta */
+.choose-panel-bullets li.sig-only {
+  color: var(--terracotta);
+  border-bottom-color: rgba(184, 106, 71, 0.18);
+}
+
+.choose-panel-bullets li.sig-only::before {
+  color: var(--terracotta);
+}
+
+/* Visual break between exclusive and shared groups */
+.choose-panel-bullets li.sig-only + li:not(.sig-only) {
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+/* Standard panel — light text on dark background */
+.choose-panel--standard .choose-panel-bullets li {
+  color: rgba(244, 240, 232, 0.65);
+  border-bottom-color: rgba(244, 240, 232, 0.08);
+}
+
+.choose-panel--standard .choose-panel-bullets li::before {
+  color: rgba(244, 240, 232, 0.45);
 }
 
 /* Standard Marketing button — deliberately understated on dark panel */
@@ -2833,6 +2859,9 @@ body.has-hero .site-header {
   }
   .choose-panel-bullets {
     max-width: 100%;
+  }
+  .choose-panel-tagline {
+    white-space: normal;
   }
 }
 
