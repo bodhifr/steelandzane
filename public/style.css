@@ -2568,7 +2568,7 @@ body.has-hero .site-header {
 
   .stat-divider { display: none; }
   .credibility-stats { flex-direction: column; align-items: center; gap: 24px 0; }
-  .credibility { background-image: none; }
+  .credibility { background-image: none; overflow: hidden; }
   .cred-stats-row {
     position: relative;
     overflow: visible;
