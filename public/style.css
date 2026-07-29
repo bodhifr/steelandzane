@@ -2729,7 +2729,7 @@ body.has-hero .site-header {
   justify-content: flex-start;
   text-align: center;
   padding: 128px 32px 80px;
-  gap: 16px;
+  gap: 8px;
   text-decoration: none;
 }
 
@@ -2810,7 +2810,6 @@ body.has-hero .site-header {
   line-height: 1.55;
   max-width: 100%;
   margin-bottom: 0;
-  min-height: 42px;
 }
 
 .choose-panel--signature .choose-panel-body { color: var(--muted); }
