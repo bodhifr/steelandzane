@@ -2711,14 +2711,13 @@ body.has-hero .site-header {
   font-weight: 300;
   color: var(--dark);
   line-height: 1.2;
-  white-space: nowrap;
   letter-spacing: -0.01em;
 }
 
 .choose-split {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   min-height: 100vh;
 }
 
@@ -2740,6 +2739,38 @@ body.has-hero .site-header {
 .choose-panel--standard {
   background: var(--dark);
   border-left: 1px solid rgba(244, 240, 232, 0.08);
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.choose-panel--standard .choose-panel-tagline {
+  font-size: clamp(1.2rem, 1.8vw, 2rem);
+}
+
+.choose-panel--standard .choose-panel-body {
+  font-size: 12px;
+}
+
+.choose-badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  border: 1px solid rgba(184, 106, 71, 0.35);
+  padding: 4px 12px;
+  border-radius: 1px;
+}
+
+.sig-note {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  font-style: italic;
+  color: rgba(184, 106, 71, 0.55);
+  margin-top: 1px;
 }
 
 .choose-panel-eyebrow {
@@ -2760,7 +2791,6 @@ body.has-hero .site-header {
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  white-space: nowrap;
 }
 
 .choose-panel--signature .choose-panel-tagline { color: var(--dark); }
