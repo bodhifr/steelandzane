@@ -2685,7 +2685,7 @@ body.has-hero .site-header {
   transform: translateX(-50%);
   z-index: 10;
   width: 95%;
-  max-width: 580px;
+  max-width: 660px;
   background: rgba(244, 240, 232, 0.82);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
@@ -2707,11 +2707,12 @@ body.has-hero .site-header {
 
 .choose-question {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 1.7vw, 1.8rem);
+  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
   font-weight: 300;
   color: var(--dark);
   line-height: 1.2;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .choose-split {
@@ -2791,6 +2792,7 @@ body.has-hero .site-header {
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  min-height: 3.5em;
 }
 
 .choose-panel--signature .choose-panel-tagline { color: var(--dark); }
@@ -2808,6 +2810,7 @@ body.has-hero .site-header {
   line-height: 1.55;
   max-width: 100%;
   margin-bottom: 0;
+  min-height: 42px;
 }
 
 .choose-panel--signature .choose-panel-body { color: var(--muted); }
