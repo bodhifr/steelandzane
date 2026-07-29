@@ -2792,7 +2792,7 @@ body.has-hero .site-header {
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  min-height: 3.5em;
+  min-height: 75px;
 }
 
 .choose-panel--signature .choose-panel-tagline { color: var(--dark); }
