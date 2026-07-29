@@ -2698,7 +2698,7 @@ body.has-hero .site-header {
 
 .choose-question {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.5vw, 2.8rem);
+  font-size: clamp(1.36rem, 2.125vw, 2.38rem);
   font-weight: 300;
   color: var(--dark);
   line-height: 1.2;
@@ -2717,7 +2717,7 @@ body.has-hero .site-header {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 64px 32px 80px;
+  padding: 32px 32px 80px;
   gap: 8px;
   text-decoration: none;
 }
@@ -2733,6 +2733,10 @@ body.has-hero .site-header {
   padding-right: 24px;
 }
 
+
+.choose-panel--standard .choose-panel-tagline {
+  font-size: clamp(1.36rem, 2.125vw, 2.38rem);
+}
 
 .choose-panel--standard .choose-panel-body {
   font-size: 12px;
