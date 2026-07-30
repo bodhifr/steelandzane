@@ -1345,8 +1345,8 @@ body.has-hero .site-header {
   object-fit: contain;
   object-position: center bottom;
 }
-.cred-photo:first-child { left: -20px; }
-.cred-photo:last-child  { right: -20px; }
+.cred-photo:first-child { left: -70px; }
+.cred-photo:last-child  { right: -70px; }
 
 .credibility-stats {
   display: flex;
