@@ -1339,12 +1339,11 @@ body.has-hero .site-header {
 .cred-photo {
   display: block;
   position: absolute;
-  width: auto;
-  height: 207%;
-  top: -60px;
+  width: 300px;
+  height: auto;
+  top: -20px;
   object-fit: contain;
-  object-position: center bottom;
-  clip-path: inset(0 0 20% 0);
+  object-position: center top;
 }
 .cred-photo:first-child { left: -70px; }
 .cred-photo:last-child  { right: -70px; }
