@@ -1323,6 +1323,7 @@ body.has-hero .site-header {
 .credibility {
   background-color: var(--background);
   overflow: hidden;
+  position: relative;
   padding: 40px 24px 0;
   text-align: center;
 }
@@ -1345,12 +1346,15 @@ body.has-hero .site-header {
 
 .cred-photo {
   display: block;
-  height: 360px;
+  position: absolute;
+  top: 0;
+  height: 100%;
   width: auto;
   object-fit: contain;
   object-position: center bottom;
-  flex-shrink: 0;
 }
+.cred-photo--left  { left: 0; }
+.cred-photo--right { right: 0; }
 
 
 .stat-item {
