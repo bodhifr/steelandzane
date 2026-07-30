@@ -2842,8 +2842,8 @@ body.has-hero .site-header {
   object-position: center bottom;
 }
 
-.sig-photo--left  { left:  -275px; }
-.sig-photo--right { right: -185px; height: 80%; }
+.sig-photo--left  { left:  -175px; }
+.sig-photo--right { right: -135px; height: 80%; }
 
 .choose-panel-bullets li {
   font-family: var(--font-body);
