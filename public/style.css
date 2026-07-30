@@ -2762,6 +2762,7 @@ body.has-hero .site-header {
   font-style: italic;
   color: rgba(184, 106, 71, 0.55);
   margin-top: 1px;
+  white-space: nowrap;
 }
 
 .choose-panel-eyebrow {
@@ -2813,7 +2814,7 @@ body.has-hero .site-header {
   padding: 0;
   margin: 0;
   width: 100%;
-  max-width: 420px;
+  max-width: 540px;
   text-align: left;
 }
 
