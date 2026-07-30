@@ -2427,7 +2427,7 @@ body.has-hero .site-header {
   width: max-content;
   animation: testimonials-scroll 55s linear infinite;
 }
-.testimonials-strip-track:hover { animation-play-state: paused; }
+.testimonials-strip-track:hover { animation-play-state: running; }
 .strip-card {
   width: 300px;
   flex-shrink: 0;
