@@ -1345,7 +1345,7 @@ body.has-hero .site-header {
 
 .cred-photo {
   display: block;
-  height: 120px;
+  height: 360px;
   width: auto;
   object-fit: contain;
   object-position: center bottom;
