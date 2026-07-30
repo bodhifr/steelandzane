@@ -2718,7 +2718,7 @@ body.has-hero .site-header {
   justify-content: flex-start;
   text-align: center;
   padding: 32px 32px 80px;
-  gap: 8px;
+  gap: 6px;
   text-decoration: none;
 }
 
@@ -2784,7 +2784,7 @@ body.has-hero .site-header {
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  min-height: 75px;
+  min-height: 53px;
 }
 
 .choose-panel--signature .choose-panel-tagline { color: var(--dark); }
