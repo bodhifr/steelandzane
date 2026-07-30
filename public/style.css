@@ -1323,39 +1323,35 @@ body.has-hero .site-header {
 .credibility {
   background-color: var(--background);
   overflow: hidden;
-  padding: 64px 24px 24px;
+  padding: 40px 24px 0;
   text-align: center;
 }
-
-.cred-stats-row {
-  position: relative;
-  overflow: visible;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 280px;
-}
-
-.cred-photo {
-  display: block;
-  position: absolute;
-  width: 300px;
-  height: auto;
-  top: -20px;
-  object-fit: contain;
-  object-position: center top;
-}
-.cred-photo--left  { left: -70px; }
-.cred-photo--right { right: -70px; }
 
 .credibility-stats {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0;
-  margin-bottom: 48px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
+
+.cred-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+
+.cred-photo {
+  display: block;
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  flex-shrink: 0;
+}
+
 
 .stat-item {
   display: flex;
@@ -1421,7 +1417,7 @@ body.has-hero .site-header {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 /* Carousel */
@@ -1429,8 +1425,6 @@ body.has-hero .site-header {
   overflow: hidden;
   width: 100%;
   max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
   -webkit-mask-image: linear-gradient(to right, transparent, black 69px, black 92%, transparent);
   mask-image: linear-gradient(to right, transparent, black 69px, black 92%, transparent);
 }
@@ -2589,10 +2583,8 @@ body.has-hero .site-header {
 
   .stat-divider { display: none; }
   .credibility-stats { flex-direction: column; align-items: center; gap: 24px 0; }
-  .cred-stats-row { min-height: 220px; }
-  .cred-photo { width: 135px; height: 100%; top: -50px; }
-  .cred-photo--left  { left: -36px; }
-  .cred-photo--right { right: -41px; }
+  .cred-photo { display: none; }
+  .cred-bottom-row { display: block; }
 
   .hero-content { padding: 100px 0 64px; }
 
