@@ -2810,6 +2810,15 @@ body.has-hero .site-header {
 
 .choose-panel-btn { pointer-events: auto; cursor: pointer; }
 
+.sig-bullets-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
 .choose-panel-bullets {
   list-style: none;
   padding: 0;
@@ -2818,8 +2827,6 @@ body.has-hero .site-header {
   max-width: 520px;
   overflow: hidden;
   text-align: left;
-  position: relative;
-  z-index: 1;
 }
 
 .sig-photo-row {
