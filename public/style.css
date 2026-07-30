@@ -3008,7 +3008,7 @@ body.has-hero .site-header {
   .choose-panel-tagline,
   .choose-panel--standard .choose-panel-tagline {
     white-space: normal;
-    font-size: clamp(3.45rem, 11.4vw, 6rem);
+    font-size: clamp(1.725rem, 5.7vw, 3rem);
   }
   .choose-question {
     white-space: normal;
