@@ -2587,7 +2587,9 @@ body.has-hero .site-header {
 
   .stat-divider { display: none; }
   .credibility-stats { flex-direction: column; align-items: center; gap: 24px 0; }
-  .cred-photo { display: none; }
+  .cred-photo { display: block; width: 135px; height: 220px; top: 40px; }
+  .cred-photo--left  { left: -36px; }
+  .cred-photo--right { right: -41px; }
   .cred-bottom-row { display: block; }
 
   .hero-content { padding: 100px 0 64px; }
