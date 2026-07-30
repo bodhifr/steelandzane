@@ -2843,7 +2843,7 @@ body.has-hero .site-header {
 }
 
 .sig-photo--left  { left:  -135px; }
-.sig-photo--right { right: -170px; height: 80%; }
+.sig-photo--right { right: -70px; height: 80%; }
 
 .choose-panel-bullets li {
   font-family: var(--font-body);
