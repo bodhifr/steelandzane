@@ -3005,9 +3005,10 @@ body.has-hero .site-header {
   .sig-photo {
     display: none;
   }
-  .choose-panel-tagline {
+  .choose-panel-tagline,
+  .choose-panel--standard .choose-panel-tagline {
     white-space: normal;
-    font-size: clamp(2rem, 6vw, 2.6rem);
+    font-size: clamp(3.45rem, 11.4vw, 6rem);
   }
   .choose-question {
     white-space: normal;
