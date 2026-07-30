@@ -1340,8 +1340,8 @@ body.has-hero .site-header {
   display: block;
   position: absolute;
   width: auto;
-  height: 115%;
-  top: -30px;
+  height: 230%;
+  top: -60px;
   object-fit: contain;
   object-position: center bottom;
 }
