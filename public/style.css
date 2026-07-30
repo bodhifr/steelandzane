@@ -2808,7 +2808,7 @@ body.has-hero .site-header {
 .choose-panel--signature .choose-panel-body { color: var(--muted); }
 .choose-panel--standard  .choose-panel-body { color: rgba(244, 240, 232, 0.55); }
 
-.choose-panel-btn { pointer-events: auto; cursor: pointer; margin-top: 20px; }
+.choose-panel-btn { pointer-events: auto; cursor: pointer; margin-top: 10px; }
 
 .sig-bullets-wrap {
   display: flex;
