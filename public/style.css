@@ -1340,10 +1340,11 @@ body.has-hero .site-header {
   display: block;
   position: absolute;
   width: auto;
-  height: 230%;
+  height: 207%;
   top: -60px;
   object-fit: contain;
   object-position: center bottom;
+  clip-path: inset(0 0 20% 0);
 }
 .cred-photo:first-child { left: -70px; }
 .cred-photo:last-child  { right: -70px; }
@@ -1360,13 +1361,13 @@ body.has-hero .site-header {
 .stat-item {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 0 48px;
+  gap: 8px;
+  padding: 0 64px;
 }
 
 .stat-number {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 300;
   color: var(--text);
   line-height: 1;
@@ -1386,7 +1387,7 @@ body.has-hero .site-header {
 .stat-suffix {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -1400,7 +1401,7 @@ body.has-hero .site-header {
 
 .stat-label {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1409,26 +1410,26 @@ body.has-hero .site-header {
 
 .stat-divider {
   width: 1px;
-  height: 48px;
+  height: 64px;
   background: var(--border);
   flex-shrink: 0;
 }
 
 .credibility-label {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 /* Carousel */
 .brokerage-carousel {
   overflow: hidden;
   width: 100%;
-  max-width: 805px;
+  max-width: 980px;
   margin-left: auto;
   margin-right: auto;
   -webkit-mask-image: linear-gradient(to right, transparent, black 69px, black 92%, transparent);
@@ -1450,7 +1451,7 @@ body.has-hero .site-header {
 }
 
 .brokerage-logo {
-  height: 52px;
+  height: 68px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
