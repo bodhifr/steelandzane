@@ -2823,7 +2823,7 @@ body.has-hero .site-header {
   font-size: 13px;
   line-height: 1.6;
   color: var(--muted);
-  padding: 7px 0 7px 22px;
+  padding: 7px 50px 7px 22px;
   position: relative;
   border-bottom: 1px solid var(--border);
 }
