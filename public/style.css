@@ -944,10 +944,17 @@ body.has-hero .site-header {
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0, 0.2, 1);
 }
 
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0, 0.2, 1);
+}
+
 .reveal.is-visible,
 .reveal-pop.is-visible,
 .reveal-fade.is-visible,
-.reveal-right.is-visible {
+.reveal-right.is-visible,
+.reveal-left.is-visible {
   opacity: 1;
   transform: none;
 }
@@ -1315,17 +1322,31 @@ body.has-hero .site-header {
 /* ===== CREDIBILITY STRIP ===== */
 .credibility {
   background-color: var(--background);
-  background-image: url('images/credibility strip photographers/credibility strip background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
   padding: 64px 24px 24px;
   text-align: center;
 }
 
-.cred-photo {
-  display: none;
+.cred-stats-row {
+  position: relative;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
 }
+
+.cred-photo {
+  display: block;
+  position: absolute;
+  width: auto;
+  height: 115%;
+  top: -30px;
+  object-fit: contain;
+  object-position: center bottom;
+}
+.cred-photo:first-child { left: -20px; }
+.cred-photo:last-child  { right: -20px; }
 
 .credibility-stats {
   display: flex;
@@ -2568,26 +2589,10 @@ body.has-hero .site-header {
 
   .stat-divider { display: none; }
   .credibility-stats { flex-direction: column; align-items: center; gap: 24px 0; }
-  .credibility { background-image: none; overflow: hidden; }
-  .cred-stats-row {
-    position: relative;
-    overflow: visible;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 220px;
-  }
-  .cred-photo {
-    display: block;
-    position: absolute;
-    width: 135px;
-    height: 100%;
-    top: -50px;
-    object-fit: contain;
-    object-position: center bottom;
-  }
+  .cred-stats-row { min-height: 220px; }
+  .cred-photo { width: 135px; height: 100%; top: -50px; }
   .cred-photo:first-child { left: -36px; }
-  .cred-photo:last-child { right: -41px; }
+  .cred-photo:last-child  { right: -41px; }
 
   .hero-content { padding: 100px 0 64px; }
 
@@ -3008,6 +3013,9 @@ body.has-hero .site-header {
   .choose-question {
     white-space: normal;
     font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
+  .sig-note {
+    white-space: normal;
   }
 }
 
