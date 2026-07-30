@@ -2724,6 +2724,7 @@ body.has-hero .site-header {
 
 .choose-panel--signature {
   background: var(--background);
+  overflow: hidden;
 }
 
 .choose-panel--standard {
@@ -2817,7 +2818,32 @@ body.has-hero .site-header {
   max-width: 520px;
   overflow: hidden;
   text-align: left;
+  position: relative;
+  z-index: 1;
 }
+
+.sig-photo-row {
+  position: relative;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 600px;
+}
+
+.sig-photo {
+  display: block;
+  position: absolute;
+  width: auto;
+  height: 100%;
+  top: 0;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.sig-photo--left  { left:  -50px; }
+.sig-photo--right { right: -50px; }
 
 .choose-panel-bullets li {
   font-family: var(--font-body);
@@ -2910,6 +2936,9 @@ body.has-hero .site-header {
   }
   .choose-panel-bullets {
     max-width: 100%;
+  }
+  .sig-photo {
+    display: none;
   }
   .choose-panel-tagline {
     white-space: normal;
