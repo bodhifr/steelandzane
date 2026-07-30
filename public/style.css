@@ -2842,7 +2842,7 @@ body.has-hero .site-header {
   object-position: center bottom;
 }
 
-.sig-photo--left  { left:  -225px; }
+.sig-photo--left  { left:  -125px; }
 .sig-photo--right { right: -150px; height: 80%; }
 
 .choose-panel-bullets li {
