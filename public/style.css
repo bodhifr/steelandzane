@@ -2681,7 +2681,6 @@ body.has-hero .site-header {
 /* ===== CHOOSE PAGE — SPLIT SCREEN ===== */
 
 .choose-main {
-  min-height: 100vh;
   overflow: visible;
 }
 
@@ -2731,7 +2730,7 @@ body.has-hero .site-header {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 32px 32px 80px;
+  padding: 32px 32px 40px;
   gap: 6px;
   text-decoration: none;
 }
