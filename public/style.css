@@ -2723,7 +2723,6 @@ body.has-hero .site-header {
 .choose-split {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  min-height: 100vh;
 }
 
 .choose-panel {
