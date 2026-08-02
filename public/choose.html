@@ -80,7 +80,7 @@
     // These are the ONLY lines you need to change to go live.
     // ─────────────────────────────────────────────────────────────────────────
     const URL_SIGNATURE = 'https://book.steelandzane.com/order/steel/signature-marketing/261fa345-de1e-4f3a-99e5-497d58a8a599';
-    const URL_STANDARD  = '[INSERT STANDARD ORDER PAGE URL]';
+    const URL_STANDARD  = 'https://book.steelandzane.com/order/steel/2025-order-page';
     // ─────────────────────────────────────────────────────────────────────────
 
     document.getElementById('btn-signature').addEventListener('click', function(e) {
@@ -90,7 +90,7 @@
 
     document.getElementById('btn-standard').addEventListener('click', function(e) {
       e.preventDefault();
-      window.location.href = URL_STANDARD;
+      window.open(URL_STANDARD, '_blank', 'noopener,noreferrer');
     });
   </script>
   <script src="cursor.js"></script>
