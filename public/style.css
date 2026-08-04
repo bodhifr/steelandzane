@@ -3009,6 +3009,9 @@ body.has-hero .site-header {
   .choose-question-card {
     padding: 20px 20px 18px;
   }
+  .choose-logo-link {
+    display: none;
+  }
   .choose-panel--standard {
     border-left: none;
     border-top: 1px solid rgba(244, 240, 232, 0.08);
