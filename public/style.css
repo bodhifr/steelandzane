@@ -914,13 +914,13 @@ body.has-hero .site-header {
 }
 
 .footer-socials img {
-  filter: brightness(10);
+  filter: brightness(0) invert(49%) sepia(38%) saturate(639%) hue-rotate(334deg) brightness(96%) contrast(88%);
 }
 
 .footer-copy {
   font-family: var(--font-heading);
   font-size: 13px;
-  color: rgba(255,255,255,0.5);
+  color: var(--terracotta);
   letter-spacing: 0.06em;
 }
 
