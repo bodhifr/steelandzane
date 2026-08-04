@@ -154,7 +154,7 @@ body.has-hero .site-header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
-  height: 72px;
+  height: 104px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -177,7 +177,7 @@ body.has-hero .site-header {
 }
 
 .logo-img {
-  height: 44px;
+  height: 88px;
   width: auto;
   display: block;
 }
@@ -892,7 +892,7 @@ body.has-hero .site-header {
 }
 
 .footer-logo {
-  height: 52px;
+  height: 104px;
   width: auto;
   object-fit: contain;
   opacity: 0.9;
@@ -2690,6 +2690,7 @@ body.has-hero .site-header {
   background: var(--bronze);
   border-bottom: none;
   padding: 20px 32px;
+  min-height: 130px;
   text-align: center;
 }
 
