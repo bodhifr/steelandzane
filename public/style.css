@@ -2696,13 +2696,14 @@ body.has-hero .site-header {
 
 .choose-logo-link {
   position: absolute;
-  top: 20px;
+  top: 50%;
   left: 32px;
+  transform: translateY(-50%);
   display: block;
 }
 
 .choose-logo-link .logo-img {
-  height: 97px;
+  height: 87px;
   filter: brightness(0) invert(1);
 }
 
