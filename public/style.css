@@ -154,7 +154,7 @@ body.has-hero .site-header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
-  height: 104px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -177,7 +177,7 @@ body.has-hero .site-header {
 }
 
 .logo-img {
-  height: 88px;
+  height: 52px;
   width: auto;
   display: block;
 }
