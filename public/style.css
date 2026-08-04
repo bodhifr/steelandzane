@@ -2701,6 +2701,11 @@ body.has-hero .site-header {
   display: block;
 }
 
+.choose-logo-link .logo-img {
+  height: 44px;
+  filter: brightness(0) invert(1);
+}
+
 .choose-eyebrow {
   font-family: var(--font-ui);
   font-size: 11px;
