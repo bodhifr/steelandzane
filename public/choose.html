@@ -99,8 +99,12 @@
       var bulletsObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('bullets-visible');
             bulletsObserver.unobserve(entry.target);
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                entry.target.classList.add('bullets-visible');
+              });
+            });
           }
         });
       }, { threshold: 0.1 });
