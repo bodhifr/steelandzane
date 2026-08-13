@@ -1434,8 +1434,8 @@ body.has-hero .site-header {
   overflow: hidden;
   width: 100%;
   max-width: 980px;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 83px, black 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 83px, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 93px, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 93px, black 92%, transparent);
 }
 
 .brokerage-track {
