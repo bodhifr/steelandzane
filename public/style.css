@@ -3022,6 +3022,12 @@ body.has-hero .site-header {
   .choose-panel-bullets {
     max-width: 100%;
   }
+  .choose-panel--signature .choose-panel-bullets li {
+    animation-play-state: paused;
+  }
+  .choose-panel--signature .choose-panel-bullets.bullets-visible li {
+    animation-play-state: running;
+  }
   .sig-photo {
     display: none;
   }

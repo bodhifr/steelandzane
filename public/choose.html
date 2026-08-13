@@ -92,6 +92,20 @@
       e.preventDefault();
       window.open(URL_STANDARD, '_blank', 'noopener,noreferrer');
     });
+
+    // Mobile: trigger checklist animation when bullets scroll into view
+    var bulletsList = document.querySelector('.choose-panel--signature .choose-panel-bullets');
+    if (bulletsList && window.IntersectionObserver) {
+      var bulletsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('bullets-visible');
+            bulletsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      bulletsObserver.observe(bulletsList);
+    }
   </script>
   <script src="cursor.js"></script>
 
