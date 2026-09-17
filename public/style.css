@@ -2682,6 +2682,9 @@ body.has-hero .site-header {
 
 .choose-main {
   overflow: visible;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .choose-question-card {
@@ -2729,6 +2732,7 @@ body.has-hero .site-header {
 .choose-split {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  flex: 1;
 }
 
 .choose-panel {
@@ -3000,11 +3004,13 @@ body.has-hero .site-header {
 @media (max-width: 768px) {
   .choose-main {
     height: auto;
+    min-height: 0;
     overflow: visible;
   }
   .choose-split {
     grid-template-columns: 1fr;
     height: auto;
+    flex: none;
   }
   .choose-question-card {
     padding: 20px 20px 18px;
