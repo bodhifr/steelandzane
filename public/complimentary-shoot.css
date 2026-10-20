@@ -90,7 +90,7 @@
    so the video straddles into the plaster section below. */
 .cs-band {
   --cs-overlap: 28px;
-  padding-top: 64px;
+  padding-top: 19px;             /* phones: 70% less than 64px */
   background: linear-gradient(
     to bottom,
     var(--dark) calc(100% - var(--cs-overlap)),
@@ -107,13 +107,14 @@
   text-align: center;
 }
 
-/* Top headline: title case, Montserrat Black (900). */
+/* Top headline: all caps, Montserrat Black (900). */
 .cs-headline {
   font-family: var(--cs-font-black);
   font-weight: 900;
   font-size: clamp(2.1rem, 8.6vw, 4.5rem);
   line-height: 1.08;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
   color: var(--background);      /* plaster on the dark band */
   text-wrap: balance;
 }
@@ -323,15 +324,15 @@
   margin: 0;
 }
 
-/* Primary buttons: title case, Montserrat Black (900), same size as the question headings. */
+/* Primary buttons: title case, Manrope bold (700), same size as the question headings. */
 .cs-next {
   display: block;
   width: 100%;
   min-height: 72px;
   margin-top: 16px;
   padding: 16px 20px;
-  font-family: var(--cs-font-black);
-  font-weight: 900;
+  font-family: var(--font-body);
+  font-weight: 700;
   font-size: clamp(1.5rem, 4.6vw, 2rem);
   line-height: 1.1;
   letter-spacing: 0.01em;
@@ -706,7 +707,7 @@
    The form is allowed to start below the fold. */
 @media (max-width: 719px) and (max-height: 620px) {
   .cs-band {
-    padding-top: 36px;
+    padding-top: 11px;           /* 70% less than 36px */
   }
 
   .cs-headline {
