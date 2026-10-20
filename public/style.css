@@ -204,8 +204,8 @@ body.has-hero .site-header {
 
 .nav-cta {
   padding: 10px 22px;
-  background: var(--bronze);
-  border: 1px solid var(--bronze);
+  background: var(--terracotta);   /* same size as the other nav links, by choice */
+  border: 1px solid var(--terracotta);
   border-radius: 2px;
   color: var(--plaster);
   transition: background 0.25s, color 0.25s, border-color 0.25s;
@@ -386,14 +386,14 @@ body.has-hero .site-header {
 .btn-hero-primary {
   display: inline-block;
   font-family: var(--font-ui);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: 19px;      /* bold 19px = WCAG "large text": stays legible on terracotta (3.5:1) */
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 18px 44px;
-  background: var(--bronze);
+  padding: 18px 40px;
+  background: var(--terracotta);
   color: var(--plaster);
-  border: 1px solid var(--bronze);
+  border: 1px solid var(--terracotta);
   transition: background 0.3s, border-color 0.3s, color 0.3s;
   position: relative;
   overflow: hidden;
