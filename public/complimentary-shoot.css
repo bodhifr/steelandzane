@@ -766,7 +766,7 @@
     margin: 32.4px auto 36px;    /* was 36px / 40px */
     max-width: none;
     white-space: nowrap;
-    font-size: calc(0.9 * min(2.1rem, calc((min(100vw, 1320px) - 40px) / 36.3)));   /* 10% smaller */
+    font-size: calc(0.63 * min(2.1rem, calc((min(100vw, 1320px) - 40px) / 36.3)));   /* 10% then 30% smaller (0.9 x 0.7) */
   }
 
   .cs-subhead > span {
@@ -777,7 +777,7 @@
      font size (Manrope, with bold words), wider than the video column, so the
      paragraph is centered on the column and allowed to extend past it. */
   .cs-explainer {
-    margin-top: 32.4px;          /* was 36px */
+    margin-top: 16.2px;          /* half of 32.4px */
     width: max-content;
     max-width: none;
     position: relative;
