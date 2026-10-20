@@ -772,8 +772,34 @@
     display: inline;
   }
 
+  /* Explainer on two set lines, breaking after "treatment". Line one is 37.69x the
+     font size (Manrope, with bold words), wider than the video column, so the
+     paragraph is centered on the column and allowed to extend past it. */
   .cs-explainer {
     margin-top: 36px;
+    width: max-content;
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 38.4));
+  }
+
+  .cs-ex-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  /* Claim button: 20% taller (72 -> 86px) and about half the empty space on each
+     side of the label (label ~258px; was 171px per side, now 86px). */
+  .cs-gate .cs-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 86px;
+    margin: 0 auto;
+    padding: 0 86px;
   }
 
   .cs-section {
