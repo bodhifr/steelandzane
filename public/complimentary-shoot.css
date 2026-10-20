@@ -42,8 +42,13 @@
 }
 
 /* ── HERO ─────────────────────────────────────────────────────────────── */
+/* The hero (badge strip through the Claim button) fills at least the first
+   screen, so the next section never peeks in at the bottom on load. svh =
+   the visible height with the browser bars showing. */
 .cs-hero {
-  padding: 0 0 48px;
+  padding: 0 0 64px;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 /* Top strip + offer badge, after the reference page's "live workshop" pill.
@@ -91,7 +96,7 @@
    so the video straddles into the plaster section below. */
 .cs-band {
   --cs-overlap: 28px;
-  padding-top: 19px;             /* phones: 70% less than 64px */
+  padding-top: 29px;             /* phones: 19px + 50% */
   background: linear-gradient(
     to bottom,
     var(--dark) calc(100% - var(--cs-overlap)),
@@ -349,6 +354,7 @@
   font-family: var(--font-body);
   font-weight: 800;
   font-size: clamp(1.35rem, 4.14vw, 1.8rem);
+  border-radius: 14px;
   line-height: 1.1;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -693,7 +699,7 @@
 /* ── BREAKPOINTS ──────────────────────────────────────────────────────── */
 @media (min-width: 720px) {
   .cs-hero {
-    padding: 0 0 72px;
+    padding: 0 0 88px;
   }
 
   .cs-band {
@@ -724,7 +730,7 @@
    The form is allowed to start below the fold. */
 @media (max-width: 719px) and (max-height: 620px) {
   .cs-band {
-    padding-top: 11px;           /* 70% less than 36px */
+    padding-top: 17px;           /* 11px + 50% */
   }
 
   .cs-page {
