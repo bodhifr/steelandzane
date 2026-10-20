@@ -5,7 +5,7 @@
    ========================================================================== */
 
 .cs-page {
-  --cs-font-black: 'Montserrat', 'Arial Black', sans-serif;   /* Montserrat Black (900) */
+  --cs-font-headline: 'Poppins', 'Segoe UI', sans-serif;   /* Poppins ExtraBold (800) */
   --cs-headline-size: clamp(1.68rem, 6.88vw, 3.6rem);   /* top headline + section headings */
   --cs-error: #8F3A22;          /* darkened terracotta: 6.9:1 on plaster */
   --cs-field-bg: #FBF9F5;
@@ -108,13 +108,13 @@
   text-align: center;
 }
 
-/* Top headline: all caps, Montserrat Black (900). */
+/* Top headline: all caps, Poppins ExtraBold (800). */
 .cs-headline {
-  font-family: var(--cs-font-black);
-  font-weight: 900;
+  font-family: var(--cs-font-headline);
+  font-weight: 800;
   font-size: var(--cs-headline-size);
   line-height: 1.08;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--background);      /* plaster on the dark band */
   text-wrap: balance;
@@ -559,10 +559,10 @@
   contain-intrinsic-size: auto 600px;
 }
 
-/* Section headings: Montserrat Black at the top headline's size (case as written). */
+/* Section headings: Poppins ExtraBold at the top headline's size (case as written). */
 .cs-section-title {
-  font-family: var(--cs-font-black);
-  font-weight: 900;
+  font-family: var(--cs-font-headline);
+  font-weight: 800;
   font-size: var(--cs-headline-size);
   line-height: 1.1;
   letter-spacing: -0.01em;
