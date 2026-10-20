@@ -106,9 +106,9 @@
   text-align: center;
 }
 
-/* Top headline: all caps, bold Manrope (section headings stay Cormorant). */
+/* Top headline: all caps, bold Neutraface (section headings stay Cormorant). */
 .cs-headline {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: clamp(2.1rem, 8.6vw, 4.5rem);
   line-height: 1.08;
@@ -323,18 +323,19 @@
   margin: 0;
 }
 
-/* Primary buttons: Manrope bold at the same size as the question headings. */
+/* Primary buttons: all-caps Neutraface bold, same size as the question headings. */
 .cs-next {
   display: block;
   width: 100%;
   min-height: 72px;
   margin-top: 16px;
   padding: 16px 20px;
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: clamp(1.5rem, 4.6vw, 2rem);
   line-height: 1.1;
   letter-spacing: 0.02em;
+  text-transform: uppercase;
   text-align: center;
   cursor: pointer;
 }
@@ -679,7 +680,7 @@
 
   .cs-band {
     --cs-overlap: 56px;
-    padding-top: 150px;
+    padding-top: 128px;          /* 15% less than 150px */
   }
 
   .cs-subhead {
