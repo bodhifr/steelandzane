@@ -44,6 +44,40 @@
   padding: 0 0 48px;
 }
 
+/* Top strip + offer badge, after the reference page's "live workshop" pill.
+   One line at every width: the caps text measures ~25.4x its font size,
+   so on phones the size is (screen - gutters - pill padding - dot) / 26.6. */
+.cs-topbar {
+  background: #141210;           /* a step darker than the band below */
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.cs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: var(--background);
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: min(14px, calc((100vw - 84px) / 26.6));
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.cs-badge-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--terracotta);
+}
+
 /* Dark band (same Walnut Black as the homepage "problem" section) behind
    the headline, subhead and video. The band stops partway down the video
    so the video straddles into the plaster section below. */
@@ -78,16 +112,16 @@
   text-wrap: balance;
 }
 
-/* Two set lines. The second ("Give Sellers a Reason to Choose You") never
-   breaks: on phones the size shrinks with the screen so it always fits.
-   That line measures 16.86x the font size in Manrope 500; dividing by 17.2
-   leaves a ~2% margin inside the 20px side gutters. */
+/* Two set lines that never break. On phones the size shrinks with the
+   screen so both always fit. The longer line ("Get a Complimentary
+   Signature Shoot –") measures 18.48x the font size in Manrope 500;
+   dividing by 18.85 leaves a ~2% margin inside the 20px side gutters. */
 .cs-subhead {
   max-width: 900px;
   margin: 24px auto 22px;
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: min(clamp(1.4rem, 3vw, 2.1rem), calc((100vw - 40px) / 17.2));
+  font-size: min(clamp(1.4rem, 3vw, 2.1rem), calc((100vw - 40px) / 18.85));
   line-height: 1.28;
   color: var(--background);
 }
@@ -673,7 +707,7 @@
   }
 
   .cs-subhead {
-    font-size: min(1.15rem, calc((100vw - 40px) / 17.2));
+    font-size: min(1.15rem, calc((100vw - 40px) / 18.85));
     margin: 16px auto 14px;
   }
 }
