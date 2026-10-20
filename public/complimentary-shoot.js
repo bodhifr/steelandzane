@@ -332,8 +332,11 @@
     form.hidden = true;
     progress.hidden = true;
     done.hidden = false;
-    // textContent only: user input never becomes HTML.
-    document.getElementById('cs-done-title').textContent = `Thanks, ${first}.`;
+    // Built from text nodes only: user input never becomes HTML.
+    const title = document.getElementById('cs-done-title');
+    const name = document.createElement('strong');
+    name.textContent = `${first}.`;
+    title.replaceChildren(document.createTextNode('Thanks, '), name);
     document.getElementById('cs-done-body').textContent = state.answers.no_listing
       ? 'Your complimentary shoot is saved for your next listing. We’ll be in touch.'
       : `We’ll give you a call from ${CALL_FROM} as soon as possible to plan your shoot.`;

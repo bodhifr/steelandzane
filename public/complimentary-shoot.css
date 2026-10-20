@@ -54,26 +54,23 @@
 }
 
 .cs-headline {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.05rem, 6.2vw, 4.75rem);
-  line-height: 1.06;
-  letter-spacing: -0.015em;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
   color: var(--text);
   text-wrap: balance;
 }
 
-.cs-headline-accent {
-  color: var(--terracotta);
-}
-
+/* Large on phones too, close to the headline in visual weight. */
 .cs-subhead {
   max-width: 900px;
   margin: 12px auto 20px;
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: clamp(1.1rem, 2.6vw, 2rem);
-  line-height: 1.3;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.28;
   color: var(--text);
   text-wrap: balance;
 }
@@ -147,14 +144,35 @@
   transition: width 0.35s ease;
 }
 
+/* Questions: Manrope, centered, with the key word(s) in <strong>. */
 .cs-q {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.2;
+  font-size: clamp(1.5rem, 4.6vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-align: center;
   color: var(--text);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   outline: none;
+}
+
+.cs-q strong {
+  font-weight: 700;
+}
+
+/* Visually hidden, still announced by screen readers (placeholders
+   alone are not accessible labels). */
+.cs-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .cs-row {
@@ -166,36 +184,30 @@
 .cs-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 4px;
-}
-
-.cs-field label {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.cs-optional {
-  text-transform: none;
-  letter-spacing: 0;
 }
 
 .cs-field input,
 .cs-field textarea {
   width: 100%;
   font-family: var(--font-body);
-  font-size: 16px;               /* 16px+ stops iOS zooming on focus */
+  font-size: 17px;               /* 16px+ stops iOS zooming on focus */
   color: var(--text);
   background: var(--cs-field-bg);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 13px 14px;
-  min-height: 50px;
+  padding: 14px 16px;
+  min-height: 58px;
   transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Field names live inside the boxes, like the reference page. */
+.cs-field input::placeholder,
+.cs-field textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .cs-field textarea {
@@ -220,7 +232,8 @@
 
 .cs-error {
   min-height: 0;
-  margin: 6px 0 0;
+  margin: 8px 0 0;
+  text-align: center;
   font-size: 13px;
   line-height: 1.4;
   color: var(--cs-error);
@@ -284,22 +297,12 @@
   color: var(--text);
 }
 
-.cs-reassure {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-.cs-reassure span {
-  display: block;
-}
-
+/* Consent fine print, at the very bottom of the page (in the footer). */
 .cs-consent {
-  margin-top: 10px;
+  max-width: 640px;
+  margin: 0 auto 14px;
   font-size: 11.5px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -530,10 +533,6 @@
     padding: 64px 0 72px;
   }
 
-  .cs-headline-accent {
-    white-space: nowrap;         /* room to keep "Every Other Top Agent?" whole */
-  }
-
   .cs-subhead {
     margin: 20px auto 40px;
   }
@@ -548,44 +547,21 @@
   }
 }
 
-/* Short phone screens (iPhone SE/mini with Safari bars): tighten the hero
-   so the first form screen still fits above the fold. */
+/* Short phone screens (iPhone SE/mini with Safari bars): scale the hero
+   so the headline, subhead and video are all fully visible on load.
+   The form is allowed to start below the fold. */
 @media (max-width: 719px) and (max-height: 620px) {
   .cs-hero {
-    padding-top: 12px;
+    padding-top: 14px;
   }
 
   .cs-headline {
-    font-size: 1.8rem;
+    font-size: 2.3rem;
   }
 
   .cs-subhead {
-    font-size: 1rem;
-    margin: 8px auto 12px;
-  }
-
-  .cs-form-wrap {
-    margin-top: 14px;
-  }
-
-  .cs-progress {
-    margin-bottom: 12px;
-  }
-
-  .cs-q {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-
-  .cs-field input {
-    min-height: 46px;
-    padding: 11px 12px;
-  }
-
-  .cs-next {
-    margin-top: 10px;
-    min-height: 48px;
-    padding: 14px;
+    font-size: 1.2rem;
+    margin: 8px auto 14px;
   }
 }
 
