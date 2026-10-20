@@ -696,6 +696,19 @@
   color: var(--muted);
 }
 
+/* iOS 26 Safari toolbar: with an edge-to-edge element pinned to the bottom of the
+   screen, Safari shows a solid bottom bar instead of glass. Zero height, ignores
+   taps, takes no space. Mirrors the HubSpot anchor that does this on acquisition.com. */
+.cs-safari-edge {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background-color: var(--background);
+  pointer-events: none;
+}
+
 /* ── BREAKPOINTS ──────────────────────────────────────────────────────── */
 @media (min-width: 720px) {
   .cs-hero {
