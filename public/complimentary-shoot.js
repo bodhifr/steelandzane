@@ -555,6 +555,14 @@
     form.hidden = false;
   }
 
+  // Top badge: scroll down to the Claim button (or to the form once it's open).
+  document.getElementById('cs-badge').addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = gate.hidden ? wrap : claimBtn;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (!gate.hidden) claimBtn.focus({ preventScroll: true });
+  });
+
   claimBtn.addEventListener('click', () => {
     state.claimed = true;
     persist();

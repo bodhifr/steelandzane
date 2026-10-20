@@ -68,6 +68,12 @@
   text-transform: uppercase;
   white-space: nowrap;
   color: var(--text);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.cs-badge:hover {
+  background: #FFFFFF;
 }
 
 .cs-badge-dot {
