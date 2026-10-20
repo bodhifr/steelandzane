@@ -120,6 +120,20 @@
   text-wrap: balance;
 }
 
+/* Phones: fixed break "DO YOU LOOK LIKE / EVERY OTHER TOP AGENT?". The longer
+   line measures 13.33x the font size in Poppins 800 caps (+0.01em), so the size
+   follows the screen: (width - 40px gutters) / 13.6 leaves a ~2% margin. */
+@media (max-width: 719px) {
+  .cs-headline {
+    font-size: min(var(--cs-headline-size), calc((100vw - 40px) / 13.6));
+  }
+
+  .cs-hl-line {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
 /* Two set lines that never break. On phones the size shrinks with the
    screen so both always fit. The longer line ("Get a Complimentary
    Signature Shoot –") measures 18.48x the font size in Manrope 500;
@@ -325,7 +339,7 @@
   margin: 0;
 }
 
-/* Primary buttons: all caps, Manrope bold (700), same size as the question headings. */
+/* Primary buttons: all caps, Manrope ExtraBold (800), 90% of the question-heading size. */
 .cs-next {
   display: block;
   width: 100%;
@@ -333,8 +347,8 @@
   margin-top: 16px;
   padding: 16px 20px;
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 4.6vw, 2rem);
+  font-weight: 800;
+  font-size: clamp(1.35rem, 4.14vw, 1.8rem);
   line-height: 1.1;
   letter-spacing: 0.03em;
   text-transform: uppercase;
