@@ -741,11 +741,35 @@
 
   .cs-band {
     --cs-overlap: 56px;
-    padding-top: 128px;          /* 15% less than 150px */
+    padding-top: 64px;           /* half of 128px */
   }
 
+  /* Wider hero on desktop so the one-line subhead fits at full size on a laptop. */
+  .cs-intro {
+    max-width: 1320px;
+  }
+
+  /* Desktop break: "DO YOU LOOK LIKE EVERY OTHER / TOP AGENT?". Line one measures
+     16.37x the font size (Poppins 800 caps), so it scales down on narrower screens. */
+  .cs-headline {
+    white-space: nowrap;
+    font-size: min(var(--cs-headline-size), calc((min(100vw, 1320px) - 40px) / 16.7));
+  }
+
+  .cs-hl-desk-break {
+    display: block;
+  }
+
+  /* Subhead on one line: 35.55x the font size in Manrope 500. */
   .cs-subhead {
     margin: 36px auto 40px;
+    max-width: none;
+    white-space: nowrap;
+    font-size: min(2.1rem, calc((min(100vw, 1320px) - 40px) / 36.3));
+  }
+
+  .cs-subhead > span {
+    display: inline;
   }
 
   .cs-explainer {
