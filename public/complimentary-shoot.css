@@ -779,8 +779,8 @@
     display: inline;
   }
 
-  /* Explainer on three set lines, breaking after "treatment" and "market". The longest
-     line is 53.54x the font size (Manrope, with bold words), wider than the video column,
+  /* Explainer on three set lines, breaking after "choice" and "market". The longest
+     line is 31.89x the font size (Manrope, with bold words), wider than the video column,
      so the paragraph is centered on the column and allowed to extend past it. */
   .cs-explainer {
     margin-top: 16.2px;          /* half of 32.4px */
@@ -789,7 +789,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 55.3));   /* ~3% spare incl. scrollbar */
+    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 32.9));   /* ~3% spare incl. scrollbar */
   }
 
   .cs-ex-line {
