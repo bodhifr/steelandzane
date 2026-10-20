@@ -6,6 +6,7 @@
 
 .cs-page {
   --cs-font-black: 'Montserrat', 'Arial Black', sans-serif;   /* Montserrat Black (900) */
+  --cs-headline-size: clamp(1.68rem, 6.88vw, 3.6rem);   /* top headline + section headings */
   --cs-error: #8F3A22;          /* darkened terracotta: 6.9:1 on plaster */
   --cs-field-bg: #FBF9F5;
   background: var(--background);
@@ -111,7 +112,7 @@
 .cs-headline {
   font-family: var(--cs-font-black);
   font-weight: 900;
-  font-size: clamp(2.1rem, 8.6vw, 4.5rem);
+  font-size: var(--cs-headline-size);
   line-height: 1.08;
   letter-spacing: -0.01em;
   text-transform: uppercase;
@@ -324,7 +325,7 @@
   margin: 0;
 }
 
-/* Primary buttons: title case, Manrope bold (700), same size as the question headings. */
+/* Primary buttons: all caps, Manrope bold (700), same size as the question headings. */
 .cs-next {
   display: block;
   width: 100%;
@@ -335,8 +336,8 @@
   font-weight: 700;
   font-size: clamp(1.5rem, 4.6vw, 2rem);
   line-height: 1.1;
-  letter-spacing: 0.01em;
-  text-transform: none;          /* override .btn-hero-primary caps */
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   text-align: center;
   cursor: pointer;
 }
@@ -558,11 +559,13 @@
   contain-intrinsic-size: auto 600px;
 }
 
+/* Section headings: Montserrat Black at the top headline's size (case as written). */
 .cs-section-title {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(1.8rem, 5.5vw, 2.6rem);
-  line-height: 1.15;
+  font-family: var(--cs-font-black);
+  font-weight: 900;
+  font-size: var(--cs-headline-size);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   text-align: center;
   color: var(--text);
   margin-bottom: 28px;
@@ -710,8 +713,8 @@
     padding-top: 11px;           /* 70% less than 36px */
   }
 
-  .cs-headline {
-    font-size: 1.75rem;
+  .cs-page {
+    --cs-headline-size: 1.4rem;   /* 20% less than 1.75rem */
   }
 
   .cs-subhead {
