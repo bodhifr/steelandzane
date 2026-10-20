@@ -168,18 +168,26 @@
   text-underline-offset: 0.18em;
 }
 
-/* Short explainer under the video, back on plaster. */
+/* Short explainer under the video, back on plaster. Line breaks are set by hand:
+   .cs-br-m breaks show on phones, .cs-br-d on desktop; lines never wrap otherwise.
+   Longest phone line ("It's a complimentary editorial photo shoot") is 18.96x the
+   font size, so the size follows the screen on narrow phones. */
 .cs-explainer {
   margin: 24px auto 0;
   max-width: 560px;
   text-align: center;
-  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  white-space: nowrap;
+  font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 19.5));
   line-height: 1.6;
   color: var(--text);
 }
 
 .cs-explainer strong {
   font-weight: 700;
+}
+
+.cs-br-d {
+  display: none;
 }
 
 /* ── VIDEO ────────────────────────────────────────────────────────────── */
@@ -779,8 +787,8 @@
     display: inline;
   }
 
-  /* Explainer on three set lines, breaking after "choice" and "market". The longest
-     line is 31.89x the font size (Manrope, with bold words), wider than the video column,
+  /* Explainer on two set lines, breaking after "market". The longest line is
+     50.22x the font size (Manrope, with bold words), wider than the video column,
      so the paragraph is centered on the column and allowed to extend past it. */
   .cs-explainer {
     margin-top: 16.2px;          /* half of 32.4px */
@@ -789,12 +797,15 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 32.9));   /* ~3% spare incl. scrollbar */
+    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 51.9));   /* ~3% spare incl. scrollbar */
   }
 
-  .cs-ex-line {
-    display: block;
-    white-space: nowrap;
+  .cs-br-m {
+    display: none;
+  }
+
+  .cs-br-d {
+    display: inline;
   }
 
   .cs-form-wrap {
