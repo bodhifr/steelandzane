@@ -5,6 +5,7 @@
    ========================================================================== */
 
 .cs-page {
+  --cs-font-black: 'Montserrat', 'Arial Black', sans-serif;   /* Montserrat Black (900) */
   --cs-error: #8F3A22;          /* darkened terracotta: 6.9:1 on plaster */
   --cs-field-bg: #FBF9F5;
   background: var(--background);
@@ -106,10 +107,10 @@
   text-align: center;
 }
 
-/* Top headline: title case, Cormorant Garamond bold (700). */
+/* Top headline: title case, Montserrat Black (900). */
 .cs-headline {
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--cs-font-black);
+  font-weight: 900;
   font-size: clamp(2.1rem, 8.6vw, 4.5rem);
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -322,15 +323,15 @@
   margin: 0;
 }
 
-/* Primary buttons: title case, Cormorant Garamond bold (700), same size as the question headings. */
+/* Primary buttons: title case, Montserrat Black (900), same size as the question headings. */
 .cs-next {
   display: block;
   width: 100%;
   min-height: 72px;
   margin-top: 16px;
   padding: 16px 20px;
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--cs-font-black);
+  font-weight: 900;
   font-size: clamp(1.5rem, 4.6vw, 2rem);
   line-height: 1.1;
   letter-spacing: 0.01em;
