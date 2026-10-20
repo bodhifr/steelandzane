@@ -696,17 +696,34 @@
   color: var(--muted);
 }
 
-/* iOS 26 Safari toolbar: with an edge-to-edge element pinned to the bottom of the
-   screen, Safari shows a solid bottom bar instead of glass. Zero height, ignores
-   taps, takes no space. Mirrors the HubSpot anchor that does this on acquisition.com. */
+/* iOS 26 Safari toolbar: a pinned, full-width strip with real height at the bottom
+   edge makes Safari paint its bottom bar solid instead of frosted glass. Tested on an
+   iPhone (2026-10-20): a zero-height strip did NOT work; this 48px container with a
+   plaster fill extending down under the bar did. Phones only (no glass bar on desktop);
+   the page gets 48px of extra bottom room so the footer can scroll above the strip. */
 .cs-safari-edge {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 0;
-  background-color: var(--background);
-  pointer-events: none;
+  display: none;
+}
+
+@media (max-width: 719px) {
+  .cs-safari-edge {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 48px;
+    pointer-events: none;
+  }
+
+  .cs-safari-edge > div {
+    height: 100vh;
+    background: var(--background);
+  }
+
+  .cs-page {
+    padding-bottom: 48px;
+  }
 }
 
 /* ── BREAKPOINTS ──────────────────────────────────────────────────────── */
