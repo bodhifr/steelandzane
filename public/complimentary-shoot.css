@@ -41,11 +41,24 @@
 
 /* ── HERO ─────────────────────────────────────────────────────────────── */
 .cs-hero {
-  padding: 24px 0 48px;
+  padding: 0 0 48px;
+}
+
+/* Dark band (same Walnut Black as the homepage "problem" section) behind
+   the headline, subhead and video. The band stops partway down the video
+   so the video straddles into the plaster section below. */
+.cs-band {
+  --cs-overlap: 28px;
+  padding-top: 43px;             /* 1.8x the original 24px */
+  background: linear-gradient(
+    to bottom,
+    var(--dark) calc(100% - var(--cs-overlap)),
+    var(--background) calc(100% - var(--cs-overlap))
+  );
 }
 
 /* Headline + subhead run wider than the video/form column, like a
-   direct-response page: big, bold, centered, legible at a glance. */
+   direct-response page: big, centered, legible at a glance. */
 .cs-intro {
   max-width: 1080px;
   margin: 0 auto;
@@ -54,25 +67,39 @@
 }
 
 .cs-headline {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(2.3rem, 6.2vw, 4.75rem);
-  line-height: 1.06;
-  letter-spacing: -0.025em;
-  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.7rem, 7.4vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--background);      /* plaster on the dark band */
   text-wrap: balance;
 }
 
 /* Large on phones too, close to the headline in visual weight. */
 .cs-subhead {
   max-width: 900px;
-  margin: 12px auto 20px;
+  margin: 12px auto 22px;
   font-family: var(--font-body);
   font-weight: 500;
   font-size: clamp(1.4rem, 3vw, 2.1rem);
   line-height: 1.28;
-  color: var(--text);
+  color: var(--background);
   text-wrap: balance;
+}
+
+/* Short explainer under the video, back on plaster. */
+.cs-explainer {
+  margin: 24px auto 0;
+  max-width: 560px;
+  text-align: center;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.cs-explainer strong {
+  font-weight: 700;
 }
 
 /* ── VIDEO ────────────────────────────────────────────────────────────── */
@@ -478,11 +505,10 @@
 }
 
 .cs-section-title {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(1.6rem, 4.8vw, 2.4rem);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 5.5vw, 2.6rem);
   line-height: 1.15;
-  letter-spacing: -0.02em;
   text-align: center;
   color: var(--text);
   margin-bottom: 28px;
@@ -596,11 +622,20 @@
 /* ── BREAKPOINTS ──────────────────────────────────────────────────────── */
 @media (min-width: 720px) {
   .cs-hero {
-    padding: 64px 0 72px;
+    padding: 0 0 72px;
+  }
+
+  .cs-band {
+    --cs-overlap: 56px;
+    padding-top: 115px;          /* 1.8x the original 64px */
   }
 
   .cs-subhead {
     margin: 20px auto 40px;
+  }
+
+  .cs-explainer {
+    margin-top: 36px;
   }
 
   .cs-section {
@@ -617,12 +652,12 @@
    so the headline, subhead and video are all fully visible on load.
    The form is allowed to start below the fold. */
 @media (max-width: 719px) and (max-height: 620px) {
-  .cs-hero {
-    padding-top: 14px;
+  .cs-band {
+    padding-top: 25px;           /* 1.8x the original 14px */
   }
 
   .cs-headline {
-    font-size: 2rem;
+    font-size: 2.3rem;
   }
 
   .cs-subhead {
