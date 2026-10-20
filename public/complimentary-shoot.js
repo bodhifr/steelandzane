@@ -16,6 +16,11 @@
     // VIDALYTICS CONVERSION: paste snippet here.
   }
 
+  // Google Maps Platform browser key (Maps JavaScript API + Places API (New)),
+  // restricted to this site's domains. Leave empty to turn address
+  // suggestions off; the address box then works as a plain text field.
+  const MAPS_API_KEY = '';
+
   const CALL_FROM = '323-643-9060';
   const API_URL = '/api/lead';
   const STORE_KEY = 'snz_cs_lead_v1';
@@ -36,6 +41,9 @@
   const address = document.getElementById('f-address');
   const dateField = form.querySelector('.cs-date-field');
   const dateInput = document.getElementById('f-date');
+  const gate = document.getElementById('cs-gate');
+  const claimBtn = document.getElementById('cs-claim');
+  const addrList = document.getElementById('cs-addr-list');
 
   const sections = {};
   form.querySelectorAll('.cs-step').forEach((el) => { sections[el.dataset.step] = el; });
@@ -135,6 +143,7 @@
     state.step = step;
     setProgress(step);
     updateListingButton();
+    if (step === 'listing') loadPlaces();   // warm up address suggestions
 
     if (moveFocus) {
       const heading = sections[step].querySelector('.cs-q');
@@ -360,6 +369,7 @@
 
   // ── FIELD BEHAVIOUR ───────────────────────────────────────────────────────
   noListing.addEventListener('change', () => {
+    closeSuggestions();
     address.disabled = noListing.checked;
     clearError('listing');
     state.answers.no_listing = noListing.checked;
@@ -392,6 +402,168 @@
 
   dateInput.min = todayISO();
 
+  // ── ADDRESS SUGGESTIONS (Google Places API (New)) ─────────────────────────
+  // Loaded only when the listing screen is reached, and only with a key.
+  // Any failure leaves the box as a plain text field.
+  const LA_BIAS = { center: { lat: 34.05, lng: -118.30 }, radius: 50000 };
+  let placesPromise = null;
+  let places = null;
+  let sessionToken = null;
+  let suggestions = [];
+  let activeIndex = -1;
+  let requestSeq = 0;
+  let debounceTimer = 0;
+
+  function loadPlaces() {
+    if (!MAPS_API_KEY) return Promise.resolve(null);
+    if (!placesPromise) {
+      placesPromise = new Promise((resolve, reject) => {
+        window.__csMapsReady = resolve;
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(MAPS_API_KEY)
+          + '&loading=async&libraries=places&callback=__csMapsReady';
+        s.onerror = reject;
+        document.head.appendChild(s);
+      })
+        .then(() => google.maps.importLibrary('places'))
+        .then((lib) => { places = lib; enableCombobox(); return lib; })
+        .catch(() => null);
+    }
+    return placesPromise;
+  }
+
+  function enableCombobox() {
+    address.setAttribute('role', 'combobox');
+    address.setAttribute('aria-autocomplete', 'list');
+    address.setAttribute('aria-expanded', 'false');
+    address.setAttribute('aria-controls', 'cs-addr-list');
+    address.setAttribute('autocomplete', 'off');   // our list replaces the browser's
+  }
+
+  function closeSuggestions() {
+    suggestions = [];
+    activeIndex = -1;
+    addrList.hidden = true;
+    addrList.replaceChildren();
+    address.setAttribute('aria-expanded', 'false');
+    address.removeAttribute('aria-activedescendant');
+  }
+
+  function renderSuggestions() {
+    addrList.replaceChildren();
+    if (!suggestions.length) { closeSuggestions(); return; }
+    suggestions.forEach((sug, i) => {
+      const p = sug.placePrediction;
+      const li = document.createElement('li');
+      li.id = `cs-addr-opt-${i}`;
+      li.setAttribute('role', 'option');
+      li.setAttribute('aria-selected', String(i === activeIndex));
+      li.textContent = p.mainText ? p.mainText.text : p.text.text;
+      if (p.secondaryText) {
+        const sec = document.createElement('span');
+        sec.className = 'cs-addr-secondary';
+        sec.textContent = p.secondaryText.text.replace(/, USA$/, '');
+        li.appendChild(sec);
+      }
+      // mousedown (not click) so the input doesn't blur and close the list first
+      li.addEventListener('mousedown', (e) => { e.preventDefault(); choose(i); });
+      addrList.appendChild(li);
+    });
+    const attrib = document.createElement('li');
+    attrib.className = 'cs-addr-attrib';
+    attrib.setAttribute('role', 'presentation');
+    attrib.textContent = 'Google Maps';
+    addrList.appendChild(attrib);
+    addrList.hidden = false;
+    address.setAttribute('aria-expanded', 'true');
+    if (activeIndex >= 0) address.setAttribute('aria-activedescendant', `cs-addr-opt-${activeIndex}`);
+    else address.removeAttribute('aria-activedescendant');
+  }
+
+  async function fetchSuggestions(query) {
+    const seq = ++requestSeq;
+    try {
+      if (!sessionToken) sessionToken = new places.AutocompleteSessionToken();
+      const res = await places.AutocompleteSuggestion.fetchAutocompleteSuggestions({
+        input: query,
+        sessionToken,
+        includedRegionCodes: ['us'],
+        includedPrimaryTypes: ['street_address', 'premise', 'subpremise'],
+        locationBias: LA_BIAS,
+      });
+      if (seq !== requestSeq) return;            // a newer keystroke won
+      suggestions = (res.suggestions || []).filter((s) => s.placePrediction).slice(0, 5);
+      activeIndex = -1;
+      renderSuggestions();
+    } catch (err) {
+      if (seq === requestSeq) closeSuggestions();
+    }
+  }
+
+  async function choose(i) {
+    const p = suggestions[i] && suggestions[i].placePrediction;
+    if (!p) return;
+    const typed = p.text.text.replace(/, USA$/, '');
+    address.value = typed;                        // immediate, then upgrade with ZIP
+    closeSuggestions();
+    clearError('listing');
+    requestSeq++;
+    try {
+      const place = p.toPlace();
+      await place.fetchFields({ fields: ['formattedAddress'] });
+      // e.g. "123 Green St, Los Angeles, CA 90025, USA" -> drop the country
+      if (place.formattedAddress && address.value === typed) {
+        address.value = place.formattedAddress.replace(/, USA$/, '');
+      }
+    } catch (err) { /* keep the prediction text */ }
+    sessionToken = null;                          // selection ends the billing session
+  }
+
+  address.addEventListener('focus', () => { loadPlaces(); });
+
+  address.addEventListener('input', () => {
+    if (!places) return;
+    clearTimeout(debounceTimer);
+    const q = address.value.trim();
+    if (q.length < 3) { requestSeq++; closeSuggestions(); return; }
+    debounceTimer = setTimeout(() => fetchSuggestions(q), 200);
+  });
+
+  address.addEventListener('keydown', (e) => {
+    if (addrList.hidden || !suggestions.length) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const n = suggestions.length;
+      activeIndex = e.key === 'ArrowDown' ? (activeIndex + 1) % n : (activeIndex - 1 + n) % n;
+      renderSuggestions();
+    } else if (e.key === 'Enter' && activeIndex >= 0) {
+      e.preventDefault();                         // pick the address, don't submit yet
+      choose(activeIndex);
+    } else if (e.key === 'Escape') {
+      closeSuggestions();
+    }
+  });
+
+  address.addEventListener('blur', () => { setTimeout(closeSuggestions, 150); });
+
+  // ── CLAIM GATE ────────────────────────────────────────────────────────────
+  // The questions stay hidden until the agent taps "Claim My Shoot".
+  function openForm() {
+    gate.hidden = true;
+    progress.hidden = false;
+    form.hidden = false;
+  }
+
+  claimBtn.addEventListener('click', () => {
+    state.claimed = true;
+    persist();
+    track('cta_click');
+    openForm();
+    showStep(state.step, false);
+    form.first_name.focus();     // opens the keyboard on phones
+  });
+
   // ── RESTORE A RESUMED LEAD ────────────────────────────────────────────────
   function restoreFields() {
     const a = state.answers;
@@ -420,5 +592,7 @@
   restoreFields();
   if (!sections[state.step] || activeSteps().indexOf(state.step) === -1) state.step = 'name';
   showStep(state.step, false);   // never steal focus on page load
+  // Someone who already started skips the Claim button and resumes.
+  if (state.claimed || state.step !== 'name' || Object.keys(state.answers).length) openForm();
   persist();
 }());

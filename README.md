@@ -188,9 +188,18 @@ If an agent leaves and comes back on the same phone within 30 days, the form res
 
 All of these are marked in the code:
 
-- **GA4:** set `GA4_ID` at the top of `public/complimentary-shoot.js`. Then in GA4 → Admin → Custom definitions, add event-scoped dimensions `src` and `bdr`. Events: `page_view`, `form_start`, `form_complete`, each with `src` and `bdr`.
+- **GA4:** set `GA4_ID` at the top of `public/complimentary-shoot.js`. Then in GA4 → Admin → Custom definitions, add event-scoped dimensions `src` and `bdr`. Events: `page_view`, `cta_click` (tapped Claim My Shoot), `form_start` (answered the name screen), `form_complete`, each with `src` and `bdr`.
 - **Vidalytics video:** replace the block marked `VIDALYTICS EMBED` in `public/complimentary-shoot.html` and delete the placeholder div. Configure Smart Autoplay inside Vidalytics.
 - **Vidalytics conversion:** paste the conversion snippet into `trackVidalyticsConversion()` in `public/complimentary-shoot.js`. It runs once, after the final screen saves.
+- **Address suggestions (Google Maps):** set `MAPS_API_KEY` at the top of `public/complimentary-shoot.js`. Until it's set, the listing box is a plain text field. To get a key:
+  1. Go to [console.cloud.google.com](https://console.cloud.google.com), signed in as bodhi@steelandzane.com, and create a project (e.g. "Steel & Zane Website"). Google requires a billing account with a card, though at this page's volume usage should stay within Google's free monthly allowance. Optionally set a budget alert under **Billing → Budgets & alerts**.
+  2. **APIs & Services → Library:** enable **Maps JavaScript API** and **Places API (New)**.
+  3. **APIs & Services → Credentials → Create credentials → API key**, then **Edit** the key:
+     - **Application restrictions → Websites:** add `steelandzane.com/*` and `www.steelandzane.com/*`. To test on Vercel previews, also add `*.vercel.app/*` temporarily and remove it after launch.
+     - **API restrictions → Restrict key:** select only Maps JavaScript API and Places API (New).
+  4. Paste the key into `MAPS_API_KEY`. This key is visible in the page by design; the restrictions above are what protect it.
+
+  Suggestions are limited to US street addresses and favor the LA area. Picking one fills the full address with ZIP (e.g. `123 Green St, Los Angeles, CA 90025`). The "Google Maps" line in the dropdown is Google's required attribution.
 - **Legal:** `public/privacy.html` and `public/terms.html` are **drafts** with `[CONFIRM: …]` placeholders. Have them and the form's consent line reviewed before sending any BDR links, then remove the draft banners.
 
 ### Images

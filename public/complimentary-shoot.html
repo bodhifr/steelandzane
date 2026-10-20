@@ -66,11 +66,16 @@
 
         <!-- LEAD FORM — one question per screen -->
         <div class="cs-form-wrap" id="cs-form-wrap">
-          <div class="cs-progress" role="progressbar" aria-label="Form progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <!-- Gate: only the Claim button shows until the agent taps it. -->
+          <div class="cs-gate" id="cs-gate">
+            <button type="button" class="btn-hero-primary cs-next" id="cs-claim">Claim My Shoot</button>
+          </div>
+
+          <div class="cs-progress" hidden role="progressbar" aria-label="Form progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
             <div class="cs-progress-fill"></div>
           </div>
 
-          <form class="cs-form" id="cs-form" novalidate>
+          <form class="cs-form" id="cs-form" novalidate hidden>
 
             <!-- Honeypot: humans never see or fill this -->
             <div class="cs-hp" aria-hidden="true">
@@ -92,7 +97,7 @@
                 </div>
               </div>
               <p class="cs-error" aria-live="polite"></p>
-              <button type="submit" class="btn-hero-primary cs-next">Claim My Shoot</button>
+              <button type="submit" class="btn-hero-primary cs-next">Next</button>
             </section>
 
             <!-- 2. Cell -->
@@ -104,31 +109,32 @@
               </div>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
-                <button type="button" class="cs-back">Back</button>
                 <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
               </div>
             </section>
 
             <!-- 3. Email -->
             <section class="cs-step" data-step="email" aria-labelledby="q-email" hidden>
-              <h2 class="cs-q" id="q-email" tabindex="-1">And your <strong>email?</strong></h2>
+              <h2 class="cs-q" id="q-email" tabindex="-1">Where should we <strong>email</strong> the photos to?</h2>
               <div class="cs-field">
-                <label class="cs-sr" for="f-email">Email</label>
-                <input type="email" id="f-email" name="email" placeholder="Email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" maxlength="120" required>
+                <label class="cs-sr" for="f-email">Business email address</label>
+                <input type="email" id="f-email" name="email" placeholder="Business email address" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" maxlength="120" required>
               </div>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
-                <button type="button" class="cs-back">Back</button>
                 <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
               </div>
             </section>
 
             <!-- 4. Listing -->
             <section class="cs-step" data-step="listing" aria-labelledby="q-listing" hidden>
               <h2 class="cs-q" id="q-listing" tabindex="-1">Which <strong>listing</strong> are you thinking of?</h2>
-              <div class="cs-field">
+              <div class="cs-field cs-addr">
                 <label class="cs-sr" for="f-address">Listing address</label>
                 <input type="text" id="f-address" name="listing_address" placeholder="Listing address" autocomplete="street-address" maxlength="200">
+                <ul class="cs-addr-list" id="cs-addr-list" role="listbox" aria-label="Address suggestions" hidden></ul>
               </div>
               <label class="cs-check">
                 <input type="checkbox" id="f-nolisting" name="no_listing">
@@ -136,8 +142,8 @@
               </label>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
-                <button type="button" class="cs-back">Back</button>
                 <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
               </div>
             </section>
 
@@ -150,8 +156,8 @@
               </div>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
-                <button type="button" class="cs-back">Back</button>
                 <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
               </div>
             </section>
 
@@ -168,8 +174,8 @@
               </div>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
-                <button type="button" class="cs-back">Back</button>
                 <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
               </div>
             </section>
 
@@ -182,8 +188,8 @@
               </div>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
-                <button type="button" class="cs-back">Back</button>
                 <button type="submit" class="btn-hero-primary cs-next">Request My Shoot</button>
+                <button type="button" class="cs-back">Back</button>
               </div>
             </section>
 
