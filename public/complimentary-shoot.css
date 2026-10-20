@@ -1,0 +1,570 @@
+/* ==========================================================================
+   Complimentary Shoot landing page
+   Loaded after style.css — reuses its tokens, fonts, .btn-hero-primary and
+   .testimonial-card components. Everything here is scoped with .cs-*.
+   ========================================================================== */
+
+.cs-page {
+  --cs-error: #8F3A22;          /* darkened terracotta: 6.9:1 on plaster */
+  --cs-field-bg: #FBF9F5;
+  background: var(--background);
+}
+
+.cs-narrow {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
+.cs-hero {
+  padding: 24px 0 48px;
+}
+
+.cs-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 7.6vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.cs-headline-accent {
+  font-style: italic;
+  color: var(--terracotta);
+  white-space: nowrap;           /* keep "Every Other Agent?" on one line */
+}
+
+.cs-subhead {
+  margin: 10px 0 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ── VIDEO ────────────────────────────────────────────────────────────── */
+.cs-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;          /* reserves space: no layout jump on load */
+  background: var(--dark);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.cs-video-poster,
+.cs-video > iframe,
+.cs-video > div:not(.cs-video-placeholder) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cs-video-poster {
+  object-fit: cover;
+}
+
+.cs-video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to top, rgba(31, 28, 25, 0.35), rgba(31, 28, 25, 0.05));
+}
+
+.cs-video-play {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(244, 240, 232, 0.92);
+  position: relative;
+}
+
+.cs-video-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent var(--bronze);
+}
+
+/* ── FORM ─────────────────────────────────────────────────────────────── */
+.cs-form-wrap {
+  margin-top: 20px;
+}
+
+.cs-progress {
+  height: 3px;
+  background: var(--border);
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.cs-progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--bronze);
+  transition: width 0.35s ease;
+}
+
+.cs-q {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 14px;
+  outline: none;
+}
+
+.cs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.cs-field label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cs-optional {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.cs-field input,
+.cs-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 16px;               /* 16px+ stops iOS zooming on focus */
+  color: var(--text);
+  background: var(--cs-field-bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 13px 14px;
+  min-height: 50px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cs-field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.cs-field input:focus,
+.cs-field textarea:focus {
+  outline: none;
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(113, 122, 100, 0.22);
+}
+
+.cs-field input:disabled {
+  opacity: 0.45;
+}
+
+.cs-field input[aria-invalid="true"] {
+  border-color: var(--cs-error);
+}
+
+.cs-error {
+  min-height: 0;
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--cs-error);
+}
+
+.cs-error:empty {
+  margin: 0;
+}
+
+.cs-next {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 14px;
+  padding: 16px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cs-next:focus-visible,
+.cs-back:focus-visible,
+.cs-faq-item summary:focus-visible,
+.cs-page a:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+}
+
+.cs-next[aria-busy="true"] {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.cs-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.cs-nav .cs-next {
+  flex: 1;
+  margin-top: 0;
+}
+
+.cs-back {
+  min-height: 52px;
+  padding: 0 14px;
+  background: none;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.cs-back:hover {
+  color: var(--text);
+}
+
+.cs-reassure {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.cs-reassure span {
+  display: block;
+}
+
+.cs-consent {
+  margin-top: 10px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.cs-consent a,
+.cs-footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* "No listing yet" checkbox — full-width 48px tap target */
+.cs-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.cs-check input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--bronze);
+  flex-shrink: 0;
+}
+
+/* Radio tiles */
+.cs-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cs-tile {
+  position: relative;
+  cursor: pointer;
+}
+
+.cs-tile input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.cs-tile span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  padding: 12px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--cs-field-bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.cs-tile input:checked + span {
+  border-color: var(--bronze);
+  background: rgba(140, 90, 60, 0.08);
+  font-weight: 600;
+}
+
+.cs-tile input:focus-visible + span {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+}
+
+.cs-date-field {
+  margin-top: 12px;
+}
+
+/* Honeypot — off-screen, not display:none (some bots skip hidden fields) */
+.cs-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Confirmation */
+.cs-done {
+  padding: 28px 0 8px;
+  text-align: center;
+}
+
+.cs-done-body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* ── BELOW-THE-FOLD SECTIONS ──────────────────────────────────────────── */
+.cs-section {
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+.cs-section-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+  line-height: 1.15;
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+/* How it works */
+.cs-steps {
+  list-style: none;
+  display: grid;
+  gap: 22px;
+}
+
+.cs-steps li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.cs-steps strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.cs-steps-num {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--bronze);
+  border-radius: 50%;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--bronze);
+}
+
+/* FAQ */
+.cs-faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-faq-item:first-of-type {
+  border-top: 1px solid var(--border);
+}
+
+.cs-faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.cs-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.cs-faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--bronze);
+  transition: transform 0.25s ease;
+}
+
+.cs-faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.cs-faq-item p {
+  padding: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Testimonials */
+.cs-testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.cs-testimonials .testimonial-author {
+  margin-top: 0;
+}
+
+/* Footer */
+.cs-footer {
+  padding: 32px 20px 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── BREAKPOINTS ──────────────────────────────────────────────────────── */
+@media (min-width: 720px) {
+  .cs-hero {
+    padding: 64px 0 72px;
+  }
+
+  .cs-subhead {
+    font-size: 17px;
+    margin: 14px 0 28px;
+  }
+
+  .cs-section {
+    padding: 88px 0;
+  }
+
+  .cs-testimonials-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+/* Short phone screens (iPhone SE/mini with Safari bars): tighten the hero
+   so the first form screen still fits above the fold. */
+@media (max-width: 719px) and (max-height: 620px) {
+  .cs-hero {
+    padding-top: 12px;
+  }
+
+  .cs-headline {
+    font-size: 1.75rem;
+  }
+
+  .cs-subhead {
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 6px 0 12px;
+  }
+
+  .cs-form-wrap {
+    margin-top: 14px;
+  }
+
+  .cs-progress {
+    margin-bottom: 12px;
+  }
+
+  .cs-q {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .cs-field input {
+    min-height: 46px;
+    padding: 11px 12px;
+  }
+
+  .cs-next {
+    margin-top: 10px;
+    min-height: 48px;
+    padding: 14px;
+  }
+}
+
+/* Very narrow phones: stack first/last name */
+@media (max-width: 340px) {
+  .cs-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-progress-fill,
+  .cs-faq-item summary::after,
+  .cs-field input,
+  .cs-tile span {
+    transition: none;
+  }
+}

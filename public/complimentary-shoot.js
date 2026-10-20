@@ -1,0 +1,421 @@
+// Complimentary Shoot landing page — conversational lead form + tracking.
+// One question per screen. The full set of answers so far is saved to
+// /api/lead after every screen, so partial leads reach the Sheet too.
+
+(function () {
+  'use strict';
+
+  // ── CONFIG ────────────────────────────────────────────────────────────────
+  // GA4 Measurement ID, e.g. 'G-ABC123XYZ'. Leave empty to disable analytics.
+  const GA4_ID = '';
+
+  // Called once, after the final screen has saved successfully.
+  // Paste the Vidalytics conversion snippet (from the Vidalytics dashboard)
+  // inside this function so watch-time can be tied to conversions.
+  function trackVidalyticsConversion() {
+    // VIDALYTICS CONVERSION: paste snippet here.
+  }
+
+  const CALL_FROM = '323-643-9060';
+  const API_URL = '/api/lead';
+  const STORE_KEY = 'snz_cs_lead_v1';
+  const STORE_TTL_MS = 30 * 24 * 60 * 60 * 1000;   // resume a lead for 30 days
+
+  const ALL_STEPS = ['name', 'cell', 'email', 'listing', 'status', 'timing', 'notes'];
+  const NO_LISTING_STEPS = ['name', 'cell', 'email', 'listing'];
+
+  // ── DOM ───────────────────────────────────────────────────────────────────
+  const form = document.getElementById('cs-form');
+  if (!form) return;
+  const wrap = document.getElementById('cs-form-wrap');
+  const progress = wrap.querySelector('.cs-progress');
+  const progressFill = wrap.querySelector('.cs-progress-fill');
+  const done = document.getElementById('cs-done');
+  const honeypot = document.getElementById('cs-website');
+  const noListing = document.getElementById('f-nolisting');
+  const address = document.getElementById('f-address');
+  const dateField = form.querySelector('.cs-date-field');
+  const dateInput = document.getElementById('f-date');
+
+  const sections = {};
+  form.querySelectorAll('.cs-step').forEach((el) => { sections[el.dataset.step] = el; });
+
+  // ── STORAGE (every access guarded: private mode / blocked storage) ────────
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return null;
+      const s = JSON.parse(raw);
+      if (!s || !s.leadId || Date.now() - s.startedAt > STORE_TTL_MS) return null;
+      return s;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function persist() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+  }
+
+  function clearStored() {
+    try { localStorage.removeItem(STORE_KEY); } catch (e) { /* ignore */ }
+  }
+
+  function uuid() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    const b = crypto.getRandomValues(new Uint8Array(16));
+    b[6] = (b[6] & 0x0f) | 0x40;
+    b[8] = (b[8] & 0x3f) | 0x80;
+    const h = Array.from(b, (x) => x.toString(16).padStart(2, '0')).join('');
+    return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
+  }
+
+  // ── TRACKING PARAMS ───────────────────────────────────────────────────────
+  // Only known-shaped codes are kept, so nothing personal can leak into
+  // analytics or the Sheet through src/bdr. No params = direct (src 0).
+  const params = new URLSearchParams(location.search);
+  const urlSrc = /^[012]$/.test(params.get('src') || '') ? params.get('src') : '0';
+  const urlBdr = /^\d{1,3}$/.test(params.get('bdr') || '') ? params.get('bdr') : '';
+  const urlQs = location.search.slice(1, 501);
+
+  let state = loadState();
+  if (state) {
+    // First touch wins, but fill in attribution the first visit lacked.
+    if (state.src === '0' && urlSrc !== '0') state.src = urlSrc;
+    if (!state.bdr && urlBdr) state.bdr = urlBdr;
+  } else {
+    state = {
+      leadId: uuid(),
+      startedAt: Date.now(),
+      step: 'name',
+      answers: {},
+      src: urlSrc,
+      bdr: urlBdr,
+      qs: urlQs,
+      formStarted: false,
+    };
+  }
+
+  // ── ANALYTICS (GA4) ───────────────────────────────────────────────────────
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+
+  if (GA4_ID) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_ID)}`;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA4_ID, { src: state.src, bdr: state.bdr });
+  }
+
+  function track(event) {
+    if (GA4_ID) gtag('event', event, { src: state.src, bdr: state.bdr });
+  }
+
+  // ── STEP HELPERS ──────────────────────────────────────────────────────────
+  function activeSteps() {
+    return state.answers.no_listing ? NO_LISTING_STEPS : ALL_STEPS;
+  }
+
+  function isFinal(step) {
+    const steps = activeSteps();
+    return steps[steps.length - 1] === step;
+  }
+
+  function setProgress(step) {
+    const steps = activeSteps();
+    const pct = Math.max(6, Math.round((steps.indexOf(step) / steps.length) * 100));
+    progressFill.style.width = `${pct}%`;
+    progress.setAttribute('aria-valuenow', String(pct));
+  }
+
+  function showStep(step, moveFocus) {
+    Object.keys(sections).forEach((name) => { sections[name].hidden = name !== step; });
+    state.step = step;
+    setProgress(step);
+    updateListingButton();
+
+    if (moveFocus) {
+      const heading = sections[step].querySelector('.cs-q');
+      heading.focus({ preventScroll: true });
+      if (wrap.getBoundingClientRect().top < 0) {
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  // The listing screen is the last screen when there's no listing.
+  function updateListingButton() {
+    const btn = sections.listing.querySelector('.cs-next');
+    btn.textContent = noListing.checked ? 'Request My Shoot' : 'Next';
+  }
+
+  // ── VALIDATION ────────────────────────────────────────────────────────────
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function todayISO() {
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  }
+
+  function normalizePhone(value) {
+    let digits = value.replace(/\D/g, '');
+    if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
+    if (digits.length !== 10) return null;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+
+  function checkedValue(name) {
+    const el = form.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  }
+
+  // Each validator returns { answers } on success or { error, field } on failure.
+  const validators = {
+    name() {
+      const first = form.first_name.value.trim();
+      const last = form.last_name.value.trim();
+      if (!first) return { error: 'Please enter your first name.', field: form.first_name };
+      if (!last) return { error: 'Please enter your last name.', field: form.last_name };
+      return { answers: { first_name: first, last_name: last } };
+    },
+    cell() {
+      const phone = normalizePhone(form.cell.value);
+      if (!phone) return { error: 'Please enter a 10-digit cell number.', field: form.cell };
+      form.cell.value = phone;
+      return { answers: { cell: phone } };
+    },
+    email() {
+      const email = form.email.value.trim();
+      if (!EMAIL_RE.test(email)) return { error: 'Please enter a valid email address.', field: form.email };
+      return { answers: { email } };
+    },
+    listing() {
+      if (noListing.checked) return { answers: { no_listing: true, listing_address: '' } };
+      const addr = address.value.trim();
+      if (addr.length < 5) {
+        return { error: 'Enter the listing address, or choose “No listing yet.”', field: address };
+      }
+      return { answers: { no_listing: false, listing_address: addr } };
+    },
+    status() {
+      const v = checkedValue('listing_status');
+      if (!v) return { error: 'Please choose one.', field: form.querySelector('input[name="listing_status"]') };
+      return { answers: { listing_status: v } };
+    },
+    timing() {
+      const v = checkedValue('timing');
+      if (!v) return { error: 'Please choose one.', field: form.querySelector('input[name="timing"]') };
+      if (v === 'Specific date') {
+        const d = dateInput.value;
+        if (!d) return { error: 'Please pick a date.', field: dateInput };
+        if (d < todayISO()) return { error: 'Please pick today or a future date.', field: dateInput };
+        return { answers: { timing: v, shoot_date: d } };
+      }
+      return { answers: { timing: v, shoot_date: '' } };
+    },
+    notes() {
+      return { answers: { notes: form.notes.value.trim() } };
+    },
+  };
+
+  function showError(step, message, field) {
+    const el = sections[step].querySelector('.cs-error');
+    el.textContent = message;
+    if (field) {
+      if (field.type !== 'radio') field.setAttribute('aria-invalid', 'true');
+      field.focus();
+    }
+  }
+
+  function clearError(step) {
+    const sec = sections[step];
+    sec.querySelector('.cs-error').textContent = '';
+    sec.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+  }
+
+  // ── SAVING ────────────────────────────────────────────────────────────────
+  // Saves run one at a time, in order. Each carries all answers so far, so
+  // the server can upsert idempotently and the last save always wins.
+  let saveChain = Promise.resolve();
+
+  function save(status) {
+    const payload = {
+      leadId: state.leadId,
+      status,
+      step: state.step,
+      answers: state.answers,
+      src: state.src,
+      bdr: state.bdr,
+      qs: state.qs,
+      clientTs: new Date().toISOString(),
+      ageMs: Date.now() - state.startedAt,
+      hp: honeypot.value,
+    };
+    const run = saveChain.then(() => fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).then((res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }).then((data) => {
+      if (!data || !data.ok) throw new Error('Save rejected');
+      return data;
+    }));
+    saveChain = run.catch(() => {});   // keep the chain alive after a failure
+    return run;
+  }
+
+  // ── SUBMIT / NAVIGATION ───────────────────────────────────────────────────
+  let finishing = false;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (finishing) return;
+
+    const step = state.step;
+    clearError(step);
+    const result = validators[step]();
+    if (result.error) {
+      showError(step, result.error, result.field);
+      return;
+    }
+    Object.assign(state.answers, result.answers);
+
+    if (isFinal(step)) {
+      finish(step);
+      return;
+    }
+
+    if (step === 'name' && !state.formStarted) {
+      state.formStarted = true;
+      track('form_start');
+    }
+
+    const steps = activeSteps();
+    const next = steps[steps.indexOf(step) + 1];
+    state.step = next;     // record progress before saving, so the Sheet shows the furthest screen
+    persist();
+    save('Incomplete').catch(() => { /* retried implicitly by the next save */ });
+    showStep(next, true);
+  });
+
+  function finish(step) {
+    finishing = true;
+    const btn = sections[step].querySelector('.cs-next');
+    const label = btn.textContent;
+    btn.setAttribute('aria-busy', 'true');
+    btn.textContent = 'Sending…';
+    persist();
+
+    save('Complete').then(() => {
+      track('form_complete');
+      try { trackVidalyticsConversion(); } catch (err) { /* never block the confirmation */ }
+      showConfirmation();
+      clearStored();
+    }).catch(() => {
+      finishing = false;
+      btn.removeAttribute('aria-busy');
+      btn.textContent = label;
+      showError(step,
+        `Something went wrong sending your request. Please try again, or call or text us at ${CALL_FROM}.`,
+        null);
+    });
+  }
+
+  function showConfirmation() {
+    const first = state.answers.first_name || '';
+    form.hidden = true;
+    progress.hidden = true;
+    done.hidden = false;
+    // textContent only: user input never becomes HTML.
+    document.getElementById('cs-done-title').textContent = `Thanks, ${first}.`;
+    document.getElementById('cs-done-body').textContent = state.answers.no_listing
+      ? 'Your complimentary shoot is saved for your next listing. We’ll be in touch.'
+      : `We’ll give you a call from ${CALL_FROM} as soon as possible to plan your shoot.`;
+    document.getElementById('cs-done-title').focus({ preventScroll: true });
+    if (wrap.getBoundingClientRect().top < 0) {
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  form.querySelectorAll('.cs-back').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const steps = activeSteps();
+      const i = steps.indexOf(state.step);
+      if (i > 0) {
+        clearError(state.step);
+        showStep(steps[i - 1], true);
+        persist();
+      }
+    });
+  });
+
+  // ── FIELD BEHAVIOUR ───────────────────────────────────────────────────────
+  noListing.addEventListener('change', () => {
+    address.disabled = noListing.checked;
+    clearError('listing');
+    state.answers.no_listing = noListing.checked;
+    setProgress('listing');
+    updateListingButton();
+  });
+
+  form.querySelectorAll('input[name="timing"]').forEach((r) => {
+    r.addEventListener('change', () => {
+      dateField.hidden = checkedValue('timing') !== 'Specific date';
+      clearError('timing');
+    });
+  });
+
+  form.querySelectorAll('input[name="listing_status"]').forEach((r) => {
+    r.addEventListener('change', () => clearError('status'));
+  });
+
+  form.cell.addEventListener('blur', () => {
+    const phone = normalizePhone(form.cell.value);
+    if (phone) form.cell.value = phone;
+  });
+
+  form.addEventListener('input', (e) => {
+    if (e.target.getAttribute('aria-invalid')) {
+      e.target.removeAttribute('aria-invalid');
+      sections[state.step].querySelector('.cs-error').textContent = '';
+    }
+  });
+
+  dateInput.min = todayISO();
+
+  // ── RESTORE A RESUMED LEAD ────────────────────────────────────────────────
+  function restoreFields() {
+    const a = state.answers;
+    if (a.first_name) form.first_name.value = a.first_name;
+    if (a.last_name) form.last_name.value = a.last_name;
+    if (a.cell) form.cell.value = a.cell;
+    if (a.email) form.email.value = a.email;
+    if (a.listing_address) address.value = a.listing_address;
+    if (a.no_listing) {
+      noListing.checked = true;
+      address.disabled = true;
+    }
+    ['listing_status', 'timing'].forEach((name) => {
+      if (!a[name]) return;
+      form.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+        r.checked = r.value === a[name];
+      });
+    });
+    if (a.timing === 'Specific date') {
+      dateField.hidden = false;
+      if (a.shoot_date) dateInput.value = a.shoot_date;
+    }
+    if (a.notes) form.notes.value = a.notes;
+  }
+
+  restoreFields();
+  if (!sections[state.step] || activeSteps().indexOf(state.step) === -1) state.step = 'name';
+  showStep(state.step, false);   // never steal focus on page load
+  persist();
+}());
