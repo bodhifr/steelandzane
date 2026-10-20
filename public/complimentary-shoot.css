@@ -162,6 +162,12 @@
   white-space: nowrap;
 }
 
+.cs-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
 /* Short explainer under the video, back on plaster. */
 .cs-explainer {
   margin: 24px auto 0;
@@ -773,9 +779,9 @@
     display: inline;
   }
 
-  /* Explainer on two set lines, breaking after "treatment". Line one is 37.69x the
-     font size (Manrope, with bold words), wider than the video column, so the
-     paragraph is centered on the column and allowed to extend past it. */
+  /* Explainer on three set lines, breaking after "treatment" and "market". The longest
+     line is 53.54x the font size (Manrope, with bold words), wider than the video column,
+     so the paragraph is centered on the column and allowed to extend past it. */
   .cs-explainer {
     margin-top: 16.2px;          /* half of 32.4px */
     width: max-content;
@@ -783,7 +789,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 38.4));
+    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 55.3));   /* ~3% spare incl. scrollbar */
   }
 
   .cs-ex-line {
