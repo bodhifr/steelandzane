@@ -735,13 +735,14 @@
 
 /* ── BREAKPOINTS ──────────────────────────────────────────────────────── */
 @media (min-width: 720px) {
+  /* Desktop hero spacing: every gap 10% smaller than before (2026-10-20). */
   .cs-hero {
-    padding: 0 0 88px;
+    padding: 0 0 79.2px;         /* was 88px */
   }
 
   .cs-band {
-    --cs-overlap: 56px;
-    padding-top: 64px;           /* half of 128px */
+    --cs-overlap: 38.3px;        /* dark area extended 17.7px down the video: 3% of its 588.9px height */
+    padding-top: 57.6px;         /* was 64px */
   }
 
   /* Wider hero on desktop so the one-line subhead fits at full size on a laptop. */
@@ -753,7 +754,7 @@
      16.37x the font size (Poppins 800 caps), so it scales down on narrower screens. */
   .cs-headline {
     white-space: nowrap;
-    font-size: min(var(--cs-headline-size), calc((min(100vw, 1320px) - 40px) / 16.7));
+    font-size: calc(0.9 * min(var(--cs-headline-size), calc((min(100vw, 1320px) - 40px) / 16.7)));   /* 10% smaller */
   }
 
   .cs-hl-desk-break {
@@ -762,10 +763,10 @@
 
   /* Subhead on one line: 35.55x the font size in Manrope 500. */
   .cs-subhead {
-    margin: 36px auto 40px;
+    margin: 32.4px auto 36px;    /* was 36px / 40px */
     max-width: none;
     white-space: nowrap;
-    font-size: min(2.1rem, calc((min(100vw, 1320px) - 40px) / 36.3));
+    font-size: calc(0.9 * min(2.1rem, calc((min(100vw, 1320px) - 40px) / 36.3)));   /* 10% smaller */
   }
 
   .cs-subhead > span {
@@ -776,7 +777,7 @@
      font size (Manrope, with bold words), wider than the video column, so the
      paragraph is centered on the column and allowed to extend past it. */
   .cs-explainer {
-    margin-top: 36px;
+    margin-top: 32.4px;          /* was 36px */
     width: max-content;
     max-width: none;
     position: relative;
@@ -788,6 +789,15 @@
   .cs-ex-line {
     display: block;
     white-space: nowrap;
+  }
+
+  .cs-form-wrap {
+    margin-top: 18px;            /* was 20px */
+  }
+
+  /* Its margin collapses with the form wrapper's, so both must shrink. */
+  .cs-gate {
+    margin-top: 18px;
   }
 
   /* Claim button: 20% taller (72 -> 86px) and about half the empty space on each
