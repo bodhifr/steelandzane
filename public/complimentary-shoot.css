@@ -106,9 +106,9 @@
   text-align: center;
 }
 
-/* Top headline: all caps, bold Neutraface (section headings stay Cormorant). */
+/* Top headline: all caps, Cormorant Garamond bold (700). */
 .cs-headline {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(2.1rem, 8.6vw, 4.5rem);
   line-height: 1.08;
@@ -323,14 +323,14 @@
   margin: 0;
 }
 
-/* Primary buttons: all-caps Neutraface bold, same size as the question headings. */
+/* Primary buttons: all-caps Cormorant Garamond bold (700), same size as the question headings. */
 .cs-next {
   display: block;
   width: 100%;
   min-height: 72px;
   margin-top: 16px;
   padding: 16px 20px;
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(1.5rem, 4.6vw, 2rem);
   line-height: 1.1;
