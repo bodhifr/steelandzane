@@ -39,7 +39,8 @@
   const honeypot = document.getElementById('cs-website');
   const address = document.getElementById('f-address');
   const gate = document.getElementById('cs-gate');
-  const claimBtn = document.getElementById('cs-claim');
+  const claimBtn = document.getElementById('cs-claim-form');   // turns into the questions
+  const heroClaim = document.getElementById('cs-claim');
   const addrList = document.getElementById('cs-addr-list');
 
   const sections = {};
@@ -545,9 +546,9 @@
   // Top badge: scroll down to the Claim button (or to the form once it's open).
   document.getElementById('cs-badge').addEventListener('click', (e) => {
     e.preventDefault();
-    const target = gate.hidden ? wrap : claimBtn;
+    const target = gate.hidden ? wrap : heroClaim;
     target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    if (!gate.hidden) claimBtn.focus({ preventScroll: true });
+    if (!gate.hidden) heroClaim.focus({ preventScroll: true });
   });
 
   claimBtn.addEventListener('click', () => {
@@ -564,18 +565,12 @@
     }
   });
 
-  // Lower Claim buttons open the questions in place, under "Your first shoot is on us":
-  // the one form (answers kept) moves into the slot there, with a screen of space below
-  // it so the questions section stays out of view. Then it reuses the top Claim button
-  // when the form isn't open yet (same reveal + focus behavior) and scrolls down to it.
-  const formSlot = document.getElementById('cs-form-slot');
-  document.querySelectorAll('.cs-claim-again').forEach((btn) => {
+  // Every other Claim button (hero, after the reviews, What you get, the questions)
+  // opens the questions where they live, in How it works, and scrolls there. It reuses
+  // the Claim button there when the form isn't open yet (same reveal + focus behavior).
+  document.querySelectorAll('#cs-claim, .cs-claim-again').forEach((btn) => {
     btn.addEventListener('click', () => {
-      track('cta_click_again');
-      if (wrap.parentNode !== formSlot) {
-        formSlot.appendChild(wrap);
-        formSlot.classList.add('has-form');
-      }
+      if (btn !== heroClaim) track('cta_click_again');
       if (!gate.hidden) claimBtn.click();              // opens the form (desktop: centres it)
       if (isDesktop()) centerInputs();
       else wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -593,9 +588,11 @@
           qaObserver.unobserve(entry.target);
         }
       });
-    // The huge top margin counts anything already scrolled past as seen, so a fast
-    // jump past a question never leaves it invisible.
-    }, { threshold: 0.2, rootMargin: '100000px 0px -8% 0px' });
+    // A question appears only once its top has scrolled up to the middle of the screen,
+    // so each takes a good scroll to bring in. The huge top margin counts anything
+    // already scrolled past as seen, so a fast jump past a question never leaves it
+    // invisible.
+    }, { threshold: 0, rootMargin: '100000px 0px -50% 0px' });
     qaItems.forEach((el) => { el.classList.add('cs-reveal'); qaObserver.observe(el); });
   }
 

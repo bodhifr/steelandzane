@@ -776,31 +776,34 @@
   padding: 0 20px;
 }
 
-/* Second Claim button, after How it works. */
+/* Other Claim buttons (after the reviews on phones, after What you get, after the questions). */
 .cs-claim-again {
   margin-top: 24px;
 }
 
-/* Form opened from a lower Claim button: same width as in the hero, then a screen of
-   empty space so the questions section only appears after scrolling well past it. */
-.cs-form-slot {
+/* The questions live in How it works: the Claim button there turns into them. Same
+   600px column as the hero. Once open, a screen of empty space below them keeps the
+   questions section out of view until the visitor scrolls well past. */
+.cs-how .cs-form-wrap {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 24px auto 0;
 }
 
-.cs-form-slot.has-form {
-  padding-bottom: 100vh;
+.cs-how .cs-gate {
+  margin-top: 0;
 }
 
-/* What you get: headline and three points, each with a wide (3:2) and a vertical (4:5)
-   Signature photo side by side at equal height, at their original aspect ratios. Headline: two lines on phones ("What you get from /
-   Signature shoots:"), one line on desktop. */
+.cs-how .cs-form-wrap.is-open {
+  margin-bottom: 100vh;
+}
+
+/* What you get (spacing and sizes from acquisition.com's workshop page): the headline
+   sits in a dark torn-paper banner, 71px above and below it; then three points, each
+   with a wide (3:2) and a vertical (4:5) Signature photo side by side at equal height.
+   Headline: two lines on phones ("What you get from / Signature shoots:"), one line on
+   desktop. */
 .cs-get-line {
   display: block;
-}
-
-.cs-get .cs-section-title {
-  margin-bottom: 40px;           /* x2.5 (was 16px) */
 }
 
 .cs-get-inner {
@@ -809,25 +812,42 @@
   padding: 0 20px;
 }
 
+.cs-get-banner {
+  margin-bottom: 48px;           /* to the first point's title */
+  padding: 71px 16px;
+  background: var(--dark);
+  clip-path: polygon(0% 9px, 1.25% 6px, 2.5% 11px, 3.75% 12px, 5% 7px, 6.25% 11px, 7.5% 14px, 8.75% 12px, 10% 7px, 11.25% 10px, 12.5% 8px, 13.75% 3px, 15% 9px, 16.25% 6px, 17.5% 7px, 18.75% 15px, 20% 10px, 21.25% 9px, 22.5% 3px, 23.75% 8px, 25% 13px, 26.25% 4px, 27.5% 10px, 28.75% 4px, 30% 14px, 31.25% 6px, 32.5% 12px, 33.75% 5px, 35% 9px, 36.25% 7px, 37.5% 4px, 38.75% 11px, 40% 6px, 41.25% 3px, 42.5% 13px, 43.75% 9px, 45% 5px, 46.25% 12px, 47.5% 8px, 48.75% 4px, 50% 10px, 51.25% 15px, 52.5% 6px, 53.75% 9px, 55% 3px, 56.25% 11px, 57.5% 7px, 58.75% 13px, 60% 5px, 61.25% 9px, 62.5% 12px, 63.75% 4px, 65% 8px, 66.25% 14px, 67.5% 6px, 68.75% 10px, 70% 3px, 71.25% 9px, 72.5% 12px, 73.75% 7px, 75% 4px, 76.25% 11px, 77.5% 8px, 78.75% 15px, 80% 5px, 81.25% 9px, 82.5% 6px, 83.75% 12px, 85% 3px, 86.25% 10px, 87.5% 7px, 88.75% 13px, 90% 5px, 91.25% 9px, 92.5% 11px, 93.75% 4px, 95% 8px, 96.25% 12px, 97.5% 6px, 98.75% 10px, 100% 7px,
+    100% calc(100% - 8px), 98.75% calc(100% - 4px), 97.5% calc(100% - 11px), 96.25% calc(100% - 6px), 95% calc(100% - 13px), 93.75% calc(100% - 3px), 92.5% calc(100% - 9px), 91.25% calc(100% - 7px), 90% calc(100% - 12px), 88.75% calc(100% - 5px), 87.5% calc(100% - 10px), 86.25% calc(100% - 15px), 85% calc(100% - 6px), 83.75% calc(100% - 9px), 82.5% calc(100% - 3px), 81.25% calc(100% - 11px), 80% calc(100% - 8px), 78.75% calc(100% - 13px), 77.5% calc(100% - 4px), 76.25% calc(100% - 10px), 75% calc(100% - 6px), 73.75% calc(100% - 12px), 72.5% calc(100% - 9px), 71.25% calc(100% - 3px), 70% calc(100% - 7px), 68.75% calc(100% - 14px), 67.5% calc(100% - 5px), 66.25% calc(100% - 10px), 65% calc(100% - 8px), 63.75% calc(100% - 12px), 62.5% calc(100% - 4px), 61.25% calc(100% - 9px), 60% calc(100% - 6px), 58.75% calc(100% - 11px), 57.5% calc(100% - 15px), 56.25% calc(100% - 7px), 55% calc(100% - 3px), 53.75% calc(100% - 10px), 52.5% calc(100% - 8px), 51.25% calc(100% - 12px), 50% calc(100% - 5px), 48.75% calc(100% - 9px), 47.5% calc(100% - 13px), 46.25% calc(100% - 6px), 45% calc(100% - 4px), 43.75% calc(100% - 11px), 42.5% calc(100% - 7px), 41.25% calc(100% - 10px), 40% calc(100% - 3px), 38.75% calc(100% - 8px), 37.5% calc(100% - 14px), 36.25% calc(100% - 6px), 35% calc(100% - 9px), 33.75% calc(100% - 12px), 32.5% calc(100% - 4px), 31.25% calc(100% - 10px), 30% calc(100% - 7px), 28.75% calc(100% - 13px), 27.5% calc(100% - 5px), 26.25% calc(100% - 9px), 25% calc(100% - 11px), 23.75% calc(100% - 3px), 22.5% calc(100% - 8px), 21.25% calc(100% - 12px), 20% calc(100% - 6px), 18.75% calc(100% - 10px), 17.5% calc(100% - 15px), 16.25% calc(100% - 5px), 15% calc(100% - 9px), 13.75% calc(100% - 7px), 12.5% calc(100% - 12px), 11.25% calc(100% - 4px), 10% calc(100% - 8px), 8.75% calc(100% - 11px), 7.5% calc(100% - 6px), 6.25% calc(100% - 13px), 5% calc(100% - 3px), 3.75% calc(100% - 9px), 2.5% calc(100% - 7px), 1.25% calc(100% - 11px), 0% calc(100% - 5px));
+}
+
+/* "What you get from" (~9.6em) stays on one line down to 320px screens. */
+.cs-get .cs-get-title {
+  margin: 0;
+  white-space: normal;
+  font-size: min(29px, calc((100vw - 72px) / 9.6));
+  color: var(--background);
+}
+
 .cs-get-grid {
   list-style: none;
   display: grid;
-  gap: 28px;
+  gap: 68px;
 }
 
 .cs-get-grid li {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   text-align: center;
 }
 
+/* Titles 20px (one line on phones: shrinks to fit, longest is ~19.4em). */
 .cs-get-grid h3 {
-  margin-bottom: 35px;           /* 45px to the photos with the 10px gap (x2.5, was 18px) */
+  margin-bottom: 48px;           /* to the photos */
   font-family: var(--cs-font-headline);
   font-weight: 800;
-  font-size: 18px;
-  line-height: 1.25;
+  font-size: min(20px, calc((100vw - 40px) / 19.4));
+  line-height: 1.6;
+  white-space: nowrap;
   color: var(--text);
 }
 
@@ -846,8 +866,9 @@
 }
 
 .cs-get-grid p {
-  font-size: min(15px, calc((100vw - 40px) / 22.7));
-  line-height: 1.55;
+  margin-top: 24px;
+  font-size: min(16px, calc((100vw - 40px) / 22.7));
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -856,26 +877,32 @@
   font-weight: 700;
 }
 
-/* Questions: each one a dark bar with the answer beneath (like acquisition.com). */
+/* Questions: each one a large dark bar with the answer beneath (like acquisition.com).
+   Phones: the full screen width; desktop: 80% of it. Each fades in right below the
+   previous one, only once the visitor has scrolled well into it (see the JS). */
+.cs-qa .cs-narrow {
+  max-width: none;
+  padding: 0;
+}
+
 .cs-qa-item + .cs-qa-item {
-  margin-top: 28px;
+  margin-top: 32px;
 }
 
 .cs-qa-q {
-  padding: 16px 20px;
-  border-radius: 12px;
+  padding: 28px 20px;
   background: var(--dark);
   color: var(--background);
   font-family: var(--cs-font-headline);
   font-weight: 800;
-  font-size: clamp(17px, 2.2vw, 24px);
+  font-size: 26px;
   line-height: 1.25;
   text-align: center;
 }
 
 .cs-qa-a {
-  padding: 14px 4px 0;
-  font-size: var(--cs-explainer-size);
+  padding: 22px 20px 0;
+  font-size: 20px;
   line-height: 1.6;
   color: var(--text);
 }
@@ -1097,14 +1124,34 @@
     margin-bottom: 32px;         /* doubled (was 16px) */
   }
 
-  /* Headline on one line (18.65em in Poppins 800), shrinking only if it wouldn't fit. */
+  .cs-how .cs-form-wrap {
+    margin-top: 56px;            /* where the Claim button sat */
+  }
+
+  /* Banner headline 41px on one line (18.65em in Poppins 800), shrinking only if it
+     wouldn't fit; 136px from the banner to the point titles. */
   .cs-get-line {
     display: inline;
   }
 
-  .cs-get-title {
+  .cs-get-banner {
+    margin-bottom: 136px;
+    padding: 71px 24px;
+  }
+
+  .cs-get .cs-get-title {
     white-space: nowrap;
-    font-size: min(calc(1.75 * max(20px, calc(0.5 * var(--cs-headline-size)))), calc((min(100vw, 1040px) - 55px) / 19));
+    font-size: min(41px, calc((100vw - 88px) / 19));
+  }
+
+  /* Titles 20px; room for two lines so the photos line up across the row. A one-line
+     title sits 78px above its photos, a two-line one 46px. */
+  .cs-get-grid h3 {
+    min-height: 64px;
+    margin-bottom: 46px;
+    font-size: 20px;
+    white-space: normal;
+    text-wrap: balance;
   }
 
   /* Same structure as phones, laid out in a row: three equal columns, each pair side by
@@ -1128,12 +1175,28 @@
     display: none;
   }
 
-  .cs-reviews .cs-claim-again {
-    margin-top: 24px;
+  /* Desktop: no Claim button after the reviews. */
+  .cs-reviews .cs-claim-wrap {
+    display: none;
   }
 
   .cs-qa .cs-narrow {
-    max-width: 860px;
+    width: 80%;
+  }
+
+  .cs-qa-item + .cs-qa-item {
+    margin-top: 40px;
+  }
+
+  .cs-qa-q {
+    padding: 36px 32px;
+    border-radius: 12px;
+    font-size: min(40px, 2.8vw);
+  }
+
+  .cs-qa-a {
+    padding: 28px 32px 0;
+    font-size: min(28px, 2vw);
   }
 }
 
@@ -1193,6 +1256,11 @@
   .cs-section-title {
     font-size: min(35px, calc((100vw - 40px) / 12.75));
     white-space: nowrap;
+  }
+
+  .cs-qa .cs-claim-again {
+    margin: 32px 20px 0;
+    width: calc(100% - 40px);
   }
 
 }
