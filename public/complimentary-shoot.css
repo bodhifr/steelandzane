@@ -629,8 +629,10 @@
 
 .cs-steps li {
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
   font-size: 15px;
   line-height: 1.6;
   color: var(--muted);
@@ -914,23 +916,18 @@
     padding-top: 0;
   }
 
-  /* How it works as a row of three tiles, text at the paragraph-under-video size. */
+  /* How it works: steps side by side (no tiles), number centred above each, text at
+     the paragraph-under-video size. Four across on wide screens, 2 x 2 otherwise. */
   .cs-how .cs-narrow {
     max-width: 1100px;
   }
 
   .cs-steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 32px;
   }
 
   .cs-steps li {
-    flex-direction: column;
-    gap: 14px;
-    padding: 24px;
-    background: var(--cs-field-bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
     font-size: var(--cs-explainer-size);
     line-height: 1.5;
   }
@@ -945,6 +942,12 @@
     min-height: 86px;
     margin: 28px auto 0;
     padding: 0 86px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .cs-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
