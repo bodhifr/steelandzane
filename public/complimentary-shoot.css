@@ -5,6 +5,8 @@
    ========================================================================== */
 
 .cs-page {
+  /* Phone paragraph: +2pt, but never wider than the screen allows for the widest line. */
+  --cs-explainer-size: min(calc(clamp(1.05rem, 2.4vw, 1.25rem) + 2pt), calc((100vw - 40px) / 19.15));
   --cs-font-headline: 'Poppins', 'Segoe UI', sans-serif;   /* Poppins ExtraBold (800) */
   --cs-headline-size: clamp(1.68rem, 6.88vw, 3.6rem);   /* top headline + section headings */
   --cs-error: #8F3A22;          /* darkened terracotta: 6.9:1 on plaster */
@@ -137,6 +139,10 @@
     display: block;
     white-space: nowrap;
   }
+
+  .cs-page .cs-subhead {   /* extra class: this block sits above the base .cs-subhead rule */
+    line-height: 1.38;   /* ~2px more between the two lines (was 1.28) */
+  }
 }
 
 /* Two set lines that never break. On phones the size shrinks with the
@@ -177,7 +183,7 @@
   max-width: 560px;
   text-align: center;
   white-space: nowrap;
-  font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 19.5));
+  font-size: var(--cs-explainer-size);
   line-height: 1.6;
   color: var(--text);
 }
@@ -423,7 +429,7 @@
   background: none;
   border: none;
   font-family: var(--font-body);
-  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  font-size: var(--cs-explainer-size);
   font-weight: 500;
   color: var(--muted);
   cursor: pointer;
@@ -733,7 +739,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 25px;
+    height: 15px;
     pointer-events: none;
   }
 
@@ -743,7 +749,7 @@
   }
 
   .cs-page {
-    padding-bottom: 25px;
+    padding-bottom: 15px;
   }
 }
 
@@ -757,6 +763,12 @@
   .cs-band {
     --cs-overlap: 38.3px;        /* dark area extended 17.7px down the video: 3% of its 588.9px height */
     padding-top: 57.6px;         /* was 64px */
+  }
+
+  /* Desktop paragraph size (no +2pt; widest line 50.22em, ~3% spare incl. scrollbar).
+     Shared with the Back link so the two always match. */
+  .cs-page {
+    --cs-explainer-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 51.9));
   }
 
   /* Wider hero on desktop so the one-line subhead fits at full size on a laptop. */
@@ -797,7 +809,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    font-size: min(clamp(1.05rem, 2.4vw, 1.25rem), calc((100vw - 40px) / 51.9));   /* ~3% spare incl. scrollbar */
+    font-size: var(--cs-explainer-size);
   }
 
   .cs-br-m {
