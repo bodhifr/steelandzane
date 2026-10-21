@@ -777,6 +777,104 @@
   margin-top: 24px;
 }
 
+/* What you'll get: headline, subhead, three captioned Signature photos. The headline is
+   set on two lines everywhere: "What you'll get at the / complimentary shoot:". */
+.cs-get-line {
+  display: block;
+}
+
+.cs-get-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cs-get-sub {
+  max-width: 560px;
+  text-wrap: balance;
+  margin: -4px auto 20px;
+  text-align: center;
+  font-size: var(--cs-explainer-size);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.cs-get-grid {
+  list-style: none;
+  display: grid;
+  gap: 28px;
+}
+
+.cs-get-grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.cs-get-grid h3 {
+  font-family: var(--cs-font-headline);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.cs-get-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.cs-get-grid p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.cs-get-grid strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Questions: each one a dark bar with the answer beneath (like acquisition.com). */
+.cs-qa-item + .cs-qa-item {
+  margin-top: 28px;
+}
+
+.cs-qa-q {
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--dark);
+  color: var(--background);
+  font-family: var(--cs-font-headline);
+  font-weight: 800;
+  font-size: clamp(17px, 2.2vw, 24px);
+  line-height: 1.25;
+  text-align: center;
+}
+
+.cs-qa-a {
+  padding: 14px 4px 0;
+  font-size: var(--cs-explainer-size);
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* Fade-up as each question scrolls into view (JS adds .cs-reveal only when it can
+   also reveal it, so the questions are always visible without JS). */
+.cs-qa-item.cs-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cs-qa-item.cs-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
 /* Footer */
 .cs-footer {
   padding: 32px 20px 40px;
@@ -980,6 +1078,19 @@
   .cs-how .cs-section-title {
     margin-bottom: 32px;         /* doubled (was 16px) */
   }
+
+  .cs-get-sub {
+    margin-bottom: 32px;
+  }
+
+  .cs-get-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .cs-qa .cs-narrow {
+    max-width: 860px;
+  }
 }
 
 /* Four across from 1200px. Text scales with the column (max 20px) so each step is at
@@ -1030,6 +1141,7 @@
     font-size: min(35px, calc((100vw - 40px) / 12.75));
     white-space: nowrap;
   }
+
 }
 
 /* Short phone screens (iPhone SE/mini with Safari bars): scale the hero

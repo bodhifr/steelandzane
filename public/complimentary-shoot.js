@@ -575,6 +575,23 @@
     });
   });
 
+  // Questions fade up as each scrolls into view (skipped for reduced motion).
+  const qaItems = document.querySelectorAll('.cs-qa-item');
+  if (qaItems.length && 'IntersectionObserver' in window
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const qaObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          qaObserver.unobserve(entry.target);
+        }
+      });
+    // The huge top margin counts anything already scrolled past as seen, so a fast
+    // jump past a question never leaves it invisible.
+    }, { threshold: 0.2, rootMargin: '100000px 0px -8% 0px' });
+    qaItems.forEach((el) => { el.classList.add('cs-reveal'); qaObserver.observe(el); });
+  }
+
   // ── RESTORE A RESUMED LEAD ────────────────────────────────────────────────
   function restoreFields() {
     const a = state.answers;
