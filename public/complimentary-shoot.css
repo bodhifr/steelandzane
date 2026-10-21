@@ -772,13 +772,17 @@
   transform: translateX(-51%);
 }
 
+.cs-claim-wrap {
+  padding: 0 20px;
+}
+
 /* Second Claim button, after How it works. */
 .cs-claim-again {
   margin-top: 24px;
 }
 
-/* What you get: headline, subhead, three points with two Signature photos each, shown
-   at their original aspect ratios. Headline: two lines on phones ("What you get from /
+/* What you get: headline and three points, each with a wide (3:2) and a vertical (4:5)
+   Signature photo side by side at equal height, at their original aspect ratios. Headline: two lines on phones ("What you get from /
    Signature shoots:"), one line on desktop. */
 .cs-get-line {
   display: block;
@@ -788,16 +792,6 @@
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.cs-get-sub {
-  max-width: 560px;
-  text-wrap: balance;
-  margin: 24px auto 20px;         /* 24px below the headline (was 12px); collapses with its 16px margin */
-  text-align: center;
-  font-size: var(--cs-explainer-size);
-  line-height: 1.55;
-  color: var(--muted);
 }
 
 .cs-get-grid {
@@ -814,6 +808,7 @@
 }
 
 .cs-get-grid h3 {
+  margin-bottom: 8px;            /* 18px to the photos (was 10px) */
   font-family: var(--cs-font-headline);
   font-weight: 800;
   font-size: 18px;
@@ -836,7 +831,7 @@
 }
 
 .cs-get-grid p {
-  font-size: 15px;
+  font-size: min(15px, calc((100vw - 40px) / 22.7));
   line-height: 1.55;
   color: var(--muted);
 }
@@ -1097,33 +1092,42 @@
     font-size: min(calc(1.75 * max(20px, calc(0.5 * var(--cs-headline-size)))), calc((min(100vw, 1040px) - 55px) / 19));
   }
 
-  /* Subhead on one line (29.84em in Manrope), 32px below the headline (was 12px). */
-  .cs-get-sub {
-    max-width: none;
-    white-space: nowrap;
-    margin: 32px auto 32px;      /* collapses with the headline's 16px margin -> 32px gap */
-    font-size: min(var(--cs-explainer-size), calc((min(100vw, 1040px) - 55px) / 30.5));
+  /* Same structure as phones, laid out in a row: three equal columns, each pair side by
+     side. Every pair is 3:2 + 4:5, so all six photos share one height. Wider container
+     so the photos read larger. */
+  .cs-get-inner {
+    max-width: 1440px;
   }
 
-  /* Each pair stacked in its column. Column widths are proportional to 1 / (sum of the
-     two photos' height/width), so all three columns end at exactly the same height:
-     #1 and #2 = 0.667 + 1.25 = 1.917; #3 = 1.25 + 1.5 = 2.75. */
+  /* Tablets/small laptops (720-999px): one point per row, like phones, centred. */
   .cs-get-grid {
-    grid-template-columns: 0.52165fr 0.52165fr 0.36364fr;
-    gap: 24px;
+    max-width: 640px;
+    margin: 0 auto;
   }
 
-  .cs-get-pair {
-    flex-direction: column;
+  .cs-get-grid p {
+    font-size: 15px;
   }
 
-  .cs-get-grid img {
-    flex: none;
-    width: 100%;
+  .cs-m-only {
+    display: none;
+  }
+
+  .cs-reviews .cs-claim-again {
+    margin-top: 24px;
   }
 
   .cs-qa .cs-narrow {
     max-width: 860px;
+  }
+}
+
+/* What you get: the three points in a row from 1000px. */
+@media (min-width: 1000px) {
+  .cs-get-grid {
+    max-width: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
   }
 }
 
