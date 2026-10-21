@@ -49,7 +49,7 @@
    screen, so the next section never peeks in at the bottom on load. svh =
    the visible height with the browser bars showing. */
 .cs-hero {
-  padding: 0 0 64px;
+  padding: 0 0 32px;             /* halved (was 64px): less space before the reviews */
   min-height: 100vh;
   min-height: 100svh;
 }
@@ -743,6 +743,7 @@
    Phone image: cards span 91.7% of its width, centred at 51%.
    Desktop image: cards span 94.9%, centred at 50%. */
 .cs-testimonials {
+  padding-top: 14px;             /* halved (was 28px) */
   overflow: hidden;              /* crop the image's empty side margins, never scroll sideways */
 }
 
@@ -819,7 +820,7 @@
 @media (min-width: 720px) {
   /* Desktop hero spacing: every gap 10% smaller than before (2026-10-20). */
   .cs-hero {
-    padding: 0 0 79.2px;         /* was 88px */
+    padding: 0 0 39.6px;         /* halved (was 79.2px) */
   }
 
   .cs-band {
@@ -939,6 +940,7 @@
   /* Reviews + How it works read as one section on desktop: no divider or padding
      between them. */
   .cs-testimonials {
+    padding-top: 22px;           /* halved (was 44px) */
     padding-bottom: 0;
   }
 
