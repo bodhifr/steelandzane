@@ -5,8 +5,9 @@
    ========================================================================== */
 
 .cs-page {
-  /* Phone paragraph: +2pt, but never wider than the screen allows for the widest line. */
-  --cs-explainer-size: min(calc(clamp(1.05rem, 2.4vw, 1.25rem) + 2pt), calc((100vw - 40px) / 19.15));
+  /* Phone paragraph: +2pt but never wider than the screen allows for the widest line,
+     then 1pt smaller overall (2026-10-20). */
+  --cs-explainer-size: calc(min(calc(clamp(1.05rem, 2.4vw, 1.25rem) + 2pt), calc((100vw - 40px) / 19.15)) - 1pt);
   --cs-font-headline: 'Poppins', 'Segoe UI', sans-serif;   /* Poppins ExtraBold (800) */
   --cs-headline-size: clamp(1.68rem, 6.88vw, 3.6rem);   /* top headline + section headings */
   --cs-error: #8F3A22;          /* darkened terracotta: 6.9:1 on plaster */
@@ -98,7 +99,7 @@
    so the video straddles into the plaster section below. */
 .cs-band {
   --cs-overlap: 28px;
-  padding-top: 29px;             /* phones: 19px + 50% */
+  padding-top: 4.35px;           /* phones: 29px - 85% */
   background: linear-gradient(
     to bottom,
     var(--dark) calc(100% - var(--cs-overlap)),
@@ -179,7 +180,7 @@
    Longest phone line ("It's a complimentary editorial photo shoot") is 18.96x the
    font size, so the size follows the screen on narrow phones. */
 .cs-explainer {
-  margin: 24px auto 0;
+  margin: 7.2px auto 0;          /* phones: 24px - 70% (desktop sets its own) */
   max-width: 560px;
   text-align: center;
   white-space: nowrap;
@@ -856,7 +857,7 @@
    The form is allowed to start below the fold. */
 @media (max-width: 719px) and (max-height: 620px) {
   .cs-band {
-    padding-top: 17px;           /* 11px + 50% */
+    padding-top: 2.55px;         /* short phones: 17px - 85% */
   }
 
   .cs-page {
