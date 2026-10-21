@@ -99,7 +99,7 @@
    so the video straddles into the plaster section below. */
 .cs-band {
   --cs-overlap: 28px;
-  padding-top: 4.35px;           /* phones: 29px - 85% */
+  padding-top: 6.525px;          /* phones: 4.35px + 50% */
   background: linear-gradient(
     to bottom,
     var(--dark) calc(100% - var(--cs-overlap)),
@@ -857,7 +857,7 @@
    The form is allowed to start below the fold. */
 @media (max-width: 719px) and (max-height: 620px) {
   .cs-band {
-    padding-top: 2.55px;         /* short phones: 17px - 85% */
+    padding-top: 3.825px;        /* short phones: 2.55px + 50% */
   }
 
   .cs-page {
