@@ -721,6 +721,11 @@
   padding: 0 20px;
 }
 
+/* <picture> is inline by default, which swallows the image's negative margins. */
+.cs-reviews picture {
+  display: block;
+}
+
 .cs-reviews img {
   display: block;
   height: auto;
@@ -872,9 +877,62 @@
 
   /* Desktop review image: +50% (960 -> 1440px) where it fits; on narrower screens the
      cards keep a 32px margin each side. */
+  .cs-reviews {
+    --cs-rev-w: min(1440px, calc((100vw - 64px) / 0.949));
+  }
+
+  /* The image has empty background above and below the cards (cards sit 103px from
+     the top and end 133px from the bottom of its 770px height). The wrapper is given
+     an exact height and clips that empty space vertically only (cards are never cut at
+     the sides): the heading-to-cards gap becomes half what it was (16px + top space),
+     and there's a 32px gap below the cards before "How it works". */
+  .cs-reviews {
+    --cs-rev-top-crop: calc(0.5 * (16px + var(--cs-rev-w) * 103 / 2171));
+    --cs-rev-bottom-crop: calc(var(--cs-rev-w) * 133 / 2171 - 32px);
+  }
+
+  .cs-reviews picture {
+    height: calc(var(--cs-rev-w) * 770 / 2171 - var(--cs-rev-top-crop) - var(--cs-rev-bottom-crop));
+    overflow-x: visible;
+    overflow-y: clip;
+  }
+
   .cs-reviews img {
-    width: min(1440px, calc((100vw - 64px) / 0.949));
+    width: var(--cs-rev-w);
     transform: translateX(-50%);
+    top: calc(-1 * var(--cs-rev-top-crop));
+  }
+
+  /* Reviews + How it works read as one section on desktop: no divider or padding
+     between them. */
+  .cs-testimonials {
+    padding-bottom: 0;
+  }
+
+  .cs-how {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  /* How it works as a row of three tiles, text at the paragraph-under-video size. */
+  .cs-how .cs-narrow {
+    max-width: 1100px;
+  }
+
+  .cs-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .cs-steps li {
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
+    background: var(--cs-field-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: var(--cs-explainer-size);
+    line-height: 1.5;
   }
 
   /* Second Claim button matches the top one on desktop (own rule; the top button's
