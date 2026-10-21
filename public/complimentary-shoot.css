@@ -606,12 +606,13 @@
   contain-intrinsic-size: auto 600px;
 }
 
-/* Section headings: Poppins ExtraBold, half the top headline's size on desktop (28.8px),
-   never below 20px on phones. Reads --cs-headline-size; does not change it. */
+/* Section headings: Poppins ExtraBold. Base size = half the top headline (28.8px desktop),
+   min 20px on phones; then x1.75 => 50.4px desktop, 35px phones. Reads
+   --cs-headline-size; does not change it. */
 .cs-section-title {
   font-family: var(--cs-font-headline);
   font-weight: 800;
-  font-size: max(20px, calc(0.5 * var(--cs-headline-size)));
+  font-size: calc(1.75 * max(20px, calc(0.5 * var(--cs-headline-size))));
   line-height: 1.1;
   letter-spacing: -0.01em;
   text-align: center;
@@ -702,17 +703,33 @@
   color: var(--muted);
 }
 
-/* Reviews: a single review-stack image, wide on desktop / tall on phones. */
+/* Reviews: a single review-stack image, wide on desktop / tall on phones.
+   The image is sized from where the CARDS sit inside it (measured from the pixels),
+   so cards reach close to the screen edges and only the empty margin is cropped.
+   Phone image: cards span 91.7% of its width, centred at 51%.
+   Desktop image: cards span 94.9%, centred at 50%. */
+.cs-testimonials {
+  overflow: hidden;              /* crop the image's empty side margins, never scroll sideways */
+}
+
 .cs-reviews {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.cs-reviews .cs-section-title {
   padding: 0 20px;
 }
 
 .cs-reviews img {
   display: block;
-  width: 100%;
   height: auto;
+  max-width: none;
+  position: relative;
+  left: 50%;
+  /* phones: cards span the screen minus 8px each side (~+17% vs before) */
+  width: calc((100vw - 16px) / 0.917);
+  transform: translateX(-51%);
 }
 
 /* Second Claim button, after How it works. */
@@ -851,6 +868,13 @@
 
   .cs-section {
     padding: 44px 0;             /* was 88px */
+  }
+
+  /* Desktop review image: +50% (960 -> 1440px) where it fits; on narrower screens the
+     cards keep a 32px margin each side. */
+  .cs-reviews img {
+    width: min(1440px, calc((100vw - 64px) / 0.949));
+    transform: translateX(-50%);
   }
 
   /* Second Claim button matches the top one on desktop (own rule; the top button's
