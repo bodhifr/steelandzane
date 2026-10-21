@@ -777,8 +777,9 @@
   margin-top: 24px;
 }
 
-/* What you'll get: headline, subhead, three captioned Signature photos. The headline is
-   set on two lines everywhere: "What you'll get at the / complimentary shoot:". */
+/* What you get: headline, subhead, three points with two Signature photos each, shown
+   at their original aspect ratios. Headline: two lines on phones ("What you get from /
+   Signature shoots:"), one line on desktop. */
 .cs-get-line {
   display: block;
 }
@@ -792,7 +793,7 @@
 .cs-get-sub {
   max-width: 560px;
   text-wrap: balance;
-  margin: -4px auto 20px;
+  margin: 24px auto 20px;         /* 24px below the headline (was 12px); collapses with its 16px margin */
   text-align: center;
   font-size: var(--cs-explainer-size);
   line-height: 1.55;
@@ -820,11 +821,18 @@
   color: var(--text);
 }
 
+/* Phones: each pair side by side at equal height. Each photo's flex-grow is its own
+   aspect ratio (--r = width / height), so widths split in proportion and heights match. */
+.cs-get-pair {
+  display: flex;
+  gap: 8px;
+}
+
 .cs-get-grid img {
   display: block;
-  width: 100%;
+  flex: var(--r) 1 0;
+  min-width: 0;
   height: auto;
-  border-radius: 12px;
 }
 
 .cs-get-grid p {
@@ -1079,13 +1087,39 @@
     margin-bottom: 32px;         /* doubled (was 16px) */
   }
 
-  .cs-get-sub {
-    margin-bottom: 32px;
+  /* Headline on one line (18.65em in Poppins 800), shrinking only if it wouldn't fit. */
+  .cs-get-line {
+    display: inline;
   }
 
+  .cs-get-title {
+    white-space: nowrap;
+    font-size: min(calc(1.75 * max(20px, calc(0.5 * var(--cs-headline-size)))), calc((min(100vw, 1040px) - 55px) / 19));
+  }
+
+  /* Subhead on one line (29.84em in Manrope), 32px below the headline (was 12px). */
+  .cs-get-sub {
+    max-width: none;
+    white-space: nowrap;
+    margin: 32px auto 32px;      /* collapses with the headline's 16px margin -> 32px gap */
+    font-size: min(var(--cs-explainer-size), calc((min(100vw, 1040px) - 55px) / 30.5));
+  }
+
+  /* Each pair stacked in its column. Column widths are proportional to 1 / (sum of the
+     two photos' height/width), so all three columns end at exactly the same height:
+     #1 and #2 = 0.667 + 1.25 = 1.917; #3 = 1.25 + 1.5 = 2.75. */
   .cs-get-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 0.52165fr 0.52165fr 0.36364fr;
     gap: 24px;
+  }
+
+  .cs-get-pair {
+    flex-direction: column;
+  }
+
+  .cs-get-grid img {
+    flex: none;
+    width: 100%;
   }
 
   .cs-qa .cs-narrow {
