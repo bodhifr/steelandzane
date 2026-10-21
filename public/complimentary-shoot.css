@@ -1128,6 +1128,11 @@
     margin-top: 56px;            /* where the Claim button sat */
   }
 
+  /* Desktop: no empty screen between the open questions and the questions section. */
+  .cs-how .cs-form-wrap.is-open {
+    margin-bottom: 0;
+  }
+
   /* Banner headline 41px on one line (18.65em in Poppins 800), shrinking only if it
      wouldn't fit; 136px from the banner to the point titles. */
   .cs-get-line {
