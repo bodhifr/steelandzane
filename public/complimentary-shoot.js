@@ -553,6 +553,18 @@
     gate.hidden = true;
     progress.hidden = false;
     form.hidden = false;
+    wrap.classList.add('is-open');   // terracotta outline around the questions
+  }
+
+  const isDesktop = () => window.matchMedia('(min-width: 720px)').matches;
+
+  // Desktop: scroll so the current question's text boxes sit in the exact middle of
+  // the screen. (Phones keep the browser's own focus scrolling for the keyboard.)
+  function centerInputs() {
+    const sec = sections[state.step] || sections.name;
+    const target = sec.querySelector('.cs-row, .cs-field, .cs-tiles') || sec;
+    const r = target.getBoundingClientRect();
+    window.scrollTo({ top: window.scrollY + r.top + r.height / 2 - window.innerHeight / 2, behavior: 'smooth' });
   }
 
   // Top badge: scroll down to the Claim button (or to the form once it's open).
@@ -569,7 +581,12 @@
     track('cta_click');
     openForm();
     showStep(state.step, false);
-    form.first_name.focus();     // opens the keyboard on phones
+    if (isDesktop()) {
+      form.first_name.focus({ preventScroll: true });
+      centerInputs();
+    } else {
+      form.first_name.focus();   // opens the keyboard on phones
+    }
   });
 
   // Second Claim button (after "How it works"). Reuses the top Claim button when the
@@ -577,8 +594,9 @@
   document.querySelectorAll('.cs-claim-again').forEach((btn) => {
     btn.addEventListener('click', () => {
       track('cta_click_again');
-      if (!gate.hidden) claimBtn.click();
-      wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!gate.hidden) claimBtn.click();              // opens the form (desktop: centres it)
+      if (isDesktop()) centerInputs();
+      else wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 

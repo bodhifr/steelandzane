@@ -389,6 +389,14 @@
   animation: none;
 }
 
+/* Once Claim My Shoot is tapped, the questions sit inside a terracotta outline
+   (like acquisition.com's roadmap form). */
+.cs-form-wrap.is-open {
+  border: 2px solid var(--terracotta);
+  border-radius: 16px;
+  padding: 22px 16px;
+}
+
 .cs-gate {
   margin-top: 20px;
 }
@@ -639,6 +647,7 @@
 }
 
 .cs-steps strong {
+  display: block;
   color: var(--text);
   font-weight: 600;
 }
@@ -649,11 +658,11 @@
   height: 34px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--bronze);
+  border: 1px solid var(--terracotta);
   border-radius: 50%;
   font-family: var(--font-ui);
   font-size: 14px;
-  color: var(--bronze);
+  color: var(--terracotta);
 }
 
 /* FAQ */
@@ -945,9 +954,38 @@
   }
 }
 
-@media (min-width: 1000px) {
+/* Four across from 1200px. Text scales with the column (max 20px) so each step is at
+   most 3 lines: the bold line plus two grey lines (longest grey line 32.75em needs
+   ~17.4em of column). Below 1200px the 2 x 2 grid keeps the full 20px. */
+@media (min-width: 1200px) {
+  .cs-how .cs-narrow {
+    max-width: 1640px;
+  }
+
   .cs-steps {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .cs-steps li {
+    font-size: min(var(--cs-explainer-size), calc((min(100vw, 1640px) - 40px - 72px) / 4 / 17.4));
+  }
+
+  .cs-steps strong {
+    white-space: nowrap;
+  }
+
+  .cs-form-wrap.is-open {
+    padding: 28px 32px;
+  }
+}
+
+/* Phones: section headings share one size, the largest at which the longest one
+   ("What agents are saying:", 12.48em in Poppins 800) stays on one line. */
+@media (max-width: 719px) {
+  .cs-section-title {
+    font-size: min(35px, calc((100vw - 40px) / 12.75));
+    white-space: nowrap;
   }
 }
 
