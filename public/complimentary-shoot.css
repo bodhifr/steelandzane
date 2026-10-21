@@ -99,7 +99,7 @@
    so the video straddles into the plaster section below. */
 .cs-band {
   --cs-overlap: 28px;
-  padding-top: 6.525px;          /* phones: 4.35px + 50% */
+  padding-top: 13.05px;          /* phones: 6.525px x 2 */
   background: linear-gradient(
     to bottom,
     var(--dark) calc(100% - var(--cs-overlap)),
@@ -180,7 +180,7 @@
    Longest phone line ("It's a complimentary editorial photo shoot") is 18.96x the
    font size, so the size follows the screen on narrow phones. */
 .cs-explainer {
-  margin: 7.2px auto 0;          /* phones: 24px - 70% (desktop sets its own) */
+  margin: 12.24px auto 0;        /* phones: 7.2px + 70% (desktop sets its own) */
   max-width: 560px;
   text-align: center;
   white-space: nowrap;
@@ -857,7 +857,7 @@
    The form is allowed to start below the fold. */
 @media (max-width: 719px) and (max-height: 620px) {
   .cs-band {
-    padding-top: 3.825px;        /* short phones: 2.55px + 50% */
+    padding-top: 7.65px;         /* short phones: 3.825px x 2 */
   }
 
   .cs-page {
