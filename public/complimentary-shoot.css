@@ -633,7 +633,6 @@
 /* ── BELOW-THE-FOLD SECTIONS ──────────────────────────────────────────── */
 .cs-section {
   padding: 28px 0;               /* was 56px: less scrolling */
-  border-top: 1px solid var(--border);
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
 }
@@ -780,7 +779,6 @@
 /* Footer */
 .cs-footer {
   padding: 32px 20px 40px;
-  border-top: 1px solid var(--border);
   text-align: center;
   font-size: 13px;
   color: var(--muted);
