@@ -140,18 +140,13 @@
               </div>
             </section>
 
-            <!-- 4. Listing -->
-            <section class="cs-step" data-step="listing" aria-labelledby="q-listing" hidden>
-              <h2 class="cs-q" id="q-listing" tabindex="-1">Which <strong>listing</strong> are you thinking of?</h2>
-              <div class="cs-field cs-addr">
-                <label class="cs-sr" for="f-address">Listing address</label>
-                <input type="text" id="f-address" name="listing_address" placeholder="Listing address" autocomplete="street-address" maxlength="200">
-                <ul class="cs-addr-list" id="cs-addr-list" role="listbox" aria-label="Address suggestions" hidden></ul>
+            <!-- 4. Listing in mind? "Not yet" ends the form here. -->
+            <section class="cs-step" data-step="haslisting" aria-labelledby="q-haslisting" hidden>
+              <h2 class="cs-q" id="q-haslisting" tabindex="-1">Do you have a <strong>listing</strong> in mind for the shoot?</h2>
+              <div class="cs-tiles" role="radiogroup" aria-labelledby="q-haslisting">
+                <label class="cs-tile"><input type="radio" name="has_listing" value="yes"><span>Yes</span></label>
+                <label class="cs-tile"><input type="radio" name="has_listing" value="no"><span>Not Yet</span></label>
               </div>
-              <label class="cs-check">
-                <input type="checkbox" id="f-nolisting" name="no_listing">
-                <span>No listing yet</span>
-              </label>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
                 <button type="submit" class="btn-hero-primary cs-next">Next</button>
@@ -159,7 +154,22 @@
               </div>
             </section>
 
-            <!-- 5. Listing status (skipped if no listing) -->
+            <!-- 5. Listing address (only if "Yes") -->
+            <section class="cs-step" data-step="listing" aria-labelledby="q-listing" hidden>
+              <h2 class="cs-q" id="q-listing" tabindex="-1">Which <strong>listing</strong> are you thinking of?</h2>
+              <div class="cs-field cs-addr">
+                <label class="cs-sr" for="f-address">Listing address</label>
+                <input type="text" id="f-address" name="listing_address" placeholder="Listing address" autocomplete="street-address" maxlength="200">
+                <ul class="cs-addr-list" id="cs-addr-list" role="listbox" aria-label="Address suggestions" hidden></ul>
+              </div>
+              <p class="cs-error" aria-live="polite"></p>
+              <div class="cs-nav">
+                <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
+              </div>
+            </section>
+
+            <!-- 6. Listing status (only if "Yes"); last question -->
             <section class="cs-step" data-step="status" aria-labelledby="q-status" hidden>
               <h2 class="cs-q" id="q-status" tabindex="-1">Is it <strong>active</strong> or <strong>coming soon?</strong></h2>
               <div class="cs-tiles" role="radiogroup" aria-labelledby="q-status">
@@ -168,39 +178,7 @@
               </div>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">
-                <button type="submit" class="btn-hero-primary cs-next">Next</button>
-                <button type="button" class="cs-back">Back</button>
-              </div>
-            </section>
-
-            <!-- 6. Timing (skipped if no listing) -->
-            <section class="cs-step" data-step="timing" aria-labelledby="q-timing" hidden>
-              <h2 class="cs-q" id="q-timing" tabindex="-1"><strong>When</strong> would you like the shoot?</h2>
-              <div class="cs-tiles" role="radiogroup" aria-labelledby="q-timing">
-                <label class="cs-tile"><input type="radio" name="timing" value="As soon as possible"><span>As soon as possible</span></label>
-                <label class="cs-tile"><input type="radio" name="timing" value="Specific date"><span>Specific date</span></label>
-              </div>
-              <div class="cs-field cs-date-field" hidden>
-                <label class="cs-sr" for="f-date">Preferred date</label>
-                <input type="date" id="f-date" name="shoot_date">
-              </div>
-              <p class="cs-error" aria-live="polite"></p>
-              <div class="cs-nav">
-                <button type="submit" class="btn-hero-primary cs-next">Next</button>
-                <button type="button" class="cs-back">Back</button>
-              </div>
-            </section>
-
-            <!-- 7. Notes (optional, skipped if no listing) -->
-            <section class="cs-step" data-step="notes" aria-labelledby="q-notes" hidden>
-              <h2 class="cs-q" id="q-notes" tabindex="-1">Anything we should know about the <strong>property?</strong></h2>
-              <div class="cs-field">
-                <label class="cs-sr" for="f-notes">Notes (optional)</label>
-                <textarea id="f-notes" name="notes" rows="4" maxlength="2000" placeholder="Notes (optional)"></textarea>
-              </div>
-              <p class="cs-error" aria-live="polite"></p>
-              <div class="cs-nav">
-                <button type="submit" class="btn-hero-primary cs-next">Request My Shoot</button>
+                <button type="submit" class="btn-hero-primary cs-next">Claim My Shoot</button>
                 <button type="button" class="cs-back">Back</button>
               </div>
             </section>
@@ -211,6 +189,8 @@
           <div class="cs-done" id="cs-done" hidden>
             <h2 class="cs-q" id="cs-done-title" tabindex="-1"></h2>
             <p class="cs-done-body" id="cs-done-body"></p>
+            <p class="cs-done-ig">In the meantime, follow us on Instagram to see how we&rsquo;re helping hundreds of LA realtors stand out, win listings, and earn more referrals with their media.</p>
+            <a class="cs-done-ig-link" href="https://www.instagram.com/steelandzane/" target="_blank" rel="noopener">Follow @steelandzane</a>
           </div>
         </div>
       </div>

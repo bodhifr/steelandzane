@@ -8,7 +8,8 @@
 //   LEADS_WEBHOOK_SECRET  shared token, must match the script's SECRET property
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const STEPS = ['name', 'cell', 'email', 'listing', 'status', 'timing', 'notes'];
+// 'timing' and 'notes' are no longer asked; kept so saves from older open tabs still pass.
+const STEPS = ['name', 'cell', 'email', 'haslisting', 'listing', 'status', 'timing', 'notes'];
 const STATUSES = ['Incomplete', 'Complete'];
 
 // Whitelisted answer fields and their max lengths. Anything else is dropped.

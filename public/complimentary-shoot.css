@@ -606,6 +606,30 @@
   margin: 0 auto;
 }
 
+.cs-done-ig {
+  max-width: 460px;
+  margin: 18px auto 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.cs-done-ig-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  border: 1.5px solid var(--terracotta);
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--terracotta);
+  text-decoration: none;
+}
+
+.cs-done-ig-link:hover {
+  background: var(--terracotta);
+  color: var(--background);
+}
+
 /* ── BELOW-THE-FOLD SECTIONS ──────────────────────────────────────────── */
 .cs-section {
   padding: 28px 0;               /* was 56px: less scrolling */

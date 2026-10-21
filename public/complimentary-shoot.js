@@ -26,8 +26,8 @@
   const STORE_KEY = 'snz_cs_lead_v1';
   const STORE_TTL_MS = 30 * 24 * 60 * 60 * 1000;   // resume a lead for 30 days
 
-  const ALL_STEPS = ['name', 'cell', 'email', 'listing', 'status', 'timing', 'notes'];
-  const NO_LISTING_STEPS = ['name', 'cell', 'email', 'listing'];
+  const ALL_STEPS = ['name', 'cell', 'email', 'haslisting', 'listing', 'status'];
+  const NO_LISTING_STEPS = ['name', 'cell', 'email', 'haslisting'];   // "Not Yet" ends here
 
   // ── DOM ───────────────────────────────────────────────────────────────────
   const form = document.getElementById('cs-form');
@@ -37,10 +37,7 @@
   const progressFill = wrap.querySelector('.cs-progress-fill');
   const done = document.getElementById('cs-done');
   const honeypot = document.getElementById('cs-website');
-  const noListing = document.getElementById('f-nolisting');
   const address = document.getElementById('f-address');
-  const dateField = form.querySelector('.cs-date-field');
-  const dateInput = document.getElementById('f-date');
   const gate = document.getElementById('cs-gate');
   const claimBtn = document.getElementById('cs-claim');
   const addrList = document.getElementById('cs-addr-list');
@@ -154,20 +151,14 @@
     }
   }
 
-  // The listing screen is the last screen when there's no listing.
+  // "Do you have a listing in mind?": answering "Not Yet" makes this the last screen.
   function updateListingButton() {
-    const btn = sections.listing.querySelector('.cs-next');
-    btn.textContent = noListing.checked ? 'Request My Shoot' : 'Next';
+    const btn = sections.haslisting.querySelector('.cs-next');
+    btn.textContent = checkedValue('has_listing') === 'no' ? 'Claim My Future Shoot' : 'Next';
   }
 
   // ── VALIDATION ────────────────────────────────────────────────────────────
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-  function todayISO() {
-    const d = new Date();
-    const pad = (n) => String(n).padStart(2, '0');
-    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-  }
 
   function normalizePhone(value) {
     let digits = value.replace(/\D/g, '');
@@ -201,32 +192,21 @@
       if (!EMAIL_RE.test(email)) return { error: 'Please enter a valid email address.', field: form.email };
       return { answers: { email } };
     },
+    haslisting() {
+      const v = checkedValue('has_listing');
+      if (!v) return { error: 'Please choose one.', field: form.querySelector('input[name="has_listing"]') };
+      if (v === 'no') return { answers: { no_listing: true, listing_address: '', listing_status: '' } };
+      return { answers: { no_listing: false } };
+    },
     listing() {
-      if (noListing.checked) return { answers: { no_listing: true, listing_address: '' } };
       const addr = address.value.trim();
-      if (addr.length < 5) {
-        return { error: 'Enter the listing address, or choose “No listing yet.”', field: address };
-      }
-      return { answers: { no_listing: false, listing_address: addr } };
+      if (addr.length < 5) return { error: 'Please enter the listing address.', field: address };
+      return { answers: { listing_address: addr } };
     },
     status() {
       const v = checkedValue('listing_status');
       if (!v) return { error: 'Please choose one.', field: form.querySelector('input[name="listing_status"]') };
       return { answers: { listing_status: v } };
-    },
-    timing() {
-      const v = checkedValue('timing');
-      if (!v) return { error: 'Please choose one.', field: form.querySelector('input[name="timing"]') };
-      if (v === 'Specific date') {
-        const d = dateInput.value;
-        if (!d) return { error: 'Please pick a date.', field: dateInput };
-        if (d < todayISO()) return { error: 'Please pick today or a future date.', field: dateInput };
-        return { answers: { timing: v, shoot_date: d } };
-      }
-      return { answers: { timing: v, shoot_date: '' } };
-    },
-    notes() {
-      return { answers: { notes: form.notes.value.trim() } };
     },
   };
 
@@ -346,9 +326,13 @@
     const name = document.createElement('strong');
     name.textContent = `${first}.`;
     title.replaceChildren(document.createTextNode('Thanks, '), name);
-    document.getElementById('cs-done-body').textContent = state.answers.no_listing
-      ? 'Your complimentary shoot is saved for your next listing. We’ll be in touch.'
-      : `We’ll give you a call from ${CALL_FROM} as soon as possible to plan your shoot.`;
+    const body = document.getElementById('cs-done-body');
+    if (state.answers.no_listing) {
+      body.replaceChildren(document.createTextNode('Your complimentary shoot is saved for your next listing.'),
+        document.createElement('br'), document.createTextNode('We’ll be in touch.'));
+    } else {
+      body.textContent = `We’ll give you a call from ${CALL_FROM} as soon as possible to plan your shoot.`;
+    }
     document.getElementById('cs-done-title').focus({ preventScroll: true });
     if (wrap.getBoundingClientRect().top < 0) {
       wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -368,19 +352,12 @@
   });
 
   // ── FIELD BEHAVIOUR ───────────────────────────────────────────────────────
-  noListing.addEventListener('change', () => {
-    closeSuggestions();
-    address.disabled = noListing.checked;
-    clearError('listing');
-    state.answers.no_listing = noListing.checked;
-    setProgress('listing');
-    updateListingButton();
-  });
-
-  form.querySelectorAll('input[name="timing"]').forEach((r) => {
+  form.querySelectorAll('input[name="has_listing"]').forEach((r) => {
     r.addEventListener('change', () => {
-      dateField.hidden = checkedValue('timing') !== 'Specific date';
-      clearError('timing');
+      clearError('haslisting');
+      state.answers.no_listing = checkedValue('has_listing') === 'no';
+      setProgress('haslisting');
+      updateListingButton();
     });
   });
 
@@ -399,8 +376,6 @@
       sections[state.step].querySelector('.cs-error').textContent = '';
     }
   });
-
-  dateInput.min = todayISO();
 
   // ── ADDRESS SUGGESTIONS (Google Places API (New)) ─────────────────────────
   // Loaded only when the listing screen is reached, and only with a key.
@@ -608,21 +583,17 @@
     if (a.cell) form.cell.value = a.cell;
     if (a.email) form.email.value = a.email;
     if (a.listing_address) address.value = a.listing_address;
-    if (a.no_listing) {
-      noListing.checked = true;
-      address.disabled = true;
+    if (a.no_listing === true || a.no_listing === false) {
+      form.querySelectorAll('input[name="has_listing"]').forEach((r) => {
+        r.checked = r.value === (a.no_listing ? 'no' : 'yes');
+      });
     }
-    ['listing_status', 'timing'].forEach((name) => {
+    ['listing_status'].forEach((name) => {
       if (!a[name]) return;
       form.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
         r.checked = r.value === a[name];
       });
     });
-    if (a.timing === 'Specific date') {
-      dateField.hidden = false;
-      if (a.shoot_date) dateInput.value = a.shoot_date;
-    }
-    if (a.notes) form.notes.value = a.notes;
   }
 
   restoreFields();

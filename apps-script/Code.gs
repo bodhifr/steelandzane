@@ -28,8 +28,9 @@ const HEADERS = [
 const SRC_LABELS = { '0': 'Direct', '1': 'Text', '2': 'Email' };
 
 const STEP_LABELS = {
-  name: '1 Name', cell: '2 Cell', email: '3 Email', listing: '4 Listing',
-  status: '5 Active/Coming soon', timing: '6 Timing', notes: '7 Notes',
+  name: '1 Name', cell: '2 Cell', email: '3 Email', haslisting: '4 Listing in mind?',
+  listing: '5 Address', status: '6 Active/Coming soon',
+  timing: 'Timing (old form)', notes: 'Notes (old form)',
 };
 
 /**
