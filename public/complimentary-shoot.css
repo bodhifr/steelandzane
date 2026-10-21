@@ -973,8 +973,12 @@
     justify-content: center;
     width: fit-content;
     min-height: 86px;
-    margin: 28px auto 0;
+    margin: 56px auto 0;         /* doubled (was 28px) */
     padding: 0 86px;
+  }
+
+  .cs-how .cs-section-title {
+    margin-bottom: 32px;         /* doubled (was 16px) */
   }
 }
 
@@ -986,13 +990,28 @@
     max-width: 1640px;
   }
 
+  /* Each step is as wide as its own text (step 3 gets the 17.4em it needs to stay
+     within 3 lines); the gap is set so the steps sit 10% closer together than the
+     old equal-width columns (centre-to-centre span 3 x (17.4em + 24px)). */
   .cs-steps {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px;
+    display: flex;
+    justify-content: center;
+    font-size: min(var(--cs-explainer-size), calc((min(100vw, 1640px) - 40px - 72px) / 4 / 17.4));
+    /* Old layout: 4 equal columns of (W - 72px)/4 with 24px gaps, so step 1 to step 4
+       was 0.75W + 18px (W = row width). New span target: 90% of that. Item widths in em
+       (half of 1st + 2nd + 3rd + half of 4th) = 40.68em, so each of the 3 gaps is
+       (0.675W + 16.2px - 40.68em) / 3. Percent gaps resolve against the row width. */
+    column-gap: calc(22.5% + 5.4px - 13.56em);
   }
 
   .cs-steps li {
-    font-size: min(var(--cs-explainer-size), calc((min(100vw, 1640px) - 40px - 72px) / 4 / 17.4));
+    flex: none;
+    width: max-content;
+    font-size: inherit;
+  }
+
+  .cs-steps li:nth-child(3) {
+    width: 17.4em;
   }
 
   .cs-steps strong {
