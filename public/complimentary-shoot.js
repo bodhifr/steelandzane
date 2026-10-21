@@ -534,13 +534,18 @@
 
   const isDesktop = () => window.matchMedia('(min-width: 720px)').matches;
 
-  // Desktop: scroll so the current question's text boxes sit in the exact middle of
-  // the screen. (Phones keep the browser's own focus scrolling for the keyboard.)
-  function centerInputs() {
-    const sec = sections[state.step] || sections.name;
-    const target = sec.querySelector('.cs-row, .cs-field, .cs-tiles') || sec;
-    const r = target.getBoundingClientRect();
-    window.scrollTo({ top: window.scrollY + r.top + r.height / 2 - window.innerHeight / 2, behavior: 'smooth' });
+  // Desktop: scroll so "Your first shoot is on us" sits near the top of the screen, with
+  // the steps and the open questions below it. On a screen too short for all of that,
+  // scroll just far enough to show the whole form (never past its top). (Phones keep the
+  // browser's own focus scrolling for the keyboard.)
+  const howTitle = document.getElementById('how-title');
+  function scrollToForm() {
+    const t = howTitle.getBoundingClientRect();
+    const box = wrap.getBoundingClientRect();
+    let top = window.scrollY + t.top - 28;
+    const overflow = box.bottom + 24 - (t.top - 28) - window.innerHeight;
+    if (overflow > 0) top += Math.min(overflow, box.top - (t.top - 28));
+    window.scrollTo({ top, behavior: 'smooth' });
   }
 
   // Top badge: scroll down to the Claim button (or to the form once it's open).
@@ -559,7 +564,7 @@
     showStep(state.step, false);
     if (isDesktop()) {
       form.first_name.focus({ preventScroll: true });
-      centerInputs();
+      scrollToForm();
     } else {
       form.first_name.focus();   // opens the keyboard on phones
     }
@@ -572,7 +577,7 @@
     btn.addEventListener('click', () => {
       if (btn !== heroClaim) track('cta_click_again');
       if (!gate.hidden) claimBtn.click();              // opens the form (desktop: centres it)
-      if (isDesktop()) centerInputs();
+      if (isDesktop()) scrollToForm();
       else wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
