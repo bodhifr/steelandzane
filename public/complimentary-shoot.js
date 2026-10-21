@@ -572,6 +572,16 @@
     form.first_name.focus();     // opens the keyboard on phones
   });
 
+  // Second Claim button (after "How it works"). Reuses the top Claim button when the
+  // form isn't open yet (same reveal + focus behavior); otherwise brings the form into view.
+  document.querySelectorAll('.cs-claim-again').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      track('cta_click_again');
+      if (!gate.hidden) claimBtn.click();
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
   // ── RESTORE A RESUMED LEAD ────────────────────────────────────────────────
   function restoreFields() {
     const a = state.answers;

@@ -600,29 +600,30 @@
 
 /* ── BELOW-THE-FOLD SECTIONS ──────────────────────────────────────────── */
 .cs-section {
-  padding: 56px 0;
+  padding: 28px 0;               /* was 56px: less scrolling */
   border-top: 1px solid var(--border);
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
 }
 
-/* Section headings: Poppins ExtraBold at the top headline's size (case as written). */
+/* Section headings: Poppins ExtraBold, half the top headline's size on desktop (28.8px),
+   never below 20px on phones. Reads --cs-headline-size; does not change it. */
 .cs-section-title {
   font-family: var(--cs-font-headline);
   font-weight: 800;
-  font-size: var(--cs-headline-size);
+  font-size: max(20px, calc(0.5 * var(--cs-headline-size)));
   line-height: 1.1;
   letter-spacing: -0.01em;
   text-align: center;
   color: var(--text);
-  margin-bottom: 28px;
+  margin-bottom: 16px;           /* was 28px */
 }
 
 /* How it works */
 .cs-steps {
   list-style: none;
   display: grid;
-  gap: 22px;
+  gap: 14px;                     /* was 22px */
 }
 
 .cs-steps li {
@@ -667,8 +668,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 56px;
-  padding: 14px 0;
+  min-height: 48px;              /* was 56px; still a full tap target */
+  padding: 12px 0;
   font-size: 16px;
   font-weight: 500;
   color: var(--text);
@@ -701,17 +702,22 @@
   color: var(--muted);
 }
 
-/* Testimonials */
-.cs-testimonials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  max-width: 880px;
+/* Reviews: a single review-stack image, wide on desktop / tall on phones. */
+.cs-reviews {
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-.cs-testimonials .testimonial-author {
-  margin-top: 0;
+.cs-reviews img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Second Claim button, after How it works. */
+.cs-claim-again {
+  margin-top: 24px;
 }
 
 /* Footer */
@@ -844,12 +850,19 @@
   }
 
   .cs-section {
-    padding: 88px 0;
+    padding: 44px 0;             /* was 88px */
   }
 
-  .cs-testimonials-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
+  /* Second Claim button matches the top one on desktop (own rule; the top button's
+     .cs-gate .cs-next rule is left untouched). */
+  .cs-claim-again {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 86px;
+    margin: 28px auto 0;
+    padding: 0 86px;
   }
 }
 
