@@ -633,8 +633,6 @@
 /* ── BELOW-THE-FOLD SECTIONS ──────────────────────────────────────────── */
 .cs-section {
   padding: 28px 0;               /* was 56px: less scrolling */
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
 }
 
 /* Section headings: Poppins ExtraBold. Base size = half the top headline (28.8px desktop),
@@ -912,12 +910,13 @@
 .cs-qa-item.cs-reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+/* Only the fade-in animates; hiding on load is instant. */
 .cs-qa-item.cs-reveal.is-in {
   opacity: 1;
   transform: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 /* Footer */

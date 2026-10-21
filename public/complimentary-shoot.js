@@ -562,23 +562,35 @@
     track('cta_click');
     openForm();
     showStep(state.step, false);
-    if (isDesktop()) {
-      form.first_name.focus({ preventScroll: true });
-      scrollToForm();
-    } else {
-      form.first_name.focus();   // opens the keyboard on phones
-    }
+    form.first_name.focus({ preventScroll: true });   // phones: opens the keyboard
+    goToForm();
   });
+
+  // Phones: bring the questions box to the top of the screen, above the keyboard. iOS
+  // can cut a long smooth scroll short while the keyboard opens, so check again once it
+  // has settled and finish the scroll if it stopped short (unless the visitor has
+  // started scrolling themselves).
+  let finishTimer;
+  const cancelFinish = () => clearTimeout(finishTimer);
+  window.addEventListener('touchstart', cancelFinish, { passive: true });
+  window.addEventListener('wheel', cancelFinish, { passive: true });
+  function goToForm() {
+    if (isDesktop()) { scrollToForm(); return; }
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    cancelFinish();
+    finishTimer = setTimeout(() => {
+      if (wrap.getBoundingClientRect().top > 40) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 900);
+  }
 
   // Every other Claim button (hero, after the reviews, What you get, the questions)
   // opens the questions where they live, in How it works, and scrolls there. It reuses
-  // the Claim button there when the form isn't open yet (same reveal + focus behavior).
+  // the Claim button there when the form isn't open yet (same reveal, focus and scroll).
   document.querySelectorAll('#cs-claim, .cs-claim-again').forEach((btn) => {
     btn.addEventListener('click', () => {
       if (btn !== heroClaim) track('cta_click_again');
-      if (!gate.hidden) claimBtn.click();              // opens the form (desktop: centres it)
-      if (isDesktop()) scrollToForm();
-      else wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!gate.hidden) claimBtn.click();
+      else goToForm();
     });
   });
 
