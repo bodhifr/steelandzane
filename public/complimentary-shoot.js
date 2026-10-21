@@ -299,7 +299,7 @@
     const btn = sections[step].querySelector('.cs-next');
     const label = btn.textContent;
     btn.setAttribute('aria-busy', 'true');
-    btn.textContent = 'Sending…';
+    btn.innerHTML = '<span class="cs-spinner" aria-hidden="true"></span>Sending…';
     persist();
 
     save('Complete').then(() => {

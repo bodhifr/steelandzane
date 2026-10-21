@@ -414,8 +414,25 @@
 }
 
 .cs-next[aria-busy="true"] {
-  opacity: 0.7;
+  opacity: 0.85;
   cursor: progress;
+}
+
+/* Small spinning ring before "Sending…" while the request goes out. */
+.cs-spinner {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 0.55em;
+  border: 0.14em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  vertical-align: -0.1em;
+  animation: cs-spin 0.7s linear infinite;
+}
+
+@keyframes cs-spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Main button full width and centered; Back sits underneath it. */
@@ -1300,5 +1317,9 @@
   .cs-field input,
   .cs-tile span {
     transition: none;
+  }
+
+  .cs-spinner {
+    animation-duration: 1.6s;
   }
 }
