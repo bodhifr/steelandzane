@@ -781,11 +781,26 @@
   margin-top: 24px;
 }
 
+/* Form opened from a lower Claim button: same width as in the hero, then a screen of
+   empty space so the questions section only appears after scrolling well past it. */
+.cs-form-slot {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cs-form-slot.has-form {
+  padding-bottom: 100vh;
+}
+
 /* What you get: headline and three points, each with a wide (3:2) and a vertical (4:5)
    Signature photo side by side at equal height, at their original aspect ratios. Headline: two lines on phones ("What you get from /
    Signature shoots:"), one line on desktop. */
 .cs-get-line {
   display: block;
+}
+
+.cs-get .cs-section-title {
+  margin-bottom: 40px;           /* x2.5 (was 16px) */
 }
 
 .cs-get-inner {
@@ -808,7 +823,7 @@
 }
 
 .cs-get-grid h3 {
-  margin-bottom: 8px;            /* 18px to the photos (was 10px) */
+  margin-bottom: 35px;           /* 45px to the photos with the 10px gap (x2.5, was 18px) */
   font-family: var(--cs-font-headline);
   font-weight: 800;
   font-size: 18px;
@@ -1106,7 +1121,7 @@
   }
 
   .cs-get-grid p {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .cs-m-only {

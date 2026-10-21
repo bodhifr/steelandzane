@@ -564,11 +564,18 @@
     }
   });
 
-  // Second Claim button (after "How it works"). Reuses the top Claim button when the
-  // form isn't open yet (same reveal + focus behavior); otherwise brings the form into view.
+  // Lower Claim buttons open the questions in place, under "Your first shoot is on us":
+  // the one form (answers kept) moves into the slot there, with a screen of space below
+  // it so the questions section stays out of view. Then it reuses the top Claim button
+  // when the form isn't open yet (same reveal + focus behavior) and scrolls down to it.
+  const formSlot = document.getElementById('cs-form-slot');
   document.querySelectorAll('.cs-claim-again').forEach((btn) => {
     btn.addEventListener('click', () => {
       track('cta_click_again');
+      if (wrap.parentNode !== formSlot) {
+        formSlot.appendChild(wrap);
+        formSlot.classList.add('has-form');
+      }
       if (!gate.hidden) claimBtn.click();              // opens the form (desktop: centres it)
       if (isDesktop()) centerInputs();
       else wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
