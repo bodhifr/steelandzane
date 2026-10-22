@@ -605,11 +605,11 @@
           qaObserver.unobserve(entry.target);
         }
       });
-    // A question appears only once its top has scrolled up to the middle of the screen,
-    // so each takes a good scroll to bring in. The huge top margin counts anything
-    // already scrolled past as seen, so a fast jump past a question never leaves it
-    // invisible.
-    }, { threshold: 0, rootMargin: '100000px 0px -50% 0px' });
+    // A question appears only once its top has scrolled a quarter of the way up the
+    // screen, so each takes a deliberate scroll to bring in. The huge top margin counts
+    // anything already scrolled past as seen, so a fast jump past a question never
+    // leaves it invisible.
+    }, { threshold: 0, rootMargin: '100000px 0px -25% 0px' });
     qaItems.forEach((el) => { el.classList.add('cs-reveal'); qaObserver.observe(el); });
   }
 
