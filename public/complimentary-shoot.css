@@ -1169,12 +1169,12 @@
     font-size: min(41px, calc((100vw - 88px) / 19));
   }
 
-  /* Titles 25px; room for two lines so the photos line up across the row. A one-line
-     title sits 78px above its photos, a two-line one 38px. */
+  /* Titles 22px; room for two lines so the photos line up across the row. A one-line
+     title sits ~78px above its photos, a two-line one ~43px. */
   .cs-get-grid h3 {
-    min-height: 80px;
-    margin-bottom: 38px;
-    font-size: 25px;
+    min-height: 3.2em;           /* two lines at line-height 1.6 */
+    margin-bottom: 43px;
+    font-size: 22px;
     white-space: normal;
     text-wrap: balance;
   }
@@ -1193,7 +1193,7 @@
   }
 
   .cs-get-grid p {
-    font-size: 21px;
+    font-size: 18px;
   }
 
   .cs-m-only {
