@@ -758,7 +758,7 @@
    Phone image: cards span 91.7% of its width, centred at 51%.
    Desktop image: cards span 94.9%, centred at 50%. */
 .cs-testimonials {
-  padding-top: 14px;             /* halved (was 28px) */
+  padding-top: 25.5px;           /* gap under the Claim button +25% (46 -> 57.5px) */
   overflow: hidden;              /* crop the image's empty side margins, never scroll sideways */
 }
 
@@ -920,6 +920,10 @@
   font-size: 20px;
   line-height: 1.6;
   color: var(--text);
+}
+
+.cs-qa-a p + p {
+  margin-top: 0.8em;
 }
 
 /* Fade-up as each question scrolls into view (JS adds .cs-reveal only when it can
@@ -1099,7 +1103,7 @@
   /* Reviews + How it works read as one section on desktop: no divider or padding
      between them. */
   .cs-testimonials {
-    padding-top: 22px;           /* halved (was 44px) */
+    padding-top: 38px;           /* gap under the Claim button +25% (~64 -> ~80px) */
     padding-bottom: 0;
   }
 
@@ -1165,12 +1169,12 @@
     font-size: min(41px, calc((100vw - 88px) / 19));
   }
 
-  /* Titles 20px; room for two lines so the photos line up across the row. A one-line
-     title sits 78px above its photos, a two-line one 46px. */
+  /* Titles 25px; room for two lines so the photos line up across the row. A one-line
+     title sits 78px above its photos, a two-line one 38px. */
   .cs-get-grid h3 {
-    min-height: 64px;
-    margin-bottom: 46px;
-    font-size: 20px;
+    min-height: 80px;
+    margin-bottom: 38px;
+    font-size: 25px;
     white-space: normal;
     text-wrap: balance;
   }
@@ -1189,7 +1193,7 @@
   }
 
   .cs-get-grid p {
-    font-size: 16px;
+    font-size: 21px;
   }
 
   .cs-m-only {
