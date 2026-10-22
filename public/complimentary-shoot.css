@@ -923,7 +923,7 @@
 }
 
 .cs-qa-a p + p {
-  margin-top: 0.8em;
+  margin-top: 0.96em;            /* +20% (was 0.8em) */
 }
 
 /* Fade-up as each question scrolls into view (JS adds .cs-reveal only when it can
@@ -1205,23 +1205,25 @@
     display: none;
   }
 
+  /* Questions at 64% of the screen width, everything 20% smaller than before (matches
+     acquisition.com's workshop page). */
   .cs-qa .cs-narrow {
-    width: 80%;
+    width: 64%;
   }
 
   .cs-qa-item + .cs-qa-item {
-    margin-top: 40px;
+    margin-top: 32px;
   }
 
   .cs-qa-q {
-    padding: 36px 32px;
-    border-radius: 12px;
-    font-size: min(40px, 2.8vw);
+    padding: 29px 26px;
+    border-radius: 10px;
+    font-size: min(32px, 2.24vw);
   }
 
   .cs-qa-a {
-    padding: 28px 32px 0;
-    font-size: min(28px, 2vw);
+    padding: 22px 26px 0;
+    font-size: min(22.4px, 1.6vw);
   }
 }
 
