@@ -1,6 +1,11 @@
 {
   "outputDirectory": "public",
   "cleanUrls": true,
+  "git": {
+    "deploymentEnabled": {
+      "complimentary-shoot": false
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
