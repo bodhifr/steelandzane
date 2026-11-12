@@ -23,6 +23,8 @@ const HEADERS = [
   'listing_address', 'no_listing', 'listing_status', 'timing', 'shoot_date', 'notes',
   'src', 'src_label', 'bdr', 'bdr_label', 'query_string', 'client_submitted_at',
   'update_count', 'emailed_partial_at', 'emailed_complete_at',
+  // Added later: kept at the end so existing rows' columns never shift.
+  'listings_past', 'listings_goal',
 ];
 
 const SRC_LABELS = { '0': 'Direct', '1': 'Text', '2': 'Email' };
@@ -30,6 +32,7 @@ const SRC_LABELS = { '0': 'Direct', '1': 'Text', '2': 'Email' };
 const STEP_LABELS = {
   name: '1 Name', cell: '2 Cell', email: '3 Email', haslisting: '4 Listing in mind?',
   listing: '5 Address', status: '6 Active/Coming soon',
+  pastlistings: '7 Listings, last 12 mo', goallistings: '8 Goal, next 12 mo',
   timing: 'Timing (old form)', notes: 'Notes (old form)',
 };
 
@@ -116,6 +119,8 @@ function doPost(e) {
       timing: lead.timing,
       shoot_date: lead.shoot_date,
       notes: lead.notes,
+      listings_past: lead.listings_past,
+      listings_goal: lead.listings_goal,
       src: lead.src,
       src_label: SRC_LABELS[lead.src] || '',
       bdr: lead.bdr,
@@ -218,6 +223,8 @@ function notify(r, link, complete) {
     ['Email', r.email],
     ['Listing', r.no_listing ? 'No listing yet' : r.listing_address],
     ['Active / coming soon', r.listing_status],
+    ['Listings, last 12 mo', r.listings_past],
+    ['Goal, next 12 mo', r.listings_goal],
     ['Timing', r.timing + (r.shoot_date ? ' — ' + formatDate(r.shoot_date) : '')],
     ['Notes', r.notes],
     ['Sent by', via],

@@ -246,12 +246,44 @@
               </div>
             </section>
 
-            <!-- 6. Listing status (only if "Yes"); last question -->
+            <!-- 6. Listing status (only if "Yes") -->
             <section class="cs-step" data-step="status" aria-labelledby="q-status" hidden>
               <h2 class="cs-q" id="q-status" tabindex="-1">Is it <strong>active</strong> or <strong>coming soon?</strong></h2>
               <div class="cs-tiles" role="radiogroup" aria-labelledby="q-status">
                 <label class="cs-tile"><input type="radio" name="listing_status" value="Active"><span>Active</span></label>
                 <label class="cs-tile"><input type="radio" name="listing_status" value="Coming soon"><span>Coming soon</span></label>
+              </div>
+              <p class="cs-error" aria-live="polite"></p>
+              <div class="cs-nav">
+                <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
+              </div>
+            </section>
+
+            <!-- 7. Listings in the last 12 months (both paths) -->
+            <section class="cs-step" data-step="pastlistings" aria-labelledby="q-pastlistings" hidden>
+              <h2 class="cs-q" id="q-pastlistings" tabindex="-1">How many <strong>listings</strong> did you take to market in the last 12 months?</h2>
+              <div class="cs-tiles" role="radiogroup" aria-labelledby="q-pastlistings">
+                <label class="cs-tile"><input type="radio" name="listings_past" value="None yet"><span>None yet</span></label>
+                <label class="cs-tile"><input type="radio" name="listings_past" value="1–3"><span>1&ndash;3</span></label>
+                <label class="cs-tile"><input type="radio" name="listings_past" value="4–6"><span>4&ndash;6</span></label>
+                <label class="cs-tile"><input type="radio" name="listings_past" value="7–12"><span>7&ndash;12</span></label>
+                <label class="cs-tile"><input type="radio" name="listings_past" value="13–24"><span>13&ndash;24</span></label>
+                <label class="cs-tile"><input type="radio" name="listings_past" value="25+"><span>25+</span></label>
+              </div>
+              <p class="cs-error" aria-live="polite"></p>
+              <div class="cs-nav">
+                <button type="submit" class="btn-hero-primary cs-next">Next</button>
+                <button type="button" class="cs-back">Back</button>
+              </div>
+            </section>
+
+            <!-- 8. Target for the next 12 months (both paths); last question -->
+            <section class="cs-step" data-step="goallistings" aria-labelledby="q-goallistings" hidden>
+              <h2 class="cs-q" id="q-goallistings" tabindex="-1">And how many are you <strong>aiming for</strong> in the next 12 months? <span class="cs-q-note">(rough estimate is okay)</span></h2>
+              <div class="cs-field">
+                <label class="cs-sr" for="f-goal">Number of listings</label>
+                <input type="text" id="f-goal" name="listings_goal" placeholder="Number of listings" inputmode="numeric" autocomplete="off" maxlength="6" required>
               </div>
               <p class="cs-error" aria-live="polite"></p>
               <div class="cs-nav">

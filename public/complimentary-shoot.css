@@ -252,6 +252,14 @@
   font-weight: 700;
 }
 
+/* A softer aside inside a question, e.g. "(rough estimate is okay)" */
+.cs-q-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.6em;
+  color: var(--muted);
+}
+
 /* Visually hidden, still announced by screen readers (placeholders
    alone are not accessible labels). */
 .cs-sr {

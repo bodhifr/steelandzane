@@ -164,6 +164,8 @@ Each sender has two fixed links: one for texts (`src=1`), one for emails (`src=2
    - **Lead COMPLETE** — when the last screen is submitted
 4. `status` stays `Incomplete` until the final screen. `last_step` is the furthest screen the agent reached, so drop-offs are easy to spot and call.
 
+Screens, in order: name → cell → email → listing in mind? → (if Yes: address → active/coming soon) → listings in the last 12 months (`listings_past`: None yet / 1–3 / 4–6 / 7–12 / 13–24 / 25+) → target for the next 12 months (`listings_goal`: a typed number, 0–999). `listings_past` and `listings_goal` are the last two columns of the `Leads` tab; on a Sheet set up before they existed, add those two headers at the end of row 1 (or run `setup` again, which rewrites row 1).
+
 If an agent leaves and comes back on the same phone within 30 days, the form resumes where they left off and updates the same row.
 
 ### One-time setup: Sheet + Apps Script

@@ -26,8 +26,8 @@
   const STORE_KEY = 'snz_cs_lead_v1';
   const STORE_TTL_MS = 30 * 24 * 60 * 60 * 1000;   // resume a lead for 30 days
 
-  const ALL_STEPS = ['name', 'cell', 'email', 'haslisting', 'listing', 'status'];
-  const NO_LISTING_STEPS = ['name', 'cell', 'email', 'haslisting'];   // "Not Yet" ends here
+  const ALL_STEPS = ['name', 'cell', 'email', 'haslisting', 'listing', 'status', 'pastlistings', 'goallistings'];
+  const NO_LISTING_STEPS = ['name', 'cell', 'email', 'haslisting', 'pastlistings', 'goallistings'];   // "Not Yet" skips the listing details
 
   // ── DOM ───────────────────────────────────────────────────────────────────
   const form = document.getElementById('cs-form');
@@ -152,10 +152,10 @@
     }
   }
 
-  // "Do you have a listing in mind?": answering "Not Yet" makes this the last screen.
+  // The last screen's button names the shoot: "Not Yet" agents claim a future one.
   function updateListingButton() {
-    const btn = sections.haslisting.querySelector('.cs-next');
-    btn.textContent = checkedValue('has_listing') === 'no' ? 'Claim My Future Shoot' : 'Next';
+    const btn = sections.goallistings.querySelector('.cs-next');
+    btn.textContent = state.answers.no_listing ? 'Claim My Future Shoot' : 'Claim My Shoot';
   }
 
   // ── VALIDATION ────────────────────────────────────────────────────────────
@@ -208,6 +208,19 @@
       const v = checkedValue('listing_status');
       if (!v) return { error: 'Please choose one.', field: form.querySelector('input[name="listing_status"]') };
       return { answers: { listing_status: v } };
+    },
+    pastlistings() {
+      const v = checkedValue('listings_past');
+      if (!v) return { error: 'Please choose one.', field: form.querySelector('input[name="listings_past"]') };
+      return { answers: { listings_past: v } };
+    },
+    goallistings() {
+      const digits = form.listings_goal.value.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
+      if (!/^\d{1,3}$/.test(digits)) {
+        return { error: 'Please enter a number (a rough guess is fine).', field: form.listings_goal };
+      }
+      form.listings_goal.value = digits;
+      return { answers: { listings_goal: digits } };
     },
   };
 
@@ -364,6 +377,10 @@
 
   form.querySelectorAll('input[name="listing_status"]').forEach((r) => {
     r.addEventListener('change', () => clearError('status'));
+  });
+
+  form.querySelectorAll('input[name="listings_past"]').forEach((r) => {
+    r.addEventListener('change', () => clearError('pastlistings'));
   });
 
   form.cell.addEventListener('blur', () => {
@@ -621,12 +638,13 @@
     if (a.cell) form.cell.value = a.cell;
     if (a.email) form.email.value = a.email;
     if (a.listing_address) address.value = a.listing_address;
+    if (a.listings_goal) form.listings_goal.value = a.listings_goal;
     if (a.no_listing === true || a.no_listing === false) {
       form.querySelectorAll('input[name="has_listing"]').forEach((r) => {
         r.checked = r.value === (a.no_listing ? 'no' : 'yes');
       });
     }
-    ['listing_status'].forEach((name) => {
+    ['listing_status', 'listings_past'].forEach((name) => {
       if (!a[name]) return;
       form.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
         r.checked = r.value === a[name];

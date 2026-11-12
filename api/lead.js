@@ -9,7 +9,7 @@
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 // 'timing' and 'notes' are no longer asked; kept so saves from older open tabs still pass.
-const STEPS = ['name', 'cell', 'email', 'haslisting', 'listing', 'status', 'timing', 'notes'];
+const STEPS = ['name', 'cell', 'email', 'haslisting', 'listing', 'status', 'pastlistings', 'goallistings', 'timing', 'notes'];
 const STATUSES = ['Incomplete', 'Complete'];
 
 // Whitelisted answer fields and their max lengths. Anything else is dropped.
@@ -23,7 +23,13 @@ const FIELDS = {
   timing: 30,
   shoot_date: 10,
   notes: 2000,
+  listings_past: 10,
+  listings_goal: 10,
 };
+
+// The qualifying answers only keep known shapes: one of the six ranges, and a 0–999 target.
+// En dashes, not hyphens: Sheets would turn '1-3' or '7-12' into dates.
+const PAST_RANGES = ['None yet', '1–3', '4–6', '7–12', '13–24', '25+'];
 
 const MIN_AGE_MS = 2000;            // faster than any human fills a screen
 const RATE_WINDOW_MS = 10 * 60 * 1000;
@@ -72,6 +78,8 @@ module.exports = async function handler(req, res) {
   const answers = {};
   for (const [key, max] of Object.entries(FIELDS)) answers[key] = clean(raw[key], max);
   answers.no_listing = raw.no_listing === true;
+  if (!PAST_RANGES.includes(answers.listings_past)) answers.listings_past = '';
+  if (!/^\d{1,3}$/.test(answers.listings_goal)) answers.listings_goal = '';
 
   if (body.status === 'Complete'
       && !(answers.first_name && answers.last_name && answers.cell && answers.email)) {
