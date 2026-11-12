@@ -16,10 +16,10 @@
     // VIDALYTICS CONVERSION: paste snippet here.
   }
 
-  // Google Maps Platform browser key (Maps JavaScript API + Places API (New)),
-  // restricted to this site's domains. Leave empty to turn address
-  // suggestions off; the address box then works as a plain text field.
-  const MAPS_API_KEY = '';
+  // Google Maps browser key (Maps JavaScript API + Places API (New)), restricted
+  // to this site's domains. Served by /api/maps-key from GOOGLE_MAPS_API_KEY so it
+  // never lives in the repo. No key = the address box stays a plain text field.
+  const MAPS_KEY_URL = '/api/maps-key';
 
   const CALL_FROM = '323-643-9060';
   const API_URL = '/api/lead';
@@ -408,17 +408,19 @@
   let debounceTimer = 0;
 
   function loadPlaces() {
-    if (!MAPS_API_KEY) return Promise.resolve(null);
     if (!placesPromise) {
-      placesPromise = new Promise((resolve, reject) => {
-        window.__csMapsReady = resolve;
-        const s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(MAPS_API_KEY)
-          + '&loading=async&libraries=places&callback=__csMapsReady';
-        s.onerror = reject;
-        document.head.appendChild(s);
-      })
+      placesPromise = fetch(MAPS_KEY_URL)
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => new Promise((resolve, reject) => {
+          if (!data || !data.key) { reject(new Error('no maps key')); return; }
+          window.__csMapsReady = resolve;
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(data.key)
+            + '&loading=async&libraries=places&callback=__csMapsReady';
+          s.onerror = reject;
+          document.head.appendChild(s);
+        }))
         .then(() => google.maps.importLibrary('places'))
         .then((lib) => { places = lib; enableCombobox(); return lib; })
         .catch(() => null);
@@ -516,11 +518,13 @@
   address.addEventListener('focus', () => { loadPlaces(); });
 
   address.addEventListener('input', () => {
-    if (!places) return;
     clearTimeout(debounceTimer);
     const q = address.value.trim();
     if (q.length < 3) { requestSeq++; closeSuggestions(); return; }
-    debounceTimer = setTimeout(() => fetchSuggestions(q), 200);
+    // Typing can beat the Maps script on a slow connection: wait for it, then ask.
+    debounceTimer = setTimeout(() => {
+      loadPlaces().then(() => { if (places && address.value.trim() === q) fetchSuggestions(q); });
+    }, 200);
   });
 
   address.addEventListener('keydown', (e) => {

@@ -164,7 +164,7 @@ Each sender has two fixed links: one for texts (`src=1`), one for emails (`src=2
    - **Lead COMPLETE** — when the last screen is submitted
 4. `status` stays `Incomplete` until the final screen. `last_step` is the furthest screen the agent reached, so drop-offs are easy to spot and call.
 
-Screens, in order: name → cell → email → listing in mind? → (if Yes: address → active/coming soon) → listings in the last 12 months (`listings_past`: None yet / 1–3 / 4–6 / 7–12 / 13–24 / 25+) → target for the next 12 months (`listings_goal`: a typed number, 0–999). `listings_past` and `listings_goal` are the last two columns of the `Leads` tab; on a Sheet set up before they existed, add those two headers at the end of row 1 (or run `setup` again, which rewrites row 1).
+Screens, in order: name → cell → email → listing in mind? → (if Yes: address → active/coming soon) → properties listed in the last 12 months (`listings_past`: 1–3 / 4–6 / 7–12 / 13+) → target for the next 12 months (`listings_goal`: a typed number, 0–999). `listings_past` and `listings_goal` are the last two columns of the `Leads` tab; on a Sheet set up before they existed, add those two headers at the end of row 1 (or run `setup` again, which rewrites row 1).
 
 If an agent leaves and comes back on the same phone within 30 days, the form resumes where they left off and updates the same row.
 
@@ -193,13 +193,13 @@ All of these are marked in the code:
 - **GA4:** set `GA4_ID` at the top of `public/complimentary-shoot.js`. Then in GA4 → Admin → Custom definitions, add event-scoped dimensions `src` and `bdr`. Events: `page_view`, `cta_click` (tapped Claim My Shoot), `form_start` (answered the name screen), `form_complete`, each with `src` and `bdr`.
 - **Vidalytics video:** replace the block marked `VIDALYTICS EMBED` in `public/complimentary-shoot.html` and delete the placeholder div. Configure Smart Autoplay inside Vidalytics.
 - **Vidalytics conversion:** paste the conversion snippet into `trackVidalyticsConversion()` in `public/complimentary-shoot.js`. It runs once, after the final screen saves.
-- **Address suggestions (Google Maps):** set `MAPS_API_KEY` at the top of `public/complimentary-shoot.js`. Until it's set, the listing box is a plain text field. To get a key:
+- **Address suggestions (Google Maps):** the page asks `/api/maps-key` (`api/maps-key.js`) for the key, which reads `GOOGLE_MAPS_API_KEY` from the environment (Vercel → Settings → Environment Variables, and `.env.local` for localhost). It's the same key the Signature order form uses. Until it's set, the listing box is a plain text field. To get a key:
   1. Go to [console.cloud.google.com](https://console.cloud.google.com), signed in as bodhi@steelandzane.com, and create a project (e.g. "Steel & Zane Website"). Google requires a billing account with a card, though at this page's volume usage should stay within Google's free monthly allowance. Optionally set a budget alert under **Billing → Budgets & alerts**.
   2. **APIs & Services → Library:** enable **Maps JavaScript API** and **Places API (New)**.
   3. **APIs & Services → Credentials → Create credentials → API key**, then **Edit** the key:
      - **Application restrictions → Websites:** add `steelandzane.com/*` and `www.steelandzane.com/*`. To test on Vercel previews, also add `*.vercel.app/*` temporarily and remove it after launch.
      - **API restrictions → Restrict key:** select only Maps JavaScript API and Places API (New).
-  4. Paste the key into `MAPS_API_KEY`. This key is visible in the page by design; the restrictions above are what protect it.
+  4. Set it as `GOOGLE_MAPS_API_KEY` in Vercel (and `.env.local`). The key reaches the browser by design; the restrictions above are what protect it. Localhost testing must run on port 3000, the only local address the key allows.
 
   Suggestions are limited to US street addresses and favor the LA area. Picking one fills the full address with ZIP (e.g. `123 Green St, Los Angeles, CA 90025`). The "Google Maps" line in the dropdown is Google's required attribution.
 - **Legal:** `public/privacy.html` and `public/terms.html` are **drafts** with `[CONFIRM: …]` placeholders. Have them and the form's consent line reviewed before sending any BDR links, then remove the draft banners.

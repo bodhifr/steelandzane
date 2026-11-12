@@ -32,7 +32,7 @@ const SRC_LABELS = { '0': 'Direct', '1': 'Text', '2': 'Email' };
 const STEP_LABELS = {
   name: '1 Name', cell: '2 Cell', email: '3 Email', haslisting: '4 Listing in mind?',
   listing: '5 Address', status: '6 Active/Coming soon',
-  pastlistings: '7 Listings, last 12 mo', goallistings: '8 Goal, next 12 mo',
+  pastlistings: '7 Listed, last 12 mo', goallistings: '8 Target, next 12 mo',
   timing: 'Timing (old form)', notes: 'Notes (old form)',
 };
 
@@ -223,8 +223,8 @@ function notify(r, link, complete) {
     ['Email', r.email],
     ['Listing', r.no_listing ? 'No listing yet' : r.listing_address],
     ['Active / coming soon', r.listing_status],
-    ['Listings, last 12 mo', r.listings_past],
-    ['Goal, next 12 mo', r.listings_goal],
+    ['Listed, last 12 mo', r.listings_past],
+    ['Target, next 12 mo', r.listings_goal],
     ['Timing', r.timing + (r.shoot_date ? ' — ' + formatDate(r.shoot_date) : '')],
     ['Notes', r.notes],
     ['Sent by', via],

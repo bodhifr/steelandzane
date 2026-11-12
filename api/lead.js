@@ -27,9 +27,9 @@ const FIELDS = {
   listings_goal: 10,
 };
 
-// The qualifying answers only keep known shapes: one of the six ranges, and a 0–999 target.
+// The qualifying answers only keep known shapes: one of the four ranges, and a 0–999 target.
 // En dashes, not hyphens: Sheets would turn '1-3' or '7-12' into dates.
-const PAST_RANGES = ['None yet', '1–3', '4–6', '7–12', '13–24', '25+'];
+const PAST_RANGES = ['1–3', '4–6', '7–12', '13+'];
 
 const MIN_AGE_MS = 2000;            // faster than any human fills a screen
 const RATE_WINDOW_MS = 10 * 60 * 1000;
