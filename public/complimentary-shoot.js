@@ -80,7 +80,7 @@
   // Only known-shaped codes are kept, so nothing personal can leak into
   // analytics or the Sheet through src/bdr. No params = direct (src 0).
   const params = new URLSearchParams(location.search);
-  const urlSrc = /^[012]$/.test(params.get('src') || '') ? params.get('src') : '0';
+  const urlSrc = /^[0-3]$/.test(params.get('src') || '') ? params.get('src') : '0';
   const urlBdr = /^\d{1,3}$/.test(params.get('bdr') || '') ? params.get('bdr') : '';
   const urlQs = location.search.slice(1, 501);
 

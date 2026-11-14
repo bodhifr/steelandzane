@@ -91,7 +91,7 @@ module.exports = async function handler(req, res) {
     status: body.status,
     last_step: body.step,
     ...answers,
-    src: /^[012]$/.test(body.src || '') ? body.src : '0',
+    src: /^[0-3]$/.test(body.src || '') ? body.src : '0',
     bdr: /^\d{1,3}$/.test(body.bdr || '') ? body.bdr : '',
     query_string: clean(body.qs, 500),
     client_submitted_at: clean(body.clientTs, 40),

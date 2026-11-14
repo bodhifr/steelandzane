@@ -144,16 +144,16 @@ The page has no header or navigation, is `noindex, nofollow` (meta tag + `X-Robo
 
 ### BDR links
 
-Each sender has two fixed links: one for texts (`src=1`), one for emails (`src=2`). Visits with no parameters are recorded as direct (`src=0`).
+Each sender has three fixed links: one for texts (`src=1`), one for emails (`src=2`), one for Instagram DMs (`src=3`). Visits with no parameters are recorded as direct (`src=0`).
 
-| Sender | Code | Text link | Email link |
-|--------|------|-----------|------------|
-| Bodhi  | 1 | `steelandzane.com/complimentary-shoot?src=1&bdr=1` | `steelandzane.com/complimentary-shoot?src=2&bdr=1` |
-| Joshua | 2 | `steelandzane.com/complimentary-shoot?src=1&bdr=2` | `steelandzane.com/complimentary-shoot?src=2&bdr=2` |
+| Sender | Code | Text link | Email link | Instagram DM link |
+|--------|------|-----------|------------|-------------------|
+| Bodhi  | 1 | `steelandzane.com/complimentary-shoot?src=1&bdr=1` | `steelandzane.com/complimentary-shoot?src=2&bdr=1` | `steelandzane.com/complimentary-shoot?src=3&bdr=1` |
+| Joshua | 2 | `steelandzane.com/complimentary-shoot?src=1&bdr=2` | `steelandzane.com/complimentary-shoot?src=2&bdr=2` | `steelandzane.com/complimentary-shoot?src=3&bdr=2` |
 
-**Adding a BDR:** give them the next number, add a row (`code`, `name`) to the `BDRs` tab in the leads Sheet, and hand them their two links. No code change.
+**Adding a BDR:** give them the next number, add a row (`code`, `name`) to the `BDRs` tab in the leads Sheet, and hand them their three links. No code change.
 
-**Never put names, emails or phone numbers in these links.** Only `src` values `0/1/2` and 1–3 digit `bdr` codes are accepted; anything else is discarded.
+**Never put names, emails or phone numbers in these links.** Only `src` values `0/1/2/3` and 1–3 digit `bdr` codes are accepted; anything else is discarded.
 
 ### How leads flow
 

@@ -27,7 +27,7 @@ const HEADERS = [
   'listings_past', 'listings_goal',
 ];
 
-const SRC_LABELS = { '0': 'Direct', '1': 'Text', '2': 'Email' };
+const SRC_LABELS = { '0': 'Direct', '1': 'Text', '2': 'Email', '3': 'Instagram' };
 
 const STEP_LABELS = {
   name: '1 Name', cell: '2 Cell', email: '3 Email', haslisting: '4 Listing in mind?',
