@@ -12,6 +12,7 @@ public/
   script.js    — landing page JS (contact form, nav, animations)
   book.js      — booking page JS (questionnaire redirect logic)
   complimentary-shoot.html/.css/.js — private BDR landing page (see below)
+  next-step.html/.css/.js — private VSL #2 page (Book Your Call, iClosed calendar embed; noindex)
   privacy.html, terms.html          — DRAFT legal pages (pending review)
 api/
   contact.js   — serverless function: handles contact form email via Nodemailer

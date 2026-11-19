@@ -1,0 +1,73 @@
+/* /next-step (VSL #2, Book Your Call). Builds on complimentary-shoot.css; only
+   what this page adds or changes lives here. */
+
+/* Book Your Call buttons are links (they scroll to the calendar), styled like the Claim buttons. */
+.ns-page a.cs-next {
+  text-decoration: none;
+}
+
+/* Headline: "CONGRATULATIONS ON YOUR / FIRST SIGNATURE SHOOT" on phones and desktop.
+   Line one measures 15.15x the font size (Poppins 800 caps), so on phones the size is
+   (width - 40px gutters) / 15.45, a ~2% margin like the original page. Desktop keeps
+   the original sizing; the break comes from .cs-hl-desk-break. */
+@media (max-width: 719px) {
+  .ns-page .cs-headline {
+    font-size: min(var(--cs-headline-size), calc((100vw - 40px) / 15.45));
+  }
+}
+
+/* Subhead: "Magnet for More Listings" underlined. */
+.ns-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.ns-page .cs-claim-again {
+  display: block;
+}
+
+/* Calendar section: a terracotta outline like the open questions box. Wide enough
+   for Calendly/iClosed's two-column layout on desktop. */
+.ns-book {
+  padding-left: 16px;
+  padding-right: 16px;
+  outline: none;
+  scroll-margin-top: 12px;
+}
+
+.ns-book .cs-section-title {
+  margin-bottom: 20px;
+}
+
+.ns-scheduler {
+  max-width: 1000px;   /* iClosed shows its side-by-side layout only when this wide */
+  margin: 0 auto;
+  border: 2px solid var(--terracotta);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cs-field-bg);
+}
+
+/* iClosed widget: a starting height until the calendar loads. iClosed then sets the
+   widget's own height (inline style) to fit its content, which overrides this. */
+.ns-scheduler .iclosed-widget {
+  height: 700px;
+}
+
+.ns-scheduler .iclosed-widget iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (min-width: 720px) {
+  .ns-book .cs-section-title {
+    margin-bottom: 32px;
+  }
+
+  .ns-scheduler .iclosed-widget {
+    height: 760px;
+  }
+}
