@@ -6,13 +6,60 @@
   text-decoration: none;
 }
 
-/* Headline: "CONGRATULATIONS ON YOUR / FIRST SIGNATURE SHOOT" on phones and desktop.
-   Line one measures 15.15x the font size (Poppins 800 caps), so on phones the size is
-   (width - 40px gutters) / 15.45, a ~2% margin like the original page. Desktop keeps
+/* Headline in Title Case (not the all-caps of /complimentary-shoot), "Signature" in gold. */
+.ns-page .cs-headline {
+  text-transform: none;
+}
+
+.ns-gold {
+  color: #F5C542;
+}
+
+/* Top badge: a gold pill. */
+.ns-page .cs-badge {
+  background: #F5C542;
+}
+
+.ns-page .cs-badge:hover {
+  background: #F8D36E;
+}
+
+/* Twice the space between the video and the Book Your Call button (20px -> 40px). */
+.ns-page .cs-form-wrap {
+  margin-top: 40px;
+}
+
+.ns-page .cs-gate {
+  margin-top: 0;
+}
+
+/* Phones: Book Your Call buttons hug the label (40px each side) with the label centered
+   vertically, and the hero no longer fills the screen, so the gap under the button
+   before "What agents are saying" is half what it was (~332px -> 166px). */
+@media (max-width: 719px) {
+  .ns-page a.cs-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+  }
+
+  .ns-page .cs-hero {
+    min-height: 0;
+    padding-bottom: 140.5px;     /* + 25.5px above the reviews heading = 166px */
+  }
+}
+
+/* Headline: "Congratulations On Your / First Signature Shoot" on phones and desktop.
+   Line one measures 13.15x the font size (Poppins 800, Title Case), so on phones the size
+   is (width - 40px gutters) / 13.45, a ~2% margin like the original page. Desktop keeps
    the original sizing; the break comes from .cs-hl-desk-break. */
 @media (max-width: 719px) {
   .ns-page .cs-headline {
-    font-size: min(var(--cs-headline-size), calc((100vw - 40px) / 15.45));
+    font-size: min(var(--cs-headline-size), calc((100vw - 40px) / 13.45));
   }
 }
 
@@ -65,6 +112,10 @@
 @media (min-width: 720px) {
   .ns-book .cs-section-title {
     margin-bottom: 32px;
+  }
+
+  .ns-page .cs-form-wrap {
+    margin-top: 36px;            /* 2x the 18px on /complimentary-shoot */
   }
 
   .ns-scheduler .iclosed-widget {
