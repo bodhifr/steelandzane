@@ -11,21 +11,93 @@
   text-transform: none;
 }
 
-.ns-gold {
-  color: #F5C542;
+/* Gold gradient shared by "Signature" and the Book Your Call buttons. */
+.ns-page {
+  --ns-gold: linear-gradient(180deg, #F5C542 0%, #D9A834 50%, #B8892A 100%);
 }
 
-/* Book Your Call buttons: gold with dark text (cream text is unreadable on gold). */
+.ns-gold {
+  color: #D9A834;                /* fallback */
+  background: var(--ns-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Book Your Call buttons: gold gradient, dark text (cream is unreadable on gold), Title Case. */
 .ns-page .cs-next.btn-hero-primary {
-  background: #F5C542;
-  border-color: #F5C542;
+  background: var(--ns-gold);
+  background-origin: border-box;
+  border-color: transparent;
   color: var(--text);
+  text-transform: none;
+  transition: filter 0.2s;
 }
 
 .ns-page .cs-next.btn-hero-primary:hover {
-  background: #F8D36E;
-  border-color: #F8D36E;
+  background: var(--ns-gold);
+  background-origin: border-box;
+  border-color: transparent;
   color: var(--text);
+  filter: brightness(1.07);
+}
+
+/* Dark background runs through the button and rating strip and ends halfway between
+   them and "What agents are saying" (hero padding-bottom = reviews padding-top). */
+.ns-page .cs-hero {
+  min-height: 0;
+  background: var(--dark);
+  padding-bottom: 29px;
+}
+
+.ns-page .cs-band {
+  background: var(--dark);
+}
+
+.ns-page .cs-testimonials {
+  padding-top: 29px;
+}
+
+/* Rating strip under the hero button. */
+.ns-rating {
+  margin-top: 22px;
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+.ns-rating p {
+  margin: 0;
+}
+
+.ns-rating-top {
+  font-size: 17px;
+  color: #FFFFFF;
+}
+
+.ns-rating-top strong {
+  font-weight: 800;
+}
+
+.ns-stars {
+  margin-right: 10px;
+  letter-spacing: 0.08em;
+  color: #F5C542;
+}
+
+.ns-rating-sub {
+  margin-top: 8px !important;
+  font-size: min(15px, calc((100vw - 40px) / 23.4));   /* one line: it measures 22.9x its size */
+  white-space: nowrap;
+  color: #A39D94;
+}
+
+.ns-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 /* Twice the space between the video and the Book Your Call button (20px -> 40px). */
@@ -38,8 +110,7 @@
 }
 
 /* Phones: Book Your Call buttons hug the label (40px each side) with the label centered
-   vertically, and the hero no longer fills the screen, so the gap under the button
-   before "What agents are saying" is a fixed 58px. */
+   vertically. */
 @media (max-width: 719px) {
   .ns-page a.cs-next {
     display: flex;
@@ -51,10 +122,6 @@
     padding: 0 40px;
   }
 
-  .ns-page .cs-hero {
-    min-height: 0;
-    padding-bottom: 32.6px;      /* + 25.5px above the reviews heading = 58.1px (166px - 65%) */
-  }
 }
 
 /* Headline: "Congratulations On Your / First Signature Shoot" on phones and desktop.
@@ -116,6 +183,22 @@
 @media (min-width: 720px) {
   .ns-book .cs-section-title {
     margin-bottom: 32px;
+  }
+
+  .ns-page .cs-hero {
+    padding-bottom: 44px;
+  }
+
+  .ns-page .cs-testimonials {
+    padding-top: 44px;
+  }
+
+  .ns-rating-top {
+    font-size: 18px;
+  }
+
+  .ns-rating-sub {
+    font-size: 16px;
   }
 
   .ns-page .cs-form-wrap {
