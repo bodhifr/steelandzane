@@ -15,13 +15,17 @@
   color: #F5C542;
 }
 
-/* Top badge: a gold pill. */
-.ns-page .cs-badge {
+/* Book Your Call buttons: gold with dark text (cream text is unreadable on gold). */
+.ns-page .cs-next.btn-hero-primary {
   background: #F5C542;
+  border-color: #F5C542;
+  color: var(--text);
 }
 
-.ns-page .cs-badge:hover {
+.ns-page .cs-next.btn-hero-primary:hover {
   background: #F8D36E;
+  border-color: #F8D36E;
+  color: var(--text);
 }
 
 /* Twice the space between the video and the Book Your Call button (20px -> 40px). */
@@ -35,7 +39,7 @@
 
 /* Phones: Book Your Call buttons hug the label (40px each side) with the label centered
    vertically, and the hero no longer fills the screen, so the gap under the button
-   before "What agents are saying" is half what it was (~332px -> 166px). */
+   before "What agents are saying" is a fixed 58px. */
 @media (max-width: 719px) {
   .ns-page a.cs-next {
     display: flex;
@@ -49,7 +53,7 @@
 
   .ns-page .cs-hero {
     min-height: 0;
-    padding-bottom: 140.5px;     /* + 25.5px above the reviews heading = 166px */
+    padding-bottom: 32.6px;      /* + 25.5px above the reviews heading = 58.1px (166px - 65%) */
   }
 }
 
