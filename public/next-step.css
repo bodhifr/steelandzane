@@ -13,7 +13,7 @@
 
 /* Gold gradient shared by "Signature" and the Book Your Call buttons. */
 .ns-page {
-  --ns-gold: linear-gradient(180deg, #F5C542 0%, #D9A834 50%, #B8892A 100%);
+  --ns-gold: linear-gradient(90deg, #F5C542 0%, #D9A834 50%, #B8892A 100%);
 }
 
 .ns-gold {
