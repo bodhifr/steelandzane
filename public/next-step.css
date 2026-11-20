@@ -24,7 +24,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Top strip: no cream pill, just a gold-gradient dot and white Title Case text, so the
+/* Top strip: no cream pill, just a gold-gradient dot and white spaced caps, so the
    strip is shorter (67px -> 52px on desktop). */
 .ns-page .cs-topbar {
   padding-top: 13px;
@@ -35,8 +35,9 @@
   padding: 0;
   background: none;
   color: #FFFFFF;
-  text-transform: none;
-  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;       /* slightly spaced caps */
+  font-size: min(14px, calc((100vw - 56px) / 19));   /* text + dot measure ~18.1em */
   transition: opacity 0.2s;
 }
 
