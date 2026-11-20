@@ -276,9 +276,9 @@
     margin-top: 36px;            /* 2x the 18px on /complimentary-shoot */
   }
 
-  /* VSL 630px wide (600px on /complimentary-shoot). */
+  /* VSL 632px wide (600px on /complimentary-shoot). */
   .ns-page .cs-band .cs-narrow {
-    max-width: 670px;            /* 630px video + 20px gutters */
+    max-width: 672px;            /* 632px video + 20px gutters */
   }
 
   /* Hero Book Your Call button: 75% of the /complimentary-shoot size (86px -> 64.5px tall). */
