@@ -92,6 +92,8 @@
 .ns-page .cs-hero {
   position: relative;
   isolation: isolate;
+  /* the dark deepens to true black at the very bottom */
+  background: linear-gradient(180deg, var(--dark) 0%, var(--dark) 55%, #000000 100%);
   --ns-lit-end: 72%;             /* desktop: gone by the button / rating strip */
   --ns-ray: 1;                   /* ray fan width multiplier */
   --ns-glow-w: 62%;
@@ -210,6 +212,22 @@
 
 .ns-page .cs-gate {
   margin-top: 0;
+}
+
+/* Phones: the Book Your Call button after the reviews stays terracotta (it sits on plaster). */
+@media (max-width: 719px) {
+  .ns-page .cs-claim-again.btn-hero-primary,
+  .ns-page .cs-claim-again.btn-hero-primary:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--plaster);
+    filter: none;
+  }
+
+  /* No pinned Safari bottom strip on this page, so no room reserved for it. */
+  .ns-page {
+    padding-bottom: 0;
+  }
 }
 
 /* Phones: Book Your Call buttons hug the label (40px each side) with the label centered
