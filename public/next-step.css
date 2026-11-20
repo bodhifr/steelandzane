@@ -13,11 +13,11 @@
 
 /* Gold gradient shared by "Signature" and the Book Your Call buttons. */
 .ns-page {
-  --ns-gold: linear-gradient(90deg, #F5C542 0%, #D9A834 50%, #B8892A 100%);
+  --ns-gold: linear-gradient(90deg, #F2CF73 0%, #CA9430 100%);
 }
 
 .ns-gold {
-  color: #D9A834;                /* fallback */
+  color: #DEB152;                /* fallback */
   background: var(--ns-gold);
   -webkit-background-clip: text;
   background-clip: text;
@@ -145,26 +145,53 @@
   display: block;
 }
 
-/* Calendar section: a terracotta outline like the open questions box. Wide enough
-   for Calendly/iClosed's two-column layout on desktop. */
+/* Calendar section: a soft white panel holding a heading card ("Pick a time below" + a
+   line of text) and the iClosed embed in its own card. The embed stays 1000px wide on
+   desktop, which iClosed needs for its side-by-side layout. */
 .ns-book {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
   outline: none;
   scroll-margin-top: 12px;
 }
 
-.ns-book .cs-section-title {
-  margin-bottom: 20px;
+.ns-book-panel {
+  max-width: 1032px;
+  margin: 0 auto;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+}
+
+.ns-book-head {
+  margin-bottom: 12px;
+  padding: 20px 18px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  box-shadow: 0 2px 10px rgba(43, 41, 37, 0.06);
+}
+
+.ns-book-head .cs-section-title {
+  margin: 0 0 8px;
+  font-size: 26px;
+  text-align: left;
+}
+
+.ns-book-head p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
 }
 
 .ns-scheduler {
   max-width: 1000px;   /* iClosed shows its side-by-side layout only when this wide */
   margin: 0 auto;
-  border: 2px solid var(--terracotta);
+  border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  background: var(--cs-field-bg);
+  background: #FFFFFF;
 }
 
 /* iClosed widget: a starting height until the calendar loads. iClosed then sets the
@@ -181,8 +208,27 @@
 }
 
 @media (min-width: 720px) {
-  .ns-book .cs-section-title {
-    margin-bottom: 32px;
+  .ns-book-panel {
+    padding: 16px;
+  }
+
+  .ns-book-head {
+    margin-bottom: 16px;
+    padding: 26px 30px;
+  }
+
+  .ns-book-head .cs-section-title {
+    font-size: 34px;
+  }
+
+  .ns-book-head p {
+    font-size: 18px;
+  }
+
+  /* Less space between the top strip and the headline (57.6px -> 16px), so the hero
+     Book Your Call button sits fully on screen on most laptops. */
+  .ns-page .cs-band {
+    padding-top: 16px;
   }
 
   .ns-page .cs-hero {
