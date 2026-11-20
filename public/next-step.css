@@ -281,12 +281,19 @@
     max-width: 730px;            /* 690px video + 20px gutters */
   }
 
-  /* Hero Book Your Call button at half size (86px -> 43px tall, half the font and side space). */
+  /* Hero Book Your Call button: 75% of the /complimentary-shoot size (86px -> 64.5px tall). */
   .ns-page .cs-gate .cs-next {
-    min-height: 43px;
-    padding: 0 43px;
-    font-size: 0.9rem;
-    border-radius: 10px;
+    min-height: 64.5px;
+    padding: 0 64.5px;
+    font-size: 1.35rem;
+    border-radius: 12px;
+  }
+
+  /* Smaller subline with less space around it, so the hero button fits on a laptop
+     screen. One line: it measures 32.8x its font size. */
+  .ns-page .cs-subhead {
+    margin: 14px auto 18px;
+    font-size: min(19px, calc((min(100vw, 1320px) - 40px) / 33.5));
   }
 
   .ns-scheduler .iclosed-widget {
