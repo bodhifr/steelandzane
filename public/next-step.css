@@ -24,6 +24,31 @@
   -webkit-text-fill-color: transparent;
 }
 
+/* Top strip: no cream pill, just a gold-gradient dot and white Title Case text, so the
+   strip is shorter (67px -> 52px on desktop). */
+.ns-page .cs-topbar {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.ns-page .cs-badge {
+  padding: 0;
+  background: none;
+  color: #FFFFFF;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s;
+}
+
+.ns-page .cs-badge:hover {
+  background: none;
+  opacity: 0.85;
+}
+
+.ns-page .cs-badge-dot {
+  background: var(--ns-gold);
+}
+
 /* Book Your Call buttons: gold gradient, dark text (cream is unreadable on gold), Title Case. */
 .ns-page .cs-next.btn-hero-primary {
   background: var(--ns-gold);
