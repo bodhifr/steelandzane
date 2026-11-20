@@ -276,6 +276,19 @@
     margin-top: 36px;            /* 2x the 18px on /complimentary-shoot */
   }
 
+  /* VSL 15% larger than on /complimentary-shoot (600px -> 690px wide). */
+  .ns-page .cs-band .cs-narrow {
+    max-width: 730px;            /* 690px video + 20px gutters */
+  }
+
+  /* Hero Book Your Call button at half size (86px -> 43px tall, half the font and side space). */
+  .ns-page .cs-gate .cs-next {
+    min-height: 43px;
+    padding: 0 43px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+
   .ns-scheduler .iclosed-widget {
     height: 760px;
   }
