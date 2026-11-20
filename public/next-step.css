@@ -117,6 +117,19 @@
   color: #A39D94;
 }
 
+/* Short pitch paragraph under the rating strip, on the dark background. */
+.ns-pitch {
+  max-width: 780px;
+  margin: 32px auto 0;
+  padding: 0 20px;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  text-align: center;
+  color: #DCD6CC;
+  text-wrap: pretty;
+}
+
 .ns-sr {
   position: absolute;
   width: 1px;
@@ -271,6 +284,11 @@
 
   .ns-rating-sub {
     font-size: 16px;
+  }
+
+  .ns-pitch {
+    margin-top: 40px;
+    font-size: 20px;
   }
 
   .ns-page .cs-form-wrap {
