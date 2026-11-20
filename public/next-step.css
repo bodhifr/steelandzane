@@ -77,11 +77,75 @@
 }
 
 .ns-page .cs-band {
-  background: var(--dark);
+  background: transparent;       /* the hero behind it carries the dark color + light */
 }
 
 .ns-page .cs-testimonials {
   padding-top: 29px;
+}
+
+/* Hero spotlight: warm gold light from just above the top center, with faint rays fanning
+   down, a dark vignette at the sides and a little grain against banding. One static layer
+   behind the content; everything in it fades out by --ns-lit-end of the section height,
+   so the bottom of the hero is the plain --dark color and the edge with the plaster
+   section below is unchanged. No animation, no images (the grain is a tiny inline SVG). */
+.ns-page .cs-hero {
+  position: relative;
+  isolation: isolate;
+  --ns-lit-end: 72%;             /* desktop: gone by the button / rating strip */
+  --ns-ray: 1;                   /* ray fan width multiplier */
+  --ns-glow-w: 62%;
+  --ns-glow-h: 46%;
+}
+
+.ns-page .cs-hero > :not(.ns-hero-light) {
+  position: relative;
+  z-index: 1;
+}
+
+.ns-hero-light {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    /* grain: fine white noise at ~3% */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 .07 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    /* side vignette, in the top strip's existing shade */
+    linear-gradient(90deg, rgba(20, 18, 16, 0.75) 0%, rgba(20, 18, 16, 0) 26%, rgba(20, 18, 16, 0) 74%, rgba(20, 18, 16, 0.75) 100%),
+    /* rays: soft wedges fanning down from the top center, uneven widths */
+    conic-gradient(from calc(180deg - 42deg * var(--ns-ray)) at 50% -4%,
+      transparent 0deg,
+      rgba(245, 197, 66, 0.035) calc(5deg * var(--ns-ray)),
+      transparent calc(11deg * var(--ns-ray)),
+      rgba(184, 137, 42, 0.045) calc(19deg * var(--ns-ray)),
+      transparent calc(25deg * var(--ns-ray)),
+      rgba(245, 197, 66, 0.06) calc(33deg * var(--ns-ray)),
+      transparent calc(37deg * var(--ns-ray)),
+      rgba(245, 197, 66, 0.07) calc(44deg * var(--ns-ray)),
+      transparent calc(52deg * var(--ns-ray)),
+      rgba(184, 137, 42, 0.05) calc(60deg * var(--ns-ray)),
+      transparent calc(65deg * var(--ns-ray)),
+      rgba(245, 197, 66, 0.035) calc(76deg * var(--ns-ray)),
+      transparent calc(84deg * var(--ns-ray)),
+      transparent 360deg),
+    /* glow: a bright core and a wider, deeper gold halo */
+    radial-gradient(ellipse calc(var(--ns-glow-w) * 0.5) calc(var(--ns-glow-h) * 0.55) at 50% 0%, rgba(245, 197, 66, 0.20), rgba(245, 197, 66, 0) 100%),
+    radial-gradient(ellipse var(--ns-glow-w) var(--ns-glow-h) at 50% 0%, rgba(184, 137, 42, 0.20), rgba(184, 137, 42, 0.06) 55%, rgba(184, 137, 42, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.75) calc(var(--ns-lit-end) * 0.45), rgba(0, 0, 0, 0.3) calc(var(--ns-lit-end) * 0.75), transparent var(--ns-lit-end));
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.75) calc(var(--ns-lit-end) * 0.45), rgba(0, 0, 0, 0.3) calc(var(--ns-lit-end) * 0.75), transparent var(--ns-lit-end));
+}
+
+/* Phones: the section is a taller stack, so the light ends higher (by the button), the
+   rays fan narrower and the glow is tighter, keeping the headline crisp. */
+@media (max-width: 719px) {
+  .ns-page .cs-hero {
+    --ns-lit-end: 58%;
+    --ns-ray: 0.62;
+    --ns-glow-w: 85%;
+    --ns-glow-h: 30%;
+  }
 }
 
 /* Rating strip under the hero button. */
