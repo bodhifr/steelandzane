@@ -29,6 +29,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/reserve-terms(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }

@@ -14,6 +14,7 @@ public/
   complimentary-shoot.html/.css/.js — private BDR landing page (see below)
   next-step.html/.css/.js — private VSL #2 page (Book Your Call, iClosed calendar embed; noindex)
   privacy.html, terms.html          — DRAFT legal pages (pending review)
+  reserve-terms.html                — Signature Reserve Terms (see below)
 api/
   contact.js   — serverless function: handles contact form email via Nodemailer
   lead.js      — serverless function: complimentary-shoot lead saves → Google Sheet
@@ -212,3 +213,12 @@ All of these are marked in the code:
 ### Testing link previews
 
 iMessage caches previews per URL. When re-testing, add a throwaway parameter (e.g. `?src=1&bdr=1&t=2`). Previews only work on the production domain, because Vercel preview URLs may require a Vercel login.
+
+## Signature Reserve Terms (`/reserve-terms`)
+
+Public terms page linked from the Signature Reserve checkout. Hidden from search (robots meta + `X-Robots-Tag` in vercel.json) but reachable by link: `https://www.steelandzane.com/reserve-terms`.
+
+- **Still to do before launch:** have a lawyer review the Payment and Unused credit (refund) sections.
+- **Checkout wording to pair with it:**
+  - Under the price (left side): "12 months of Signature Reserve credit. Includes the Signature Guarantee: next-business-day delivery, complimentary touch ups on a photo-ready home, locked pricing, and unused credit that carries over or is refunded."
+  - Required checkbox: "I agree to the Signature Reserve Terms", linking to `/reserve-terms`.

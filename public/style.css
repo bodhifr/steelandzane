@@ -3123,6 +3123,28 @@ body.has-hero .site-header {
   margin: 8px 0;
 }
 
+.legal-page ol {
+  padding-left: 22px;
+  margin: 8px 0;
+  list-style: decimal;
+}
+
+.legal-page ol li + li {
+  margin-top: 6px;
+}
+
+/* A formula set apart from the text (Signature Reserve Terms refund). */
+.legal-page .legal-formula {
+  margin: 16px 0;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-weight: 600;
+  color: var(--text);
+}
+
 .legal-page a {
   color: var(--bronze);
 }
