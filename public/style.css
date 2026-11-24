@@ -3064,6 +3064,19 @@ body.has-hero .site-header {
   padding: 40px 20px 72px;
 }
 
+/* The homepage's custom cursor (above) hides the system cursor site-wide, but legal
+   pages don't load its script, so restore the normal cursor here. */
+@media (pointer: fine) {
+  :root:has(.legal-page),
+  :root:has(.legal-page) * {
+    cursor: auto !important;
+  }
+
+  :root:has(.legal-page) a {
+    cursor: pointer !important;
+  }
+}
+
 .legal-logo {
   display: inline-block;
   margin-bottom: 32px;
